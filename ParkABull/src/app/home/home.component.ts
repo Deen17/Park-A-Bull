@@ -8,7 +8,7 @@ import { fromObject, fromObjectRecursive, Observable, PropertyChangeData } from 
 import { TextField } from "tns-core-modules/ui/text-field"
 import { Color } from "tns-core-modules/color"
 import { Image } from "tns-core-modules/ui/image"
-import { url } from "../../../db/config.js"
+//import { url } from "../../../db/config.js"
 import {AutocapitalizationType} from "tns-core-modules/ui/editable-text-base"
 import * as md5 from "md5/md5.js" //md5.js exports a function without a name.
 import { RouterExtensions } from "nativescript-angular/router"
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
         console.log(newpass)
         console.log(this.username + ': ' + this.password)
         request({
-            url: "http://10.100.0.232:8000/login",
+            url: "http://10.100.0.232:8000/login", //replace with the express server's ip
             method: "POST",
             headers: { "Content-Type": "application/json" },
             content: JSON.stringify({
