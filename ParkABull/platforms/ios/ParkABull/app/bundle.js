@@ -9,10 +9,6 @@ var map = {
 		"./app/home/home.module.ts",
 		"vendor",
 		0
-	],
-	"~/app/login/login.module": [
-		"./app/login/login.module.ts",
-		1
 	]
 };
 function webpackAsyncContext(req) {
