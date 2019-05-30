@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
         console.log(newpass)
         console.log(this.username + ': ' + this.password)
         request({
-            url: "http://10.100.0.232:8000/login", //replace with the express server's ip
+            url: "http://10.226.22.178:8000/login", //replace with the express server's ip
             method: "POST",
             headers: { "Content-Type": "application/json" },
             content: JSON.stringify({

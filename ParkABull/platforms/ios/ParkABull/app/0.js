@@ -36,7 +36,7 @@ var HomeRoutingModule = /** @class */ (function () {
 /***/ "./app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ActionBar backgroundcolor=\"{{this.greenColor}}\" class=\"action-bar\">\n    <Label class=\"action-bar-title\" text=\"Login\"></Label>\n</ActionBar>\n<StackLayout  class=\"input-field\">\n    <Image src=\"~/assets/usf.png\" stretch=\"aspectFit\"></Image>\n        \n    <TextField autocapitalizationType=\"{{this.autocaps}}\" borderBottomWidth=1 borderRadius=10 (textChange)=\"onTextChange1($event)\" backgroundColor=\"{{this.boxColor}}\" width=250 height=75 id=\"text1\" hint=\"username\" autocorrect=\"false\" text=\"{{this.username}}\"></TextField>\n\n    <TextField autocapitalizationType=\"{{this.autocaps}}\" secure=true borderRadius=10 (textChange)=\"onTextChange2($event)\" backgroundColor=\"{{this.boxColor}}\" width=250 height=75 hint=\"password\" autocorrect=\"false\" id=\"text2\" text=\"{{this.password}}\"></TextField>\n    \n\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button\" text=\"Login\" (tap)=\"onTap($event)\"></Button>\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button2\" text=\"Register\" (tap)=\"onTap($event)\"></Button>\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button3\" text=\"{{this.buttontext}}\" (tap)=\"onTap2($event)\"></Button>\n\n\n</StackLayout>"
+module.exports = "<ActionBar backgroundcolor=\"{{this.greenColor}}\" class=\"action-bar\">\r\n    <Label class=\"action-bar-title\" text=\"Login\"></Label>\r\n</ActionBar>\r\n<StackLayout  class=\"input-field\">\r\n    <Image src=\"~/assets/usf.png\" stretch=\"aspectFit\"></Image>\r\n        \r\n    <TextField autocapitalizationType=\"{{this.autocaps}}\" borderBottomWidth=1 borderRadius=10 (textChange)=\"onTextChange1($event)\" backgroundColor=\"{{this.boxColor}}\" width=250 height=75 id=\"text1\" hint=\"username\" autocorrect=\"false\" text=\"{{this.username}}\"></TextField>\r\n\r\n    <TextField autocapitalizationType=\"{{this.autocaps}}\" secure=true borderRadius=10 (textChange)=\"onTextChange2($event)\" backgroundColor=\"{{this.boxColor}}\" width=250 height=75 hint=\"password\" autocorrect=\"false\" id=\"text2\" text=\"{{this.password}}\"></TextField>\r\n    \r\n\r\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button\" text=\"Login\" (tap)=\"onTap($event)\"></Button>\r\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button2\" text=\"Register\" (tap)=\"onTap($event)\"></Button>\r\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button3\" text=\"{{this.buttontext}}\" (tap)=\"onTap2($event)\"></Button>\r\n\r\n\r\n</StackLayout>"
 
 /***/ }),
 
@@ -79,7 +79,7 @@ var HomeComponent = /** @class */ (function () {
         console.log(newpass);
         console.log(this.username + ': ' + this.password);
         Object(tns_core_modules_http__WEBPACK_IMPORTED_MODULE_1__["request"])({
-            url: "http://10.100.0.232:8000/login",
+            url: "http://10.226.22.178:8000/login",
             method: "POST",
             headers: { "Content-Type": "application/json" },
             content: JSON.stringify({
