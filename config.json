@@ -1,0 +1,12 @@
+{
+    "mysql": {
+        "host": "104.196.144.16",
+        "user": "root",
+        "password": "mEgN0KpPehgDtmxg",
+        "database": "test_schema1"
+    },
+    "appServer": {
+        "ipv4": "10.100.0.232",
+        "port": 8000
+    }
+}
