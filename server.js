@@ -1,6 +1,7 @@
 //imports
 var mysql = require('mysql');
 var config = require('./config')
+let http = require('http')
 var express = require('express')
 const bodyParser = require('body-parser')
 
@@ -64,4 +65,4 @@ app.post('/login', function(req, res){
     }
   })
 })
-app.listen(config.appServer.port)
+app.listen(config.appServer.port, config.appServer.ipv4)
