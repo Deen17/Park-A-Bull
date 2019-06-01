@@ -9,6 +9,10 @@ var map = {
 		"./app/home/home.module.ts",
 		"vendor",
 		0
+	],
+	"~/app/login/login.module": [
+		"./app/login/login.module.ts",
+		1
 	]
 };
 function webpackAsyncContext(req) {
@@ -70,6 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "home", loadChildren: "~/app/home/home.module#HomeModule" },
+    { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -90,7 +95,7 @@ var AppRoutingModule = /** @class */ (function () {
 /***/ "./app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<page-router-outlet></page-router-outlet>\n"
+module.exports = "<page-router-outlet ></page-router-outlet>\n"
 
 /***/ }),
 

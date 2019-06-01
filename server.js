@@ -64,4 +64,4 @@ app.post('/login', function(req, res){
     }
   })
 })
-app.listen(config.appServer.port, config.appServer.ipv4)
+app.listen(config.appServer.port)
