@@ -95,7 +95,7 @@ var AppRoutingModule = /** @class */ (function () {
 /***/ "./app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<page-router-outlet ></page-router-outlet>\n"
+module.exports = "<page-router-outlet ></page-router-outlet>\r\n"
 
 /***/ }),
 
