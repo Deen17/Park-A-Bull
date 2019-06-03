@@ -21,6 +21,10 @@ yarn-error.log*
 .project
 tmp/
 typings/
+/old/
+/reflections/
+platforms/
+
 
 # Visual Studio Code
 .vscode/*
@@ -28,3 +32,6 @@ typings/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+auth
+/parkingwizardusf-7ad39a6910ff.json

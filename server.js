@@ -1,6 +1,7 @@
 //imports
 var mysql = require('mysql');
 var config = require('./config')
+let http = require('http')
 var express = require('express')
 const bodyParser = require('body-parser')
 
@@ -43,6 +44,7 @@ app.get('/users/:username', function (req, res) {
   console.log(res)
   res.end('hey ' + req.params.username)
 })
+
 
 //posts
 app.post('/login', function(req, res){
