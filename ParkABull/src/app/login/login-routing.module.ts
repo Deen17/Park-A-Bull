@@ -2,14 +2,15 @@ import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
+import { LoginComponent } from "./login.component";
+
 const routes: Routes = [
-    { path: "", redirectTo: "/home", pathMatch: "full" },
+    { path: "", component: LoginComponent },
     { path: "home", loadChildren: "~/app/home/home.module#HomeModule" },
-    { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
 ];
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forRoot(routes)],
+    imports: [NativeScriptRouterModule.forChild(routes)],
     exports: [NativeScriptRouterModule]
 })
-export class AppRoutingModule { }
+export class LoginRoutingModule { }

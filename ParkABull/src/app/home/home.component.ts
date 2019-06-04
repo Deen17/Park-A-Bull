@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     }
     login() {
         console.log('entered login()')
-        //this.routerExtensions.navigateByUrl("login")
+        this.routerExtensions.navigateByUrl("login")
     }
     onTextChange1(args) {
         let text1 = <TextField>args.object;

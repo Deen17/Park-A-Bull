@@ -16,6 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: "", component: _home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"] },
+    { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
 ];
 var HomeRoutingModule = /** @class */ (function () {
     function HomeRoutingModule() {
@@ -97,7 +98,7 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.login = function () {
         console.log('entered login()');
-        //this.routerExtensions.navigateByUrl("login")
+        this.routerExtensions.navigateByUrl("login");
     };
     HomeComponent.prototype.onTextChange1 = function (args) {
         var text1 = args.object;
