@@ -2,8 +2,25 @@
 var mysql = require('mysql');
 var config = require('./config')
 let http = require('http')
+let https = require('https')
 var express = require('express')
 const bodyParser = require('body-parser')
+const localtunnel = require('localtunnel')
+const fs = require('fs')
+
+
+const tunnel = localtunnel(config.appServer.port, { subdomain: 'parkabull'} ,(err, tunnel) => {
+  if(err){
+    throw err;
+  }
+  else{
+    console.log(`tunnel is open on ${tunnel.url}`)
+  }
+});
+
+tunnel.on('close', function(){
+  console.log('tunnel is closed')
+})
 
 //MYSQL connection. must run the powershell first
 //connection details
@@ -66,4 +83,12 @@ app.post('/login', function(req, res){
     }
   })
 })
-app.listen(config.appServer.port, config.appServer.ipv4)
+app.listen(config.appServer.port)
+
+/* http.createServer(app).listen(7999) */
+/* https.createServer({
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.cert')
+}, app).listen(8000, () => {
+  console.log('Listening...')
+}) */

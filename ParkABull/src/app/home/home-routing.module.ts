@@ -6,6 +6,7 @@ import { HomeComponent } from "./home.component";
 
 const routes: Routes = [
     { path: "", component: HomeComponent },
+    { path: "home", component: HomeComponent },
     { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
 ];
 
