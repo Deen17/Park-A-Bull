@@ -16,6 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: "", component: _home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"] },
+    { path: "home", component: _home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"] },
     { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
 ];
 var HomeRoutingModule = /** @class */ (function () {
@@ -80,7 +81,7 @@ var HomeComponent = /** @class */ (function () {
         console.log(newpass);
         console.log(this.username + ': ' + this.password);
         Object(tns_core_modules_http__WEBPACK_IMPORTED_MODULE_1__["request"])({
-            url: "http://10.100.0.232:8000/login",
+            url: "https://parkabull.localtunnel.me/login",
             method: "POST",
             headers: { "Content-Type": "application/json" },
             content: JSON.stringify({
