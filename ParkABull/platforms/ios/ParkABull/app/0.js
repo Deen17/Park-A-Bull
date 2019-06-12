@@ -38,7 +38,7 @@ var HomeRoutingModule = /** @class */ (function () {
 /***/ "./app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ActionBar backgroundcolor=\"{{this.greenColor}}\" class=\"action-bar\">\r\n    <Label class=\"action-bar-title\" text=\"Login\"></Label>\r\n</ActionBar>\r\n<StackLayout  class=\"input-field\">\r\n    <Image src=\"~/assets/usf.png\" stretch=\"aspectFit\"></Image>\r\n        \r\n    <TextField autocapitalizationType=\"{{this.autocaps}}\" borderBottomWidth=1 borderRadius=10 (textChange)=\"onTextChange1($event)\" backgroundColor=\"{{this.boxColor}}\" width=250 height=75 id=\"text1\" hint=\"username\" autocorrect=\"false\" text=\"{{this.username}}\"></TextField>\r\n\r\n    <TextField autocapitalizationType=\"{{this.autocaps}}\" secure=true borderRadius=10 (textChange)=\"onTextChange2($event)\" backgroundColor=\"{{this.boxColor}}\" width=250 height=75 hint=\"password\" autocorrect=\"false\" id=\"text2\" text=\"{{this.password}}\"></TextField>\r\n    \r\n\r\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button\" text=\"Login\" (tap)=\"onTap($event)\"></Button>\r\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button2\" text=\"Register\" (tap)=\"onTap($event)\"></Button>\r\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button3\" text=\"{{this.buttontext}}\" (tap)=\"onTap2($event)\"></Button>\r\n\r\n\r\n</StackLayout>"
+module.exports = "<ActionBar backgroundcolor=\"{{this.greenColor}}\" class=\"action-bar\">\n    <Label class=\"action-bar-title\" text=\"Login\"></Label>\n</ActionBar>\n<StackLayout  class=\"input-field\">\n    <Image src=\"~/assets/usf.png\" stretch=\"aspectFit\"></Image>\n        \n    <TextField autocapitalizationType=\"{{this.autocaps}}\" borderBottomWidth=1 borderRadius=10 (textChange)=\"onTextChange1($event)\" backgroundColor=\"{{this.boxColor}}\" width=250 height=75 id=\"text1\" hint=\"username\" autocorrect=\"false\" text=\"{{this.username}}\"></TextField>\n\n    <TextField autocapitalizationType=\"{{this.autocaps}}\" secure=true borderRadius=10 (textChange)=\"onTextChange2($event)\" backgroundColor=\"{{this.boxColor}}\" width=250 height=75 hint=\"password\" autocorrect=\"false\" id=\"text2\" text=\"{{this.password}}\"></TextField>\n    \n\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button\" text=\"Login\" (tap)=\"onTap($event)\"></Button>\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button2\" text=\"Register\" (tap)=\"onTap($event)\"></Button>\n    <Button backgroundColor=\"{{this.greenColor}}\" class=\"btn btn-primary btn-active\" id=\"button3\" text=\"{{this.buttontext}}\" (tap)=\"onTap2($event)\"></Button>\n\n\n</StackLayout>"
 
 /***/ }),
 
@@ -58,11 +58,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var md5_md5_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(md5_md5_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("nativescript-angular/router");
 /* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("tns-core-modules/application-settings");
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_5__);
 var nodeify = __webpack_require__("../node_modules/nativescript-nodeify/nodeify.js");
 
 
 
  //md5.js exports a function without a name.
+
 
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(routerExtensions) {
@@ -78,8 +81,6 @@ var HomeComponent = /** @class */ (function () {
         var _this = this;
         var button = args.object;
         var newpass = md5_md5_js__WEBPACK_IMPORTED_MODULE_3__(this.password);
-        console.log(newpass);
-        console.log(this.username + ': ' + this.password);
         Object(tns_core_modules_http__WEBPACK_IMPORTED_MODULE_1__["request"])({
             url: "https://parkabull.localtunnel.me/login",
             method: "POST",
@@ -92,13 +93,17 @@ var HomeComponent = /** @class */ (function () {
             var result = response.content.toJSON();
             if (result.login)
                 _this.login();
-            else
+            else {
                 (alert("Login failed!"));
+                tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_5__["remove"]("username");
+                tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_5__["setBoolean"]("isLoggedIn", false);
+            }
         }, function (e) {
         });
     };
     HomeComponent.prototype.login = function () {
-        console.log('entered login()');
+        tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_5__["setString"]("username", this.username);
+        tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_5__["setBoolean"]("isLoggedIn", true);
         this.routerExtensions.navigateByUrl("login");
     };
     HomeComponent.prototype.onTextChange1 = function (args) {
@@ -115,6 +120,9 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.ngOnInit = function () {
         console.log('Home Component initiated');
+        if (tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_5__["getBoolean"]("isLoggedIn", false)) {
+            this.routerExtensions.navigateByUrl("login");
+        }
     };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as appSettings from "tns-core-modules/application-settings"
 
 @Component({
   selector: 'ns-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-      console.log('login component initiated')
+      console.log('login component initiated. username is ' + appSettings.getString("username"))
   }
 
 }
