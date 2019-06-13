@@ -8,7 +8,6 @@ const bodyParser = require('body-parser')
 const localtunnel = require('localtunnel')
 const fs = require('fs')
 
-
 let tunnel;
 setTimeout(function() {
   tunnel = localtunnel(config.appServer.port, { subdomain: 'parkabull'} ,(err, tunnel) => {
@@ -93,8 +92,30 @@ app.post('/login', function(req, res){
     }
   })
 })
+
+app.post('/register', function(req, res){
+  console.log('POST /register')
+  connection.query(config.queries.addStudent, 
+    [
+      req.body.unumber,
+      req.body.firstName,
+      req.body.lastName,
+      req.body.email,
+      req.body.username,
+      req.body.password
+    ], (err, rows)=>{
+      if(err){
+        res.send({response: false})
+        throw err;
+      }
+      else{
+        console.log(rows)
+        res.send({response: true});
+      }
+    })
+})
 app.listen(config.appServer.port)
-//curl -d "username=heh&password=oa" -X POST http://localhost:3000/login
+//curl -d "username=heh&password=oa" -X POST https://parkabull.localtunnel.me/register
 
 
 /* http.createServer(app).listen(7999) */

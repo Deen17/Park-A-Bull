@@ -9,5 +9,9 @@ module.exports = {
     appServer: {
         ipv4: "10.226.22.178", //put your own ip address here. run Get-NetIpAddress and look for the right ip (check for wifi/ethernet, then for preferred) or put localhost
         port: 8000
+    },
+    queries: {
+        addStudent: `CALL db.addStudent(?,?,?,?,?,?)`,
+        
     }
 }
