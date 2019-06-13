@@ -9,11 +9,10 @@ import { TextField } from "tns-core-modules/ui/text-field"
 import { Color } from "tns-core-modules/color"
 import { Image } from "tns-core-modules/ui/image"
 //import { url } from "../../../db/config.js"
-import {AutocapitalizationType} from "tns-core-modules/ui/editable-text-base"
+import { AutocapitalizationType } from "tns-core-modules/ui/editable-text-base"
 import * as md5 from "md5/md5.js" //md5.js exports a function without a name.
 import { RouterExtensions } from "nativescript-angular/router"
 import * as appSettings from "tns-core-modules/application-settings"
-
 
 @Component({
     selector: "Home",
@@ -44,13 +43,14 @@ export class HomeComponent implements OnInit {
             })
         }).then((response) => {
             const result = response.content.toJSON();
-            if(result.login) this.login();
-            else{
+            if (result.login) this.login();
+            else {
                 (alert("Login failed!"))
                 appSettings.remove("username")
                 appSettings.setBoolean("isLoggedIn", false)
             }
         }, (e) => {
+            console.log(e)
         });
     }
     login() {
@@ -64,7 +64,6 @@ export class HomeComponent implements OnInit {
     }
     onTextChange2(args) {
         let text2 = <TextField>args.object;
-        console.log(text2.text)
         this.password = text2.text
 
     }
@@ -74,7 +73,7 @@ export class HomeComponent implements OnInit {
     }
     ngOnInit(): void {
         console.log('Home Component initiated')
-        if(appSettings.getBoolean("isLoggedIn", false)){
+        if (appSettings.getBoolean("isLoggedIn", false)) {
             this.routerExtensions.navigateByUrl("login")
         }
     }
