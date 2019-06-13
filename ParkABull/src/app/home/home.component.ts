@@ -12,6 +12,9 @@ import { Image } from "tns-core-modules/ui/image"
 import {AutocapitalizationType} from "tns-core-modules/ui/editable-text-base"
 import * as md5 from "md5/md5.js" //md5.js exports a function without a name.
 import { RouterExtensions } from "nativescript-angular/router"
+import * as appSettings from "tns-core-modules/application-settings"
+
+
 @Component({
     selector: "Home",
     moduleId: module.id,
@@ -31,8 +34,6 @@ export class HomeComponent implements OnInit {
     onTap(args: EventData) {
         let button = <Button>args.object;
         let newpass: string = md5(this.password);
-        console.log(newpass)
-        console.log(this.username + ': ' + this.password)
         request({
             url: "https://parkabull.localtunnel.me/login", //http://10.100.0.232:8000/login
             method: "POST",
@@ -44,12 +45,17 @@ export class HomeComponent implements OnInit {
         }).then((response) => {
             const result = response.content.toJSON();
             if(result.login) this.login();
-            else(alert("Login failed!"))
+            else{
+                (alert("Login failed!"))
+                appSettings.remove("username")
+                appSettings.setBoolean("isLoggedIn", false)
+            }
         }, (e) => {
         });
     }
     login() {
-        console.log('entered login()')
+        appSettings.setString("username", this.username)
+        appSettings.setBoolean("isLoggedIn", true)
         this.routerExtensions.navigateByUrl("login")
     }
     onTextChange1(args) {
@@ -58,6 +64,7 @@ export class HomeComponent implements OnInit {
     }
     onTextChange2(args) {
         let text2 = <TextField>args.object;
+        console.log(text2.text)
         this.password = text2.text
 
     }
@@ -67,5 +74,8 @@ export class HomeComponent implements OnInit {
     }
     ngOnInit(): void {
         console.log('Home Component initiated')
+        if(appSettings.getBoolean("isLoggedIn", false)){
+            this.routerExtensions.navigateByUrl("login")
+        }
     }
 }
