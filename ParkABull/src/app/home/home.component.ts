@@ -64,6 +64,7 @@ export class HomeComponent implements OnInit {
     }
     onTextChange2(args) {
         let text2 = <TextField>args.object;
+        console.log(text2.text)
         this.password = text2.text
 
     }

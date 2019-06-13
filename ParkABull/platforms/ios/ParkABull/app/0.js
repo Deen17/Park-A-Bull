@@ -112,6 +112,7 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.onTextChange2 = function (args) {
         var text2 = args.object;
+        console.log(text2.text);
         this.password = text2.text;
     };
     HomeComponent.prototype.onTap2 = function () {

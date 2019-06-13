@@ -94,6 +94,8 @@ app.post('/login', function(req, res){
   })
 })
 app.listen(config.appServer.port)
+//curl -d "username=heh&password=oa" -X POST http://localhost:3000/login
+
 
 /* http.createServer(app).listen(7999) */
 /* https.createServer({
