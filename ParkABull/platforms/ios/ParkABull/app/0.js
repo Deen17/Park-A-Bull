@@ -99,6 +99,7 @@ var HomeComponent = /** @class */ (function () {
                 tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_5__["setBoolean"]("isLoggedIn", false);
             }
         }, function (e) {
+            console.log(e);
         });
     };
     HomeComponent.prototype.login = function () {
@@ -112,7 +113,6 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.onTextChange2 = function (args) {
         var text2 = args.object;
-        console.log(text2.text);
         this.password = text2.text;
     };
     HomeComponent.prototype.onTap2 = function () {
