@@ -5,13 +5,21 @@ module.exports =
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"~/app/admin/admin.module": [
+		"./app/admin/admin.module.ts",
+		0
+	],
 	"~/app/home/home.module": [
 		"./app/home/home.module.ts",
-		"vendor",
-		0
+		3
 	],
 	"~/app/login/login.module": [
 		"./app/login/login.module.ts",
+		"vendor",
+		2
+	],
+	"~/app/user/user.module": [
+		"./app/user/user.module.ts",
 		1
 	]
 };
@@ -75,6 +83,8 @@ var routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "home", loadChildren: "~/app/home/home.module#HomeModule" },
     { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
+    { path: "user", loadChildren: "~/app/user/user.module#UserModule" },
+    { path: "admin", loadChildren: "~/app/admin/admin.module#AdminModule" },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -107,9 +117,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(routerExtensions) {
+        this.routerExtensions = routerExtensions;
         console.log("app component initiated");
     }
     AppComponent = __decorate([
@@ -117,7 +131,7 @@ var AppComponent = /** @class */ (function () {
             selector: "ns-app",
             template: __webpack_require__("./app/app.component.html")
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -367,6 +381,13 @@ module.exports = require("tns-core-modules/file-system");
 /***/ (function(module, exports) {
 
 module.exports = require("tns-core-modules/http");
+
+/***/ }),
+
+/***/ "tns-core-modules/ui/image":
+/***/ (function(module, exports) {
+
+module.exports = require("tns-core-modules/ui/image");
 
 /***/ }),
 

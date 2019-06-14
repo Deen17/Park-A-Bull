@@ -1,3 +1,17 @@
-<StackLayout>
-    <Label text="login works!"></Label>
+<ActionBar backgroundcolor="{{this.greenColor}}" class="action-bar">
+    <Label class="action-bar-title" text="Login"></Label>
+</ActionBar>
+<StackLayout  class="input-field">
+    <Image src="~/assets/usf.png"></Image>
+        
+    <TextField autocapitalizationType="{{this.autocaps}}" borderBottomWidth=1 borderRadius=10 (textChange)="onTextChange1($event)" backgroundColor="{{this.boxColor}}" width=250 height=75 id="text1" hint="username" autocorrect="false" text="{{this.username}}"></TextField>
+
+    <TextField autocapitalizationType="{{this.autocaps}}" secure=true borderRadius=10 (textChange)="onTextChange2($event)" backgroundColor="{{this.boxColor}}" width=250 height=75 hint="password" autocorrect="false" id="text2" text="{{this.password}}"></TextField>
+    
+
+    <Button backgroundColor="{{this.greenColor}}" class="btn btn-primary btn-active" id="button" text="Login" (tap)="onTap($event)"></Button>
+    <Button backgroundColor="{{this.greenColor}}" class="btn btn-primary btn-active" id="button2" text="Register" (tap)="onTap($event)"></Button>
+    <Button backgroundColor="{{this.greenColor}}" class="btn btn-primary btn-active" id="button3" text="{{this.buttontext}}" (tap)="onTap2($event)"></Button>
+
+
 </StackLayout>

@@ -9,13 +9,25 @@ import { ReportListComponent } from './report-list/report-list.component';
 import { ReportDetailsComponent } from './report-details/report-details.component';
 import { LotListComponent } from './lot-list/lot-list.component';
 import { LotDetailsComponent } from './lot-details/lot-details.component';
-import { HomeComponent } from './home/home.component';
+
 import { AdminComponent } from './admin.component';
+import { AdminRoutingModule } from './admin-routing.module';
 
 @NgModule({
-  declarations: [UserListComponent, UserDetailsComponent, BuildingListComponent, BuildingDetailsComponent, RegisterComponent, ReportListComponent, ReportDetailsComponent, LotListComponent, LotDetailsComponent, HomeComponent, AdminComponent],
+  declarations: [
+    UserListComponent, 
+    UserDetailsComponent, 
+    BuildingListComponent, 
+    BuildingDetailsComponent, 
+    RegisterComponent, 
+    ReportListComponent, 
+    ReportDetailsComponent, 
+    LotListComponent, 
+    LotDetailsComponent, 
+    AdminComponent],
   imports: [
-    NativeScriptCommonModule
+    NativeScriptCommonModule,
+    AdminRoutingModule
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
