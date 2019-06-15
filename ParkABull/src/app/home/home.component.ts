@@ -1,18 +1,6 @@
-const nodeify = require("nativescript-nodeify");
-import { Component, OnInit } from "@angular/core";
-import { getBoolean, setBoolean, getNumber, setNumber, getString as appGetString, setString, hasKey, remove, clear } from "tns-core-modules/application-settings";
-import { Button } from "tns-core-modules/ui/button"
-import { EventData } from "tns-core-modules/data/observable"
-import { request, getFile, getImage, getJSON, getString } from "tns-core-modules/http";
-import { fromObject, fromObjectRecursive, Observable, PropertyChangeData } from "tns-core-modules/data/observable";
-import { TextField } from "tns-core-modules/ui/text-field"
-import { Color } from "tns-core-modules/color"
-import { Image } from "tns-core-modules/ui/image"
-//import { url } from "../../../db/config.js"
-import { AutocapitalizationType } from "tns-core-modules/ui/editable-text-base"
-import * as md5 from "md5/md5.js" //md5.js exports a function without a name.
-import { RouterExtensions } from "nativescript-angular/router"
+import { Component, OnInit } from '@angular/core';
 import * as appSettings from "tns-core-modules/application-settings"
+import { RouterExtensions } from "nativescript-angular/router"
 
 @Component({
     selector: "Home",
@@ -20,61 +8,25 @@ import * as appSettings from "tns-core-modules/application-settings"
     templateUrl: "./home.component.html",
 })
 export class HomeComponent implements OnInit {
-    username: string;
-    password: string;
-    boxColor: Color = new Color(255, 207, 196, 147); //(255, 207,196,147) usf gold
-    greenColor: Color = new Color(255, 0, 103, 71); //usf green
-    buttontext: string = "Tap Me!";
-    counter: number = 0;
-    autocaps: AutocapitalizationType = "none"
+
     constructor(private routerExtensions: RouterExtensions) {
         // Use the component constructor to inject providers.
     }
-    onTap(args: EventData) {
-        let button = <Button>args.object;
-        let newpass: string = md5(this.password);
-        request({
-            url: "https://parkabull.localtunnel.me/login", //http://10.100.0.232:8000/login
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            content: JSON.stringify({
-                username: this.username,
-                password: newpass
-            })
-        }).then((response) => {
-            const result = response.content.toJSON();
-            if (result.login) this.login();
-            else {
-                (alert("Login failed!"))
-                appSettings.remove("username")
-                appSettings.setBoolean("isLoggedIn", false)
-            }
-        }, (e) => {
-            console.log(e)
-        });
-    }
-    login() {
-        appSettings.setString("username", this.username)
-        appSettings.setBoolean("isLoggedIn", true)
-        this.routerExtensions.navigateByUrl("login")
-    }
-    onTextChange1(args) {
-        let text1 = <TextField>args.object;
-        this.username = text1.text
-    }
-    onTextChange2(args) {
-        let text2 = <TextField>args.object;
-        this.password = text2.text
-
-    }
-    onTap2() {
-        this.counter++
-        this.buttontext = 'Tapped ' + this.counter + ' times!'
-    }
     ngOnInit(): void {
-        console.log('Home Component initiated')
-        if (appSettings.getBoolean("isLoggedIn", false)) {
+        appSettings.clear();
+        console.log('Home Component initiated. usertype is ', appSettings.getString("userType"))
+        console.log(this.routerExtensions)
+        if (!appSettings.getBoolean("isLoggedIn", false)) {
+            console.log("should navigate to login")
             this.routerExtensions.navigateByUrl("login")
+        }
+        else if (appSettings.getString("userType") == "student"){
+            console.log("should navigate to user")
+            this.routerExtensions.navigateByUrl("user")
+        }
+        else if (appSettings.getString("userType") == "admin"){
+            console.log("should navigate to admin")
+            this.routerExtensions.navigateByUrl("admin")
         }
     }
 }

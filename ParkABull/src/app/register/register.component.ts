@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterExtensions } from "nativescript-angular/router"
+import * as appSettings from "tns-core-modules/application-settings"
+import { Color } from "tns-core-modules/color"
+import { TextField } from "tns-core-modules/ui/text-field"
+import { AutocapitalizationType, EventData } from "tns-core-modules/ui/editable-text-base"
+import * as md5 from "md5/md5.js"
+import { request } from 'tns-core-modules/http/http';
+import {url} from "../../../db/config.js"
+
 
 @Component({
   selector: 'ns-register',
@@ -7,10 +16,77 @@ import { Component, OnInit } from '@angular/core';
   moduleId: module.id,
 })
 export class RegisterComponent implements OnInit {
+  unumber: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  username: string;
+  password: string;
 
-  constructor() { }
+  boxColor: Color = new Color(255, 207, 196, 147); //(255, 207,196,147) usf gold
+  greenColor: Color = new Color(255, 0, 103, 71); //usf green
+  autocaps: AutocapitalizationType = "none"
 
+  constructor(private routerExtensions: RouterExtensions) { }
+  onTextChange(args) {
+    let textbox = <TextField>args.object;
+    switch (textbox.id) {
+      case 'username':
+        this.username = textbox.text
+        break;
+      case 'password':
+        this.password = textbox.text
+        break;
+      case 'unumber':
+        this.unumber=parseInt(textbox.text);
+        break;
+      case 'firstName':
+        this.firstName=textbox.text;
+        break;
+      case 'lastName':
+        this.lastName=textbox.text;
+        break;
+      case 'email':
+        this.email=textbox.text;
+        break;
+      default:
+        console.log('switched entered unintended case')
+        break;
+    }
+
+  }
+
+  onDone(args: EventData){
+    let newpass: string = md5(this.password);
+    request({
+      url: url + "register", //http://10.100.0.232:8000/login
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      content: JSON.stringify({
+        unumber: this.unumber,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        username: this.username,
+        password: newpass
+      })
+    }).then((response) => {
+      const result = response.content.toJSON();
+      if (result.response){
+        this.goToLogin();
+      } 
+      else {
+        (alert("Register failed!"))
+      }
+    }, (e) => {
+      console.log(e)
+    });
+  }
+  goToLogin(){
+    this.routerExtensions.navigateByUrl("login")
+  }
   ngOnInit() {
+    console.log("Register Component initiated.")
   }
 
 }
