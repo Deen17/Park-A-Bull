@@ -8,4 +8,4 @@ module.exports = {"main":"main.js","android":{"v8Flags":"--expose_gc"}};
 
 /***/ })
 
-},[["../node_modules/tns-core-modules/inspector_modules.js","runtime","vendor"]]]);
+},[["../node_modules/tns-core-modules/inspector_modules.js","runtime",4]]]);

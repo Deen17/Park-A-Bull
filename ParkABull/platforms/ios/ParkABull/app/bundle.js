@@ -15,8 +15,13 @@ var map = {
 	],
 	"~/app/login/login.module": [
 		"./app/login/login.module.ts",
-		"vendor",
+		4,
 		2
+	],
+	"~/app/register/register.module": [
+		"./app/register/register.module.ts",
+		4,
+		5
 	],
 	"~/app/user/user.module": [
 		"./app/user/user.module.ts",
@@ -53,7 +58,7 @@ module.exports = webpackAsyncContext;
 exports.i(__webpack_require__("../node_modules/css-loader/dist/cjs.js?!../node_modules/nativescript-theme-core/css/forest.css"), "");
 
 // Module
-exports.push([module.i, "/*\nIn NativeScript, the app.css file is where you place CSS rules that\nyou would like to apply to your entire application. Check out\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\nselectors and properties you can use to style UI components.\n\n/*\nIn many cases you may want to use the NativeScript core theme instead\nof writing your own CSS rules. For a full list of class names in the theme\nrefer to http://docs.nativescript.org/ui/theme.\n*/\n\n/*\nFor example, the following CSS rule changes the font size of all UI\ncomponents that have the btn class name.\n*/\n.btn {\n    font-size: 18;\n}\n", ""]);
+exports.push([module.i, "/*\nIn NativeScript, the app.css file is where you place CSS rules that\nyou would like to apply to your entire application. Check out\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\nselectors and properties you can use to style UI components.\n\n/*\nIn many cases you may want to use the NativeScript core theme instead\nof writing your own CSS rules. For a full list of class names in the theme\nrefer to http://docs.nativescript.org/ui/theme.\n*/\n/*\n usf green: #006747\n usf gold: #CFC493\n*/\n/*\nFor example, the following CSS rule changes the font size of all UI\ncomponents that have the btn class name.\n*/\n.btn {\n    font-size: 18;\n}\n\nStackLayout TextField {\n    margin: 2;\n    border-radius: 10;\n    background-color: #CFC493;\n    width: 250;\n    height: 75;\n}", ""]);
 
 ;
     if (true) {
@@ -85,6 +90,7 @@ var routes = [
     { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
     { path: "user", loadChildren: "~/app/user/user.module#UserModule" },
     { path: "admin", loadChildren: "~/app/admin/admin.module#AdminModule" },
+    { path: "register", loadChildren: "~/app/register/register.module#RegisterModule" }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -384,6 +390,13 @@ module.exports = require("tns-core-modules/http");
 
 /***/ }),
 
+/***/ "tns-core-modules/http/http":
+/***/ (function(module, exports) {
+
+module.exports = require("tns-core-modules/http/http");
+
+/***/ }),
+
 /***/ "tns-core-modules/ui/image":
 /***/ (function(module, exports) {
 
@@ -398,4 +411,4 @@ module.exports = require("tns-core-modules/ui/styling/style-scope");
 
 /***/ })
 
-},[["./main.ts","runtime","vendor"]]]);
+},[["./main.ts","runtime",4]]]);

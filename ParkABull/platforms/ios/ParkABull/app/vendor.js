@@ -1,4 +1,4 @@
-(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["vendor"],{
+(global["webpackJsonp"] = global["webpackJsonp"] || []).push([[4],{
 
 /***/ "../node_modules/base64-js/index.js":
 /***/ (function(module, exports, __webpack_require__) {

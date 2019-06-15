@@ -62,7 +62,14 @@ export class LoginComponent implements OnInit {
     appSettings.setString("username", this.username)
     appSettings.setBoolean("isLoggedIn", true)
     appSettings.setString("userType", userType)
-    this.routerExtensions.navigateByUrl(appSettings.getString("userType"))
+    if(userType == "student" || userType == "visitor")
+      this.routerExtensions.navigateByUrl("user")
+    else if(userType == "admin")
+      this.routerExtensions.navigateByUrl("admin")
+  }
+
+  register(args: EventData){
+    this.routerExtensions.navigateByUrl("register")
   }
   onTextChange1(args) {
     let text1 = <TextField>args.object;
