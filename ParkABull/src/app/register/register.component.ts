@@ -7,6 +7,7 @@ import { AutocapitalizationType, EventData } from "tns-core-modules/ui/editable-
 import * as md5 from "md5/md5.js"
 import { request } from 'tns-core-modules/http/http';
 import {url} from "../../../db/config.js"
+import { validateConfig } from '@angular/router/src/config';
 
 
 @Component({
@@ -22,10 +23,10 @@ export class RegisterComponent implements OnInit {
   email: string;
   username: string;
   password: string;
+  confirmPassword: string;
 
   boxColor: Color = new Color(255, 207, 196, 147); //(255, 207,196,147) usf gold
   greenColor: Color = new Color(255, 0, 103, 71); //usf green
-  autocaps: AutocapitalizationType = "none"
 
   constructor(private routerExtensions: RouterExtensions) { }
   onTextChange(args) {
@@ -49,14 +50,31 @@ export class RegisterComponent implements OnInit {
       case 'email':
         this.email=textbox.text;
         break;
+      case 'confirmPassword':
+        this.confirmPassword=textbox.text;
+        break;
       default:
         console.log('switched entered unintended case')
         break;
     }
 
   }
-
+  validate() {
+    if(this.password != this.confirmPassword){
+      alert({
+        title: "Password Mismatch",
+        message: "Please make sure that your entries for username and password match",
+        okButtonText:"Try Again"
+      })
+    }
+    
+    return false;
+  }
   onDone(args: EventData){
+    console.log('before validate')
+    if(!this.validate()){
+      return;
+    }
     let newpass: string = md5(this.password);
     request({
       url: url + "register", //http://10.100.0.232:8000/login

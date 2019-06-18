@@ -11,17 +11,17 @@ var map = {
 	],
 	"~/app/home/home.module": [
 		"./app/home/home.module.ts",
-		3
+		4
 	],
 	"~/app/login/login.module": [
 		"./app/login/login.module.ts",
-		4,
+		"vendor",
 		2
 	],
 	"~/app/register/register.module": [
 		"./app/register/register.module.ts",
-		4,
-		5
+		"vendor",
+		3
 	],
 	"~/app/user/user.module": [
 		"./app/user/user.module.ts",
@@ -58,7 +58,7 @@ module.exports = webpackAsyncContext;
 exports.i(__webpack_require__("../node_modules/css-loader/dist/cjs.js?!../node_modules/nativescript-theme-core/css/forest.css"), "");
 
 // Module
-exports.push([module.i, "/*\nIn NativeScript, the app.css file is where you place CSS rules that\nyou would like to apply to your entire application. Check out\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\nselectors and properties you can use to style UI components.\n\n/*\nIn many cases you may want to use the NativeScript core theme instead\nof writing your own CSS rules. For a full list of class names in the theme\nrefer to http://docs.nativescript.org/ui/theme.\n*/\n/*\n usf green: #006747\n usf gold: #CFC493\n*/\n/*\nFor example, the following CSS rule changes the font size of all UI\ncomponents that have the btn class name.\n*/\n.btn {\n    font-size: 18;\n}\n\nStackLayout TextField {\n    margin: 2;\n    border-radius: 10;\n    background-color: #CFC493;\n    width: 250;\n    height: 75;\n}", ""]);
+exports.push([module.i, "/*\nIn NativeScript, the app.css file is where you place CSS rules that\nyou would like to apply to your entire application. Check out\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\nselectors and properties you can use to style UI components.\n\n/*\nIn many cases you may want to use the NativeScript core theme instead\nof writing your own CSS rules. For a full list of class names in the theme\nrefer to http://docs.nativescript.org/ui/theme.\n*/\n/*\n usf green: #006747\n usf gold: #CFC493\n*/\n/*\nFor example, the following CSS rule changes the font size of all UI\ncomponents that have the btn class name.\n*/\n.btn {\n    font-size: 18;\n}\n\nStackLayout TextField {\n    margin: 2;\n    border-radius: 10;\n    background-color: #CFC493;\n    width: 250;\n    height: 75;\n}\n\nActionBar {\n  background-color: red;\n}\n\n.page {\n    align-items: center;\n    flex-direction: column;\n  }\n  .form {\n    margin-left: 30;\n    margin-right: 30;\n    flex-grow: 2;\n    vertical-align: middle;\n  }", ""]);
 
 ;
     if (true) {
@@ -397,13 +397,6 @@ module.exports = require("tns-core-modules/http/http");
 
 /***/ }),
 
-/***/ "tns-core-modules/ui/image":
-/***/ (function(module, exports) {
-
-module.exports = require("tns-core-modules/ui/image");
-
-/***/ }),
-
 /***/ "tns-core-modules/ui/styling/style-scope":
 /***/ (function(module, exports) {
 
@@ -411,4 +404,4 @@ module.exports = require("tns-core-modules/ui/styling/style-scope");
 
 /***/ })
 
-},[["./main.ts","runtime",4]]]);
+},[["./main.ts","runtime","vendor"]]]);
