@@ -1,1 +1,22 @@
-<Button text="register works!" class="btn btn-primary"></Button>
+<ActionBar backgroundcolor="{{this.greenColor}}" class="action-bar">
+    <Label class="action-bar-title" text="Register"></Label>
+    <ActionItem text="Done" ios.position="right" android.position="actionBar" (tap)="onDone()"></ActionItem>
+</ActionBar>
+<ScrollView>
+    <StackLayout class="form">
+        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" id="username" hint="username" autocorrect="false" text="{{this.username}}"></TextField>
+    
+        <TextField (textChange)="onTextChange($event)" autocapitalizationType="none" secure=true (textChange)="onTextChange($event)" hint="password" autocorrect="false" id="password" text="{{this.password}}"></TextField>
+
+        <TextField (textChange)="onTextChange($event)" autocapitalizationType="none" secure=true (textChange)="onTextChange($event)" hint="Confirm Password" autocorrect="false" id="confirmPassword" text="{{this.confirmPassword}}"></TextField>
+
+        <TextField (textChange)="onTextChange($event)" text="{{this.unumber}}" hint="UNumber" id="unumber"></TextField>
+
+        <TextField (textChange)="onTextChange($event)" autocorrect="false" text="{{this.firstName}}" hint="first name" id="firstName"></TextField>
+
+        <TextField (textChange)="onTextChange($event)" autocorrect="false" text="{{this.lastName}}" hint="last name" id="lastName"></TextField>
+
+        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" text="{{this.email}}" hint="email" id="email" keyboardType="email"></TextField>
+    
+    </StackLayout>
+</ScrollView>

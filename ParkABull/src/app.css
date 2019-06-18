@@ -10,7 +10,10 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import '~nativescript-theme-core/css/forest.css';
-
+/*
+ usf green: #006747
+ usf gold: #CFC493
+*/
 /*
 For example, the following CSS rule changes the font size of all UI
 components that have the btn class name.
@@ -18,3 +21,26 @@ components that have the btn class name.
 .btn {
     font-size: 18;
 }
+
+StackLayout TextField {
+    margin: 2;
+    border-radius: 10;
+    background-color: #CFC493;
+    width: 250;
+    height: 75;
+}
+
+ActionBar {
+  background-color: red;
+}
+
+.page {
+    align-items: center;
+    flex-direction: column;
+  }
+  .form {
+    margin-left: 30;
+    margin-right: 30;
+    flex-grow: 2;
+    vertical-align: middle;
+  }

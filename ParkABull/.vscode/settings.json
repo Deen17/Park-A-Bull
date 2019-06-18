@@ -1,3 +1,14 @@
 {
-    "debug.node.autoAttach": "on"
+    "debug.node.autoAttach": "on",
+    "xml.fileAssociations": [
+        {
+            "systemId": "c:\\Users\\adilr\\Documents\\SoftEng\\ParkABull\\schema\\tns.xsd",
+            "pattern": "**/**/*.xml"
+        }
+    ],
+    "files.exclude": {
+        "schema": true
+    },
+    "editor.snippetSuggestions": "top",
+    "NE.enable.snippets": true
 }

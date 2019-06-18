@@ -85,7 +85,9 @@ app.post('/login', function(req, res){
     }
     else if(rows.length==1)
     {
-      res.send({login: true})
+      res.send({
+        login: true,
+        userType: rows[0].userType})
     }
     else{
       res.send({login: false})

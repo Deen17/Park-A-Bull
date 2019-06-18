@@ -5,13 +5,26 @@ module.exports =
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"~/app/admin/admin.module": [
+		"./app/admin/admin.module.ts",
+		0
+	],
 	"~/app/home/home.module": [
 		"./app/home/home.module.ts",
-		"vendor",
-		0
+		4
 	],
 	"~/app/login/login.module": [
 		"./app/login/login.module.ts",
+		"vendor",
+		2
+	],
+	"~/app/register/register.module": [
+		"./app/register/register.module.ts",
+		"vendor",
+		3
+	],
+	"~/app/user/user.module": [
+		"./app/user/user.module.ts",
 		1
 	]
 };
@@ -45,7 +58,7 @@ module.exports = webpackAsyncContext;
 exports.i(__webpack_require__("../node_modules/css-loader/dist/cjs.js?!../node_modules/nativescript-theme-core/css/forest.css"), "");
 
 // Module
-exports.push([module.i, "/*\nIn NativeScript, the app.css file is where you place CSS rules that\nyou would like to apply to your entire application. Check out\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\nselectors and properties you can use to style UI components.\n\n/*\nIn many cases you may want to use the NativeScript core theme instead\nof writing your own CSS rules. For a full list of class names in the theme\nrefer to http://docs.nativescript.org/ui/theme.\n*/\n\n/*\nFor example, the following CSS rule changes the font size of all UI\ncomponents that have the btn class name.\n*/\n.btn {\n    font-size: 18;\n}\n", ""]);
+exports.push([module.i, "/*\nIn NativeScript, the app.css file is where you place CSS rules that\nyou would like to apply to your entire application. Check out\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\nselectors and properties you can use to style UI components.\n\n/*\nIn many cases you may want to use the NativeScript core theme instead\nof writing your own CSS rules. For a full list of class names in the theme\nrefer to http://docs.nativescript.org/ui/theme.\n*/\n/*\n usf green: #006747\n usf gold: #CFC493\n*/\n/*\nFor example, the following CSS rule changes the font size of all UI\ncomponents that have the btn class name.\n*/\n.btn {\n    font-size: 18;\n}\n\nStackLayout TextField {\n    margin: 2;\n    border-radius: 10;\n    background-color: #CFC493;\n    width: 250;\n    height: 75;\n}\n\nActionBar {\n  background-color: red;\n}\n\n.page {\n    align-items: center;\n    flex-direction: column;\n  }\n  .form {\n    margin-left: 30;\n    margin-right: 30;\n    flex-grow: 2;\n    vertical-align: middle;\n  }", ""]);
 
 ;
     if (true) {
@@ -75,6 +88,9 @@ var routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "home", loadChildren: "~/app/home/home.module#HomeModule" },
     { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
+    { path: "user", loadChildren: "~/app/user/user.module#UserModule" },
+    { path: "admin", loadChildren: "~/app/admin/admin.module#AdminModule" },
+    { path: "register", loadChildren: "~/app/register/register.module#RegisterModule" }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -107,9 +123,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(routerExtensions) {
+        this.routerExtensions = routerExtensions;
         console.log("app component initiated");
     }
     AppComponent = __decorate([
@@ -117,7 +137,7 @@ var AppComponent = /** @class */ (function () {
             selector: "ns-app",
             template: __webpack_require__("./app/app.component.html")
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -367,6 +387,13 @@ module.exports = require("tns-core-modules/file-system");
 /***/ (function(module, exports) {
 
 module.exports = require("tns-core-modules/http");
+
+/***/ }),
+
+/***/ "tns-core-modules/http/http":
+/***/ (function(module, exports) {
+
+module.exports = require("tns-core-modules/http/http");
 
 /***/ }),
 

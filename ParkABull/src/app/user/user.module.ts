@@ -7,13 +7,28 @@ import { BuildingDetailsComponent } from './building-details/building-details.co
 import { ReserveComponent } from './reserve/reserve.component';
 import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './profile/profile.component';
+
 import { UserComponent } from './user.component';
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
-  declarations: [VehicleListComponent, VehicleDetailsComponent, BuildingListComponent, BuildingDetailsComponent, ReserveComponent, ReportComponent, ProfileComponent, UserComponent],
+  declarations: [
+    VehicleListComponent, 
+    VehicleDetailsComponent, 
+    BuildingListComponent, 
+    BuildingDetailsComponent, 
+    ReserveComponent, 
+    ReportComponent, 
+    ProfileComponent, 
+    UserComponent],
   imports: [
-    NativeScriptCommonModule
+    NativeScriptCommonModule,
+    UserRoutingModule
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
-export class UserModule { }
+export class UserModule {
+  constructor(){
+    console.log("User Module")
+  }
+ }
