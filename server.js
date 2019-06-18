@@ -9,13 +9,13 @@ const localtunnel = require('localtunnel')
 const fs = require('fs')
 
 let tunnel;
-setTimeout(function() {
-  tunnel = localtunnel(config.appServer.port, { subdomain: 'parkabull'} ,(err, tunnel) => {
-    if(err){
+setTimeout(function () {
+  tunnel = localtunnel(config.appServer.port, { subdomain: 'parkabull' }, (err, tunnel) => {
+    if (err) {
       throw err;
     }
-    else if(tunnel.url != 'https://parkabull.localtunnel.me') throw new Error('Failed');
-    else{
+    else if (tunnel.url != 'https://parkabull.localtunnel.me') throw new Error('Failed');
+    else {
       console.log(`tunnel is open on ${tunnel.url}`)
     }
   })
@@ -33,19 +33,14 @@ process.on("beforeExit", (code) => {
 
 //MYSQL connection. must run the powershell first
 //connection details
-const connection = mysql.createConnection({
-  host: config.mysql.host,
-  user: config.mysql.user,
-  password: config.mysql.password,
-  database: config.mysql.database
-}); 
+const connection = mysql.createConnection(config.mysql);
 
 connection.connect((err) => {
-  if(err){
+  if (err) {
     console.log('error connecting to db')
     throw err;
   }
-  else{
+  else {
     console.log('connected to db')
   }
 })
@@ -55,17 +50,17 @@ var app = express()
 app.use(function (req, res, next) {
   let today = new Date();
   console.log(today.getMonth() + '/' +
-  today.getDay() + '/' + today.getFullYear() + ' ' + today.getHours() + ':' +  today.getMinutes() + ':' + today.getSeconds()
-  + ': user\'s ip is ' + req.ip)
+    today.getDay() + '/' + today.getFullYear() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
+    + ': user\'s ip is ' + req.ip)
   next()
 })
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 //Routes
 //gets
-app.get('/', function (req, res){
+app.get('/', function (req, res) {
   res.send('hey there')
-}) 
+})
 app.get('/users/:username', function (req, res) {
   console.log(res)
   res.end('hey ' + req.params.username)
@@ -73,31 +68,31 @@ app.get('/users/:username', function (req, res) {
 
 
 //posts
-app.post('/login', function(req, res){
+app.post('/login', function (req, res) {
   console.log('POST /login')
   console.log(req.body)
   let query = 'SELECT * FROM db.users WHERE (username=\'' + req.body.username + '\' AND password=\'' + req.body.password + '\')'; //more elegant way to do this, look at mysql npm page
   console.log(query)
-  connection.query(query, (err, rows)=> {
-    if(err){
-      res.send({login: false})
+  connection.query(query, (err, rows) => {
+    if (err) {
+      res.send({ login: false })
       throw err;
     }
-    else if(rows.length==1)
-    {
+    else if (rows.length == 1) {
       res.send({
         login: true,
-        userType: rows[0].userType})
+        userType: rows[0].userType
+      })
     }
-    else{
-      res.send({login: false})
+    else {
+      res.send({ login: false })
     }
   })
 })
 
-app.post('/register', function(req, res){
+app.post('/register', function (req, res) {
   console.log('POST /register')
-  connection.query(config.queries.addStudent, 
+  connection.query(config.queries.addStudent,
     [
       req.body.unumber,
       req.body.firstName,
@@ -110,9 +105,9 @@ app.post('/register', function(req, res){
         res.send({response: false})
         throw err;
       }
-      else{
+      else {
         console.log(rows)
-        res.send({response: true});
+        res.send({ response: true });
       }
     })
 })
