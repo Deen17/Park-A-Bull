@@ -1,1 +1,17 @@
-<Button text="user works!" class="btn btn-primary"></Button>
+<!-- <ActionBar backgroundcolor="{{this.greenColor}}" class="action-bar">
+    <NavigationButton visiblity="collapse" text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
+    <Label class="action-bar-title" text="Home"></Label>
+    <ActionItem text="Done" ios.position="left" android.position="actionBarIfRoom" (tap)="onDrawerButtonTap($event)"></ActionItem>
+</ActionBar> -->
+
+<ActionBar title="Home" class="action-bar">
+        <ActionItem>
+            <StackLayout>
+                <Button class="fa menu-icon" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+            </StackLayout>
+        </ActionItem>
+</ActionBar>
+
+<StackLayout>
+    <Label text="User Home"></Label>
+</StackLayout>

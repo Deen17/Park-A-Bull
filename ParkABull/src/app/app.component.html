@@ -1,1 +1,75 @@
 <page-router-outlet ></page-router-outlet>
+
+<RadSideDrawer drawerTransition="PushTransition">
+
+        <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
+            <StackLayout class="sidedrawer-header">
+                <Label class="sidedrawer-header-text var" text="User Name"></Label>
+                <Label class="sidedrawer-header-footnote var" text="username@mail.com"></Label>
+            </StackLayout>
+    
+            <ScrollView row="1">
+                <StackLayout class="sidedrawer-content">
+                    <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                        title="Home" (tap)="HomeTap($event)">
+                        <Label row="0" col="0" text="Home" class="var m-l-10 sidedrawer-item"></Label>
+                    </GridLayout>
+    
+                    <StackLayout class="hr-light"></StackLayout>
+    
+                    <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                        title="Building Details" (tap)="BuildingDetailTap($event)">
+                        <Label row="0" col="0" text="Building Details" class="var m-l-10 sidedrawer-item"></Label>
+                    </GridLayout>
+    
+                    <StackLayout class="hr-light"></StackLayout>
+    
+                    <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                        title="Building List" (tap)="BuildingListTap($event)">
+                        <Label row="0" col="0" text="Building List" class="var m-l-10 sidedrawer-item"></Label>
+                    </GridLayout>
+    
+                    <StackLayout class="hr-light"></StackLayout>
+    
+                    <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                        title="Report" (tap)="ReportTap($event)">
+                        <Label row="0" col="0" text="Report" class="var m-l-10 sidedrawer-item"></Label>
+                    </GridLayout>
+    
+                    <StackLayout class="hr-light"></StackLayout>
+    
+                    <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                        title="Reserve" (tap)="ReserveTap($event)">
+                        <Label row="0" col="0" text="Reserve" class="var m-l-10 sidedrawer-item"></Label>
+                    </GridLayout>
+    
+                    <StackLayout class="hr-light"></StackLayout>
+    
+                    <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                        title="Vehicle Details" (tap)="VehicleDetailTap($event)">
+                        <Label row="0" col="0" text="Vehicle Details" class="var m-l-10 sidedrawer-item"></Label>
+                    </GridLayout>
+    
+                    <StackLayout class="hr-light"></StackLayout>
+    
+                    <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                        title="Vehicle List" (tap)="VehicleListTap($event)">
+                        <Label row="0" col="0" text="Vehicle List" class="var m-l-10 sidedrawer-item"></Label>
+                    </GridLayout>
+    
+                    <StackLayout class="hr-light"></StackLayout>
+    
+                    <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                        title="Profile" (tap)="ProfileTap($event)">
+                        <Label row="0" col="0" text="Profile" class="var m-l-10 sidedrawer-item"></Label>
+                    </GridLayout>
+    
+                    <StackLayout class="hr-light"></StackLayout>
+    
+                </StackLayout>
+            </ScrollView>
+        </GridLayout>
+    
+        <page-router-outlet tkMainContent class="page page-content"></page-router-outlet>
+    
+    </RadSideDrawer>

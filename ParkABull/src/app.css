@@ -29,3 +29,68 @@ StackLayout TextField {
     width: 250;
     height: 75;
 }
+
+.menu-icon {
+    font-size: 26; 
+    color: white;
+    padding-left: 13;
+    vertical-align: center;
+}
+
+.fa {
+    font-family: "FontAwesome";
+}
+
+.var {
+    font-family: "Varela", "varela-regular";
+}
+
+.action-bar {
+    background-color: #006747;
+}
+
+/* .page-content {
+    background-color: #ffffff;
+    background-size: cover;
+} */
+
+.hr-light {
+    background-color: #444444;
+}
+
+.sidedrawer {
+    background-color: #ffffff;
+}
+
+.sidedrawer-header {
+    background-color: #006747;
+    background-size: cover;
+}
+
+.sidedrawer-header-text {
+    color: white;
+    font-size: 22;
+    font-weight: 800;
+    margin-top: 60;
+}
+
+.sidedrawer-header-footnote {
+    color: white;
+}
+
+.sidedrawer-list-item {
+    color: rgb(0, 0, 0);
+    padding-left: 30;
+    font-size: 18;
+    height: 80;
+}
+
+.sidedrawer-item {
+    vertical-align:center;
+}
+
+.sidedrawer-list-item-active {
+    background-color: #CFC493;
+}
+ 
+ 

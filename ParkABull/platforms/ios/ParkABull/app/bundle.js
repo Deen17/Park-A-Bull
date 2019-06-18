@@ -11,21 +11,49 @@ var map = {
 	],
 	"~/app/home/home.module": [
 		"./app/home/home.module.ts",
-		3
+		4
 	],
 	"~/app/login/login.module": [
 		"./app/login/login.module.ts",
-		4,
+		"vendor",
 		2
 	],
 	"~/app/register/register.module": [
 		"./app/register/register.module.ts",
-		4,
+		"vendor",
+		3
+	],
+	"~/app/user/building-details/building-details.component": [
+		"./app/user/building-details/building-details.component.ts",
 		5
+	],
+	"~/app/user/building-list/building-list.component": [
+		"./app/user/building-list/building-list.component.ts",
+		6
+	],
+	"~/app/user/profile/profile.component": [
+		"./app/user/profile/profile.component.ts",
+		7
+	],
+	"~/app/user/report/report.component": [
+		"./app/user/report/report.component.ts",
+		8
+	],
+	"~/app/user/reserve/reserve.component": [
+		"./app/user/reserve/reserve.component.ts",
+		9
 	],
 	"~/app/user/user.module": [
 		"./app/user/user.module.ts",
 		1
+	],
+	"~/app/user/vehicle-details/vehicle-details.component": [
+		"./app/user/vehicle-details/vehicle-details.component.ts",
+		10
+	],
+	"~/app/user/vehicle-list/vehicle-list.component": [
+		"./app/user/vehicle-list/vehicle-list.component.ts",
+		11
 	]
 };
 function webpackAsyncContext(req) {
@@ -58,7 +86,7 @@ module.exports = webpackAsyncContext;
 exports.i(__webpack_require__("../node_modules/css-loader/dist/cjs.js?!../node_modules/nativescript-theme-core/css/forest.css"), "");
 
 // Module
-exports.push([module.i, "/*\nIn NativeScript, the app.css file is where you place CSS rules that\nyou would like to apply to your entire application. Check out\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\nselectors and properties you can use to style UI components.\n\n/*\nIn many cases you may want to use the NativeScript core theme instead\nof writing your own CSS rules. For a full list of class names in the theme\nrefer to http://docs.nativescript.org/ui/theme.\n*/\n/*\n usf green: #006747\n usf gold: #CFC493\n*/\n/*\nFor example, the following CSS rule changes the font size of all UI\ncomponents that have the btn class name.\n*/\n.btn {\n    font-size: 18;\n}\n\nStackLayout TextField {\n    margin: 2;\n    border-radius: 10;\n    background-color: #CFC493;\n    width: 250;\n    height: 75;\n}", ""]);
+exports.push([module.i, "/*\r\nIn NativeScript, the app.css file is where you place CSS rules that\r\nyou would like to apply to your entire application. Check out\r\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\r\nselectors and properties you can use to style UI components.\r\n\r\n/*\r\nIn many cases you may want to use the NativeScript core theme instead\r\nof writing your own CSS rules. For a full list of class names in the theme\r\nrefer to http://docs.nativescript.org/ui/theme.\r\n*/\r\n/*\r\n usf green: #006747\r\n usf gold: #CFC493\r\n*/\r\n/*\r\nFor example, the following CSS rule changes the font size of all UI\r\ncomponents that have the btn class name.\r\n*/\r\n.btn {\r\n    font-size: 18;\r\n}\r\n\r\nStackLayout TextField {\r\n    margin: 2;\r\n    border-radius: 10;\r\n    background-color: #CFC493;\r\n    width: 250;\r\n    height: 75;\r\n}\r\n\r\n.menu-icon {\r\n    font-size: 26; \r\n    color: white;\r\n    padding-left: 13;\r\n    vertical-align: center;\r\n}\r\n\r\n.fa {\r\n    font-family: \"FontAwesome\";\r\n}\r\n\r\n.var {\r\n    font-family: \"Varela\", \"varela-regular\";\r\n}\r\n\r\n.action-bar {\r\n    background-color: #006747;\r\n}\r\n\r\n/* .page-content {\r\n    background-color: #ffffff;\r\n    background-size: cover;\r\n} */\r\n\r\n.hr-light {\r\n    background-color: #444444;\r\n}\r\n\r\n.sidedrawer {\r\n    background-color: #ffffff;\r\n}\r\n\r\n.sidedrawer-header {\r\n    background-color: #006747;\r\n    background-size: cover;\r\n}\r\n\r\n.sidedrawer-header-text {\r\n    color: white;\r\n    font-size: 22;\r\n    font-weight: 800;\r\n    margin-top: 60;\r\n}\r\n\r\n.sidedrawer-header-footnote {\r\n    color: white;\r\n}\r\n\r\n.sidedrawer-list-item {\r\n    color: rgb(0, 0, 0);\r\n    padding-left: 30;\r\n    font-size: 18;\r\n    height: 80;\r\n}\r\n\r\n.sidedrawer-item {\r\n    vertical-align:center;\r\n}\r\n\r\n.sidedrawer-list-item-active {\r\n    background-color: #CFC493;\r\n}\r\n \r\n ", ""]);
 
 ;
     if (true) {
@@ -90,7 +118,14 @@ var routes = [
     { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
     { path: "user", loadChildren: "~/app/user/user.module#UserModule" },
     { path: "admin", loadChildren: "~/app/admin/admin.module#AdminModule" },
-    { path: "register", loadChildren: "~/app/register/register.module#RegisterModule" }
+    { path: "register", loadChildren: "~/app/register/register.module#RegisterModule" },
+    { path: "building-details", loadChildren: "~/app/user/building-details/building-details.component" },
+    { path: "building-list", loadChildren: "~/app/user/building-list/building-list.component" },
+    { path: "profile", loadChildren: "~/app/user/profile/profile.component" },
+    { path: "report", loadChildren: "~/app/user/report/report.component" },
+    { path: "reserve", loadChildren: "~/app/user/reserve/reserve.component" },
+    { path: "vehicle-details", loadChildren: "~/app/user/vehicle-details/vehicle-details.component" },
+    { path: "vehicle-list", loadChildren: "~/app/user/vehicle-list/vehicle-list.component" }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -111,7 +146,7 @@ var AppRoutingModule = /** @class */ (function () {
 /***/ "./app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<page-router-outlet ></page-router-outlet>\r\n"
+module.exports = "<page-router-outlet ></page-router-outlet>\r\n\r\n<RadSideDrawer drawerTransition=\"PushTransition\">\r\n\r\n        <GridLayout tkDrawerContent rows=\"auto, *\" class=\"sidedrawer sidedrawer-left\">\r\n            <StackLayout class=\"sidedrawer-header\">\r\n                <Label class=\"sidedrawer-header-text var\" text=\"User Name\"></Label>\r\n                <Label class=\"sidedrawer-header-footnote var\" text=\"username@mail.com\"></Label>\r\n            </StackLayout>\r\n    \r\n            <ScrollView row=\"1\">\r\n                <StackLayout class=\"sidedrawer-content\">\r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Home\" (tap)=\"HomeTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Home\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Building Details\" (tap)=\"BuildingDetailTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Building Details\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Building List\" (tap)=\"BuildingListTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Building List\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Report\" (tap)=\"ReportTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Report\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Reserve\" (tap)=\"ReserveTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Reserve\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Vehicle Details\" (tap)=\"VehicleDetailTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Vehicle Details\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Vehicle List\" (tap)=\"VehicleListTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Vehicle List\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Profile\" (tap)=\"ProfileTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Profile\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                </StackLayout>\r\n            </ScrollView>\r\n        </GridLayout>\r\n    \r\n        <page-router-outlet tkMainContent class=\"page page-content\"></page-router-outlet>\r\n    \r\n    </RadSideDrawer>\r\n"
 
 /***/ }),
 
@@ -132,6 +167,30 @@ var AppComponent = /** @class */ (function () {
         this.routerExtensions = routerExtensions;
         console.log("app component initiated");
     }
+    AppComponent.prototype.HomeTap = function (args) {
+        this.routerExtensions.navigateByUrl("user");
+    };
+    AppComponent.prototype.BuildingDetailTap = function (args) {
+        this.routerExtensions.navigateByUrl("register");
+    };
+    AppComponent.prototype.BuildingListTap = function (args) {
+        this.routerExtensions.navigateByUrl("building-list");
+    };
+    AppComponent.prototype.ReportTap = function (args) {
+        this.routerExtensions.navigateByUrl("report");
+    };
+    AppComponent.prototype.ReserveTap = function (args) {
+        this.routerExtensions.navigateByUrl("reserve");
+    };
+    AppComponent.prototype.VehicleDetailTap = function (args) {
+        this.routerExtensions.navigateByUrl("vehicle-details");
+    };
+    AppComponent.prototype.VehicleListTap = function (args) {
+        this.routerExtensions.navigateByUrl("vehicle-list");
+    };
+    AppComponent.prototype.ProfileTap = function (args) {
+        this.routerExtensions.navigateByUrl("profile");
+    };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "ns-app",
@@ -156,8 +215,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/nativescript.module");
 /* harmony import */ var nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./app/app.component.ts");
+/* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("nativescript-ui-sidedrawer/angular");
+/* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./app/app.component.ts");
+
 
 
 
@@ -218,14 +280,15 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             bootstrap: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
             ],
             imports: [
                 nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1__["NativeScriptModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
+                nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__["NativeScriptUISideDrawerModule"]
             ],
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
             ],
             schemas: [
                 _angular_core__WEBPACK_IMPORTED_MODULE_0__["NO_ERRORS_SCHEMA"]
@@ -320,6 +383,13 @@ module.exports = require("nativescript-angular/common");
 
 /***/ }),
 
+/***/ "nativescript-angular/forms":
+/***/ (function(module, exports) {
+
+module.exports = require("nativescript-angular/forms");
+
+/***/ }),
+
 /***/ "nativescript-angular/http-client":
 /***/ (function(module, exports) {
 
@@ -345,6 +415,13 @@ module.exports = require("nativescript-angular/platform");
 /***/ (function(module, exports) {
 
 module.exports = require("nativescript-angular/router");
+
+/***/ }),
+
+/***/ "nativescript-ui-sidedrawer/angular":
+/***/ (function(module, exports) {
+
+module.exports = require("nativescript-ui-sidedrawer/angular");
 
 /***/ }),
 
@@ -404,6 +481,13 @@ module.exports = require("tns-core-modules/ui/image");
 
 /***/ }),
 
+/***/ "tns-core-modules/ui/page":
+/***/ (function(module, exports) {
+
+module.exports = require("tns-core-modules/ui/page");
+
+/***/ }),
+
 /***/ "tns-core-modules/ui/styling/style-scope":
 /***/ (function(module, exports) {
 
@@ -411,4 +495,4 @@ module.exports = require("tns-core-modules/ui/styling/style-scope");
 
 /***/ })
 
-},[["./main.ts","runtime",4]]]);
+},[["./main.ts","runtime","vendor"]]]);

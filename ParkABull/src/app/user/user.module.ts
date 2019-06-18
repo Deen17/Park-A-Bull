@@ -1,5 +1,8 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
+
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 import { BuildingListComponent } from './building-list/building-list.component';
@@ -23,7 +26,9 @@ import { UserRoutingModule } from './user-routing.module';
     UserComponent],
   imports: [
     NativeScriptCommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    NativeScriptUISideDrawerModule,
+    NativeScriptFormsModule
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
