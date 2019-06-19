@@ -36,3 +36,5 @@ old/
 reflections/
 connect.ps1
 ParkABull/platforms/ios/ParkABull/app/
+/config.js
+/ParkABull/db/config.js
