@@ -66,15 +66,17 @@ export class RegisterComponent implements OnInit {
         message: "Please make sure that your entries for username and password match",
         okButtonText:"Try Again"
       })
+      return false;
     }
     
-    return false;
+    return true;
   }
   onDone(args: EventData){
     console.log('before validate')
     if(!this.validate()){
       return;
     }
+    console.log('after validate')
     let newpass: string = md5(this.password);
     request({
       url: url + "register", //http://10.100.0.232:8000/login
@@ -90,11 +92,16 @@ export class RegisterComponent implements OnInit {
       })
     }).then((response) => {
       const result = response.content.toJSON();
+      console.log('result:', result)
       if (result.response){
         this.goToLogin();
       } 
       else {
-        (alert("Register failed!"))
+        (alert({
+          title: "Register failed!",
+          message: result.duplicate_entry,
+          okButtonText:"Try Again"
+        }))
       }
     }, (e) => {
       console.log(e)
