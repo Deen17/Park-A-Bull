@@ -146,7 +146,7 @@ var AppRoutingModule = /** @class */ (function () {
 /***/ "./app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<page-router-outlet ></page-router-outlet>\r\n\r\n<RadSideDrawer drawerTransition=\"PushTransition\">\r\n\r\n        <GridLayout tkDrawerContent rows=\"auto, *\" class=\"sidedrawer sidedrawer-left\">\r\n            <StackLayout class=\"sidedrawer-header\">\r\n                <Label class=\"sidedrawer-header-text var\" text=\"User Name\"></Label>\r\n                <Label class=\"sidedrawer-header-footnote var\" text=\"username@mail.com\"></Label>\r\n            </StackLayout>\r\n    \r\n            <ScrollView row=\"1\">\r\n                <StackLayout class=\"sidedrawer-content\">\r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Home\" (tap)=\"HomeTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Home\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Building Details\" (tap)=\"BuildingDetailTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Building Details\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Building List\" (tap)=\"BuildingListTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Building List\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Report\" (tap)=\"ReportTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Report\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Reserve\" (tap)=\"ReserveTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Reserve\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Vehicle Details\" (tap)=\"VehicleDetailTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Vehicle Details\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Vehicle List\" (tap)=\"VehicleListTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Vehicle List\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Profile\" (tap)=\"ProfileTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Profile\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                </StackLayout>\r\n            </ScrollView>\r\n        </GridLayout>\r\n    \r\n        <page-router-outlet tkMainContent class=\"page page-content\"></page-router-outlet>\r\n    \r\n    </RadSideDrawer>\r\n"
+module.exports = "<page-router-outlet></page-router-outlet>\r\n\r\n<RadSideDrawer #rsd drawerTransition=\"PushTransition\">\r\n\r\n        <GridLayout tkDrawerContent rows=\"auto, *\" class=\"sidedrawer sidedrawer-left\">\r\n            <StackLayout class=\"sidedrawer-header\">\r\n                <Label class=\"sidedrawer-header-text var\" text=\"User Name\"></Label>\r\n                <Label class=\"sidedrawer-header-footnote var\" text=\"username@mail.com\"></Label>\r\n            </StackLayout>\r\n    \r\n            <ScrollView row=\"1\">\r\n                <StackLayout class=\"sidedrawer-content\">\r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Home\" (tap)=\"HomeTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Home\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Building Details\" (tap)=\"BuildingDetailTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Building Details\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Building List\" (tap)=\"BuildingListTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Building List\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Report\" (tap)=\"ReportTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Report\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Reserve\" (tap)=\"ReserveTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Reserve\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Vehicle Details\" (tap)=\"VehicleDetailTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Vehicle Details\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Vehicle List\" (tap)=\"VehicleListTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Vehicle List\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                    <GridLayout columns=\"auto, *\" class=\"sidedrawer-list-item\"\r\n                        title=\"Profile\" (tap)=\"ProfileTap($event)\">\r\n                        <Label row=\"0\" col=\"0\" text=\"Profile\" class=\"var m-l-10 sidedrawer-item\"></Label>\r\n                    </GridLayout>\r\n    \r\n                    <StackLayout class=\"hr-light\"></StackLayout>\r\n    \r\n                </StackLayout>\r\n            </ScrollView>\r\n        </GridLayout>\r\n    \r\n        <page-router-outlet tkMainContent class=\"page page-content\"></page-router-outlet>\r\n    \r\n    </RadSideDrawer>\r\n"
 
 /***/ }),
 
@@ -160,43 +160,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
 /* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tns_core_modules_ui_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("tns-core-modules/ui/page");
+/* harmony import */ var tns_core_modules_ui_page__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_ui_page__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(routerExtensions) {
+    function AppComponent(routerExtensions, page) {
         this.routerExtensions = routerExtensions;
+        this.page = page;
         console.log("app component initiated");
     }
     AppComponent.prototype.HomeTap = function (args) {
         this.routerExtensions.navigateByUrl("user");
     };
     AppComponent.prototype.BuildingDetailTap = function (args) {
-        this.routerExtensions.navigateByUrl("register");
+        this.routerExtensions.navigateByUrl("user/buildingdetails");
     };
     AppComponent.prototype.BuildingListTap = function (args) {
-        this.routerExtensions.navigateByUrl("building-list");
+        this.routerExtensions.navigateByUrl("user/buildinglist");
     };
     AppComponent.prototype.ReportTap = function (args) {
-        this.routerExtensions.navigateByUrl("report");
+        this.routerExtensions.navigateByUrl("user/report");
     };
     AppComponent.prototype.ReserveTap = function (args) {
-        this.routerExtensions.navigateByUrl("reserve");
+        this.routerExtensions.navigateByUrl("user/reserve");
     };
     AppComponent.prototype.VehicleDetailTap = function (args) {
-        this.routerExtensions.navigateByUrl("vehicle-details");
+        this.routerExtensions.navigateByUrl("user/vehicledetails");
     };
     AppComponent.prototype.VehicleListTap = function (args) {
-        this.routerExtensions.navigateByUrl("vehicle-list");
+        this.routerExtensions.navigateByUrl("user/vehiclelist");
     };
     AppComponent.prototype.ProfileTap = function (args) {
-        this.routerExtensions.navigateByUrl("profile");
+        this.routerExtensions.navigateByUrl("user/profile");
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "ns-app",
             template: __webpack_require__("./app/app.component.html")
         }),
-        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"], tns_core_modules_ui_page__WEBPACK_IMPORTED_MODULE_2__["Page"]])
     ], AppComponent);
     return AppComponent;
 }());

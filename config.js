@@ -12,7 +12,7 @@ module.exports = {
         
     },
     queries: {
-        addStudent: `CALL db.addStudent(?,?,?,?,?,?)`,
+        addStudent: `CALL db.addStudent(?,?,?,?,?,?, @return_code), select @return_code return_code`,
 
     }
 }

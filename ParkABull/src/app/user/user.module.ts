@@ -1,4 +1,4 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NgModuleFactoryLoader, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
@@ -28,7 +28,7 @@ import { UserRoutingModule } from './user-routing.module';
     NativeScriptCommonModule,
     UserRoutingModule,
     NativeScriptUISideDrawerModule,
-    NativeScriptFormsModule
+    NativeScriptFormsModule,
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
