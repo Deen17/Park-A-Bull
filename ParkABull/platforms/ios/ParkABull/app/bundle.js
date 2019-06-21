@@ -58,7 +58,7 @@ module.exports = webpackAsyncContext;
 exports.i(__webpack_require__("../node_modules/css-loader/dist/cjs.js?!../node_modules/nativescript-theme-core/css/forest.css"), "");
 
 // Module
-exports.push([module.i, "/*\r\nIn NativeScript, the app.css file is where you place CSS rules that\r\nyou would like to apply to your entire application. Check out\r\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\r\nselectors and properties you can use to style UI components.\r\n\r\n/*\r\nIn many cases you may want to use the NativeScript core theme instead\r\nof writing your own CSS rules. For a full list of class names in the theme\r\nrefer to http://docs.nativescript.org/ui/theme.\r\n*/\r\n/*\r\n usf green: #006747\r\n usf gold: #CFC493\r\n*/\r\n/*\r\nFor example, the following CSS rule changes the font size of all UI\r\ncomponents that have the btn class name.\r\n*/\r\n.btn {\r\n    font-size: 18;\r\n}\r\n\r\nStackLayout TextField {\r\n    margin: 2;\r\n    border-radius: 10;\r\n    background-color: #CFC493;\r\n    width: 250;\r\n    height: 75;\r\n}\r\n\r\nActionBar {\r\n  background-color: red;\r\n}\r\n\r\n.page {\r\n    align-items: center;\r\n    flex-direction: column;\r\n  }\r\n  .form {\r\n    margin-left: 30;\r\n    margin-right: 30;\r\n    flex-grow: 2;\r\n    vertical-align: middle;\r\n  }", ""]);
+exports.push([module.i, "/*\r\nIn NativeScript, the app.css file is where you place CSS rules that\r\nyou would like to apply to your entire application. Check out\r\nhttp://docs.nativescript.org/ui/styling for a full list of the CSS\r\nselectors and properties you can use to style UI components.\r\n\r\n/*\r\nIn many cases you may want to use the NativeScript core theme instead\r\nof writing your own CSS rules. For a full list of class names in the theme\r\nrefer to http://docs.nativescript.org/ui/theme.\r\n*/\r\n\r\n/*\r\n usf green: #006747\r\n usf gold: #CFC493\r\n*/\r\n\r\n\r\n/*\r\nFor example, the following CSS rule changes the font size of all UI\r\ncomponents that have the btn class name.\r\n*/\r\n\r\n.btn {\r\n    font-size: 18;\r\n}\r\n\r\nStackLayout TextField {\r\n    margin: 2;\r\n    border-radius: 10;\r\n    background-color: #CFC493;\r\n    width: 250;\r\n    height: 75;\r\n}\r\n\r\nActionBar {\r\n    background-color: #006747;\r\n}\r\n\r\n.page {\r\n    align-items: center;\r\n    flex-direction: column;\r\n}\r\n\r\n.form {\r\n    margin-left: 30;\r\n    margin-right: 30;\r\n    flex-grow: 2;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n/*        Sidedrawer        */\r\n\r\n.sidedrawer-list-item {\r\n    background-color: #006747;\r\n    border-top-color: #CFC493;\r\n    border-bottom-color: #CFC493;\r\n    border-top-width: 1;\r\n}\r\n\r\n.hr-light {\r\n    background-color: #444444;\r\n}\r\n\r\n.sidedrawer {\r\n    background-color: #ffffff;\r\n}\r\n\r\n.sidedrawer-header {\r\n    background-color: #006747;\r\n    background-size: cover;\r\n}\r\n\r\n.sidedrawer-header-text {\r\n    color: white;\r\n    font-size: 22;\r\n    font-weight: 800;\r\n    margin-top: 60;\r\n}\r\n\r\n.sidedrawer-header-footnote {\r\n    color: white;\r\n}\r\n\r\n.sidedrawer-list-item {\r\n    color: rgb(0, 0, 0);\r\n    padding-left: 30;\r\n    font-size: 18;\r\n    height: 80;\r\n}\r\n\r\n.sidedrawer-item {\r\n    vertical-align: center;\r\n}\r\n\r\n.sidedrawer-list-item-active {\r\n    background-color: #CFC493;\r\n}", ""]);
 
 ;
     if (true) {
@@ -111,7 +111,7 @@ var AppRoutingModule = /** @class */ (function () {
 /***/ "./app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<page-router-outlet ></page-router-outlet>\r\n"
+module.exports = "<RadSideDrawer #sideDrawer>\r\n    <StackLayout tkDrawerContent>\r\n        <StackLayout class=\"sidedrawer-header\"></StackLayout>\r\n        <StackLayout class=\"sidedrawer-content\">\r\n            <StackLayout class=\"sidedrawer-list-item\">\r\n                <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Home\" (tap)=\"navigateTo('user')\"></Button>\r\n            </StackLayout>\r\n            <StackLayout class=\"sidedrawer-list-item\">\r\n                <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Profile\" (tap)=\"navigateTo('profile')\"></Button>\r\n            </StackLayout>\r\n            <StackLayout class=\"sidedrawer-list-item\">\r\n                <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Reserve\" (tap)=\"navigateTo('reserve')\"></Button>\r\n            </StackLayout>\r\n            <StackLayout class=\"sidedrawer-list-item\">\r\n                <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Buildings\" (tap)=\"navigateTo('user/buildinglist')\"></Button>\r\n            </StackLayout>\r\n            <StackLayout class=\"sidedrawer-list-item\">\r\n                <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Vehicles\" (tap)=\"navigateTo('user/vehiclelist')\"></Button>\r\n            </StackLayout>\r\n            <StackLayout class=\"sidedrawer-list-item\">\r\n                <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Report\" (tap)=\"navigateTo('user/report')\"></Button>\r\n            </StackLayout>\r\n        </StackLayout>\r\n    </StackLayout>\r\n\r\n    <page-router-outlet tkMainContent></page-router-outlet>\r\n</RadSideDrawer>"
 
 /***/ }),
 
@@ -125,13 +125,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
 /* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("nativescript-ui-sidedrawer/angular");
+/* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("tns-core-modules/application-settings");
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 var AppComponent = /** @class */ (function () {
     function AppComponent(routerExtensions) {
         this.routerExtensions = routerExtensions;
-        console.log("app component initiated");
     }
+    AppComponent.prototype.navigateTo = function (route) {
+        this.routerExtensions.navigate(["/" + route], { clearHistory: true });
+        this.sideDrawerComponent.sideDrawer.closeDrawer();
+    };
+    AppComponent.prototype.ngOnInit = function () {
+        console.log('app component initiated!');
+        if (tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getBoolean"]("isLoggedIn", false)) {
+            this.routerExtensions.navigate(["login"], { clearHistory: true });
+        }
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__["RadSideDrawerComponent"]),
+        __metadata("design:type", nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__["RadSideDrawerComponent"])
+    ], AppComponent.prototype, "sideDrawerComponent", void 0);
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "ns-app",
@@ -156,8 +175,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/nativescript.module");
 /* harmony import */ var nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./app/app.component.ts");
+/* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("nativescript-ui-sidedrawer/angular");
+/* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./app/app.component.ts");
+
 
 
 
@@ -218,14 +240,15 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             bootstrap: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
             ],
             imports: [
                 nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1__["NativeScriptModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
+                nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__["NativeScriptUISideDrawerModule"]
             ],
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
             ],
             schemas: [
                 _angular_core__WEBPACK_IMPORTED_MODULE_0__["NO_ERRORS_SCHEMA"]
@@ -345,6 +368,13 @@ module.exports = require("nativescript-angular/platform");
 /***/ (function(module, exports) {
 
 module.exports = require("nativescript-angular/router");
+
+/***/ }),
+
+/***/ "nativescript-ui-sidedrawer/angular":
+/***/ (function(module, exports) {
+
+module.exports = require("nativescript-ui-sidedrawer/angular");
 
 /***/ }),
 
