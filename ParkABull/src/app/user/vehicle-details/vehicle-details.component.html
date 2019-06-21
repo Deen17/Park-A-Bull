@@ -1,1 +1,9 @@
-<Button text="vehicle-details works!" class="btn btn-primary"></Button>
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="Vehicle"></Label>
+</ActionBar>
+
+<ScrollView class="page">
+    <StackLayout class="home-panel">
+        <Button class="btn2" text="Make a Reservation" [nsRouterLink]="['/reserve']" clearHistory="true"></Button>
+    </StackLayout>
+</ScrollView>

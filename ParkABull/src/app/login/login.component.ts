@@ -66,9 +66,9 @@ export class LoginComponent implements OnInit {
     appSettings.setBoolean("isLoggedIn", true)
     appSettings.setString("userType", userType)
     if(userType == "student" || userType == "visitor")
-      this.routerExtensions.navigateByUrl("user")
+      this.routerExtensions.navigateByUrl("user", { clearHistory: true })
     else if(userType == "admin")
-      this.routerExtensions.navigateByUrl("admin")
+      this.routerExtensions.navigateByUrl("admin", { clearHistory: true })
   }
 
   register(args: EventData){
