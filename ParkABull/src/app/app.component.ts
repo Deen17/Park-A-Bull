@@ -10,12 +10,18 @@ import * as appSettings from "tns-core-modules/application-settings"
 })
 export class AppComponent { 
     @ViewChild(RadSideDrawerComponent) sideDrawerComponent: RadSideDrawerComponent;
-
+    firstName : string = "User"
+    lastName : string = "Name"
+    email: string = "username@mail.usf.edu"
     constructor(private routerExtensions: RouterExtensions) { }
 
     navigateTo(route: string): void {
         this.routerExtensions.navigate(["/" + route], { clearHistory: true });
         this.sideDrawerComponent.sideDrawer.closeDrawer();
+    }
+    logout(){
+        appSettings.clear();
+        this.routerExtensions.navigate(["login"], { clearHistory: true })
     }
 
     ngOnInit(){

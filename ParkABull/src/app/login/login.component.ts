@@ -1,5 +1,5 @@
 const nodeify = require("nativescript-nodeify");
-import { Component, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Button } from "tns-core-modules/ui/button"
 import { EventData } from "tns-core-modules/data/observable"
 import { request, getFile, getImage, getJSON, getString } from "tns-core-modules/http";
@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
     }).then((response) => {
       const result = response.content.toJSON();
       if (result.login) {
+        console.log(result)
         appSettings.setString("username", this.username)
         appSettings.setBoolean("isLoggedIn", true)
         appSettings.setString("userType", result.userType)

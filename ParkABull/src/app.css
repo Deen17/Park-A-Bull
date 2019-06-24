@@ -72,7 +72,11 @@ ActionBar {
 }
 
 .sidedrawer {
-    background-color: #ffffff;
+    background-color: #000000;
+}
+
+.sidedrawer-content {
+    background-color: #006747;
 }
 
 .sidedrawer-header {
@@ -84,7 +88,6 @@ ActionBar {
     color: white;
     font-size: 22;
     font-weight: 800;
-    margin-top: 60;
 }
 
 .sidedrawer-header-footnote {

@@ -76,13 +76,17 @@ app.post('/login', function(req, res) {
             res.send({ login: false })
             throw err;
         } else if (rows.length == 1) {
+            console.log('login success')
+            console.log("user info: ", rows[0])
+            console.log("first name", rows[0].first_name)
+            console.log("user type ", rows[0].user_type)
             res.send({
                 login: true,
-                userType: rows[0].userType,
+                userType: rows[0].user_type,
                 username: rows[0].username,
                 email: rows[0].email,
-                firstName: rows[0].firstName,
-                lastName: rows[0].lastName
+                firstName: rows[0].first_name,
+                lastName: rows[0].last_name
             })
         } else {
             res.send({ login: false })
@@ -101,6 +105,7 @@ app.post('/register', function(req, res) {
         req.body.password
     ], (err, rows) => {
         if (err) {
+            console.log(rows)
             res.send({ response: false })
             throw err;
         } else {

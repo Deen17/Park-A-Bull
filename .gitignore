@@ -35,9 +35,6 @@ typings/
 old/
 reflections/
 connect.ps1
-<<<<<<< HEAD
 ParkABull/platforms/ios/ParkABull/app/
-=======
 /config.js
 /ParkABull/db/config.js
->>>>>>> master
