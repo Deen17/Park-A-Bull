@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { RouterExtensions } from 'nativescript-angular/router';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+import * as app from "tns-core-modules/application"
+import { getRootView } from "tns-core-modules/application";
 @Component({
   selector: 'ns-profile',
   templateUrl: './profile.component.html',
@@ -8,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild("sideDrawer") rSideDrawer: ElementRef;
+  constructor(private routerExtensions: RouterExtensions) { }
 
-  ngOnInit() {
-  }
+	ngOnInit(): void {
+    console.log("user component initiated!")
+	}
 
+	onDrawerButtonTap(): void {
+		const sideDrawer = <RadSideDrawer>app.getRootView();
+		sideDrawer.showDrawer();
+	}
 }

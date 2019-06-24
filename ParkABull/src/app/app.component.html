@@ -1,1 +1,37 @@
-<page-router-outlet ></page-router-outlet>
+<RadSideDrawer #sideDrawer>
+    <StackLayout tkDrawerContent>
+        <StackLayout class="sidedrawer-header">
+            <Label class="sidedrawer-header-text" text="{{this.firstName}} {{this.lastName}}" textWrap="true"></Label>
+            <Label class="sidedrawer-header-text" text="{{this.email}}" textWrap="true"></Label>
+        </StackLayout>
+        <StackLayout class="sidedrawer-content">
+            <ScrollView>
+                <StackLayout *ngIf="true">
+                    <StackLayout class="sidedrawer-list-item">
+                        <Button class="btn btn-primary sidedrawer-list-item-text" text="Home" (tap)="navigateTo('user')"></Button>
+                    </StackLayout>
+                    <StackLayout class="sidedrawer-list-item">
+                        <Button class="btn btn-primary sidedrawer-list-item-text" text="Profile" (tap)="navigateTo('user/profile')"></Button>
+                    </StackLayout>
+                    <StackLayout class="sidedrawer-list-item">
+                        <Button class="btn btn-primary sidedrawer-list-item-text" text="Reserve" (tap)="navigateTo('user/reserve')"></Button>
+                    </StackLayout>
+                    <StackLayout class="sidedrawer-list-item">
+                        <Button class="btn btn-primary sidedrawer-list-item-text" text="Buildings" (tap)="navigateTo('user/buildinglist')"></Button>
+                    </StackLayout>
+                    <StackLayout class="sidedrawer-list-item">
+                        <Button class="btn btn-primary sidedrawer-list-item-text" text="Vehicles" (tap)="navigateTo('user/vehiclelist')"></Button>
+                    </StackLayout>
+                    <StackLayout class="sidedrawer-list-item">
+                        <Button class="btn btn-primary sidedrawer-list-item-text" text="Report" (tap)="navigateTo('user/report')"></Button>
+                    </StackLayout>
+                    <StackLayout class="sidedrawer-list-item">
+                        <Button class="btn btn-primary sidedrawer-list-item-text" text="Logout" (tap)="logout()"></Button>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </StackLayout>
+
+    <page-router-outlet tkMainContent></page-router-outlet>
+</RadSideDrawer>

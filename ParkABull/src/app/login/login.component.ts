@@ -28,12 +28,12 @@ export class LoginComponent implements OnInit {
     // Use the component constructor to inject providers.
   }
   onTap(args: EventData) {
-    if(!this.username || !this.password){
+    if (!this.username || !this.password) {
       alert(
         {
           title: "Invalid Username/Password Combination",
           message: "Please provide a username and password.",
-          okButtonText:"OK"
+          okButtonText: "OK"
         })
       return;
     }
@@ -48,9 +48,16 @@ export class LoginComponent implements OnInit {
       })
     }).then((response) => {
       const result = response.content.toJSON();
-      if (result.login){
-        this.login(result.userType);
-      } 
+      if (result.login) {
+        console.log(result)
+        appSettings.setString("username", this.username)
+        appSettings.setBoolean("isLoggedIn", true)
+        appSettings.setString("userType", result.userType)
+        appSettings.setString("firstName", result.firstName)
+        appSettings.setString("lastName", result.lastName)
+        appSettings.setString("email", result.email)
+        this.login();
+      }
       else {
         (alert("Login failed!"))
         appSettings.remove("username")
@@ -60,18 +67,16 @@ export class LoginComponent implements OnInit {
       console.log(e)
     });
   }
-  login(userType: string) {
+  login() {
     console.log('entered login()')
-    appSettings.setString("username", this.username)
-    appSettings.setBoolean("isLoggedIn", true)
-    appSettings.setString("userType", userType)
-    if(userType == "student" || userType == "visitor")
-      this.routerExtensions.navigateByUrl("user")
-    else if(userType == "admin")
-      this.routerExtensions.navigateByUrl("admin")
+    let userType = appSettings.getString("userType")
+    if (userType == "student" || userType == "visitor")
+      this.routerExtensions.navigateByUrl("user", { clearHistory: true })
+    else if (userType == "admin")
+      this.routerExtensions.navigateByUrl("admin", { clearHistory: true })
   }
 
-  register(args: EventData){
+  register(args: EventData) {
     this.routerExtensions.navigateByUrl("register")
   }
   onTextChange1(args) {

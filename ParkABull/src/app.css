@@ -9,15 +9,26 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
+
 @import '~nativescript-theme-core/css/forest.css';
+
 /*
  usf green: #006747
  usf gold: #CFC493
 */
+
+
 /*
 For example, the following CSS rule changes the font size of all UI
 components that have the btn class name.
 */
+
+.btn2 {
+    font-size: 18;
+    background-color: #CFC493;
+    color: #ffffff;
+}
+
 .btn {
     font-size: 18;
 }
@@ -31,16 +42,69 @@ StackLayout TextField {
 }
 
 ActionBar {
-  background-color: red;
+    background-color: #006747;
 }
 
 .page {
     align-items: center;
     flex-direction: column;
-  }
-  .form {
+}
+
+.form {
     margin-left: 30;
     margin-right: 30;
     flex-grow: 2;
     vertical-align: middle;
-  }
+}
+
+
+/*        Sidedrawer        */
+
+.sidedrawer-list-item {
+    background-color: #006747;
+    border-top-color: #CFC493;
+    border-bottom-color: #CFC493;
+    border-top-width: 1;
+}
+
+.hr-light {
+    background-color: #444444;
+}
+
+.sidedrawer {
+    background-color: #000000;
+}
+
+.sidedrawer-content {
+    background-color: #006747;
+}
+
+.sidedrawer-header {
+    background-color: #006747;
+    background-size: cover;
+}
+
+.sidedrawer-header-text {
+    color: white;
+    font-size: 22;
+    font-weight: 800;
+}
+
+.sidedrawer-header-footnote {
+    color: white;
+}
+
+.sidedrawer-list-item {
+    color: rgb(0, 0, 0);
+    padding-left: 30;
+    font-size: 18;
+    height: 80;
+}
+
+.sidedrawer-item {
+    vertical-align: center;
+}
+
+.sidedrawer-list-item-active {
+    background-color: #CFC493;
+}
