@@ -6,7 +6,7 @@
         </StackLayout>
         <StackLayout class="sidedrawer-content">
             <ScrollView>
-                <StackLayout *ngIf="true">
+                <StackLayout *ngIf="false">
                     <StackLayout class="sidedrawer-list-item">
                         <Button class="btn btn-primary sidedrawer-list-item-text" text="Home" (tap)="navigateTo('user')"></Button>
                     </StackLayout>
@@ -29,6 +29,30 @@
                         <Button class="btn btn-primary sidedrawer-list-item-text" text="Logout" (tap)="logout()"></Button>
                     </StackLayout>
                 </StackLayout>
+
+                <StackLayout *ngIf="true">
+                        <StackLayout class="sidedrawer-list-item">
+                            <Button class="btn btn-primary sidedrawer-list-item-text" text="Home" (tap)="navigateTo('admin')"></Button>
+                        </StackLayout>
+                        <StackLayout class="sidedrawer-list-item">
+                            <Button class="btn btn-primary sidedrawer-list-item-text" text="Users" (tap)="navigateTo('admin/userlist')"></Button>
+                        </StackLayout>
+                        <StackLayout class="sidedrawer-list-item">
+                            <Button class="btn btn-primary sidedrawer-list-item-text" text="Buildings" (tap)="navigateTo('admin/buildinglist')"></Button>
+                        </StackLayout>
+                        <StackLayout class="sidedrawer-list-item">
+                            <Button class="btn btn-primary sidedrawer-list-item-text" text="Parking Lots" (tap)="navigateTo('admin/lostlist')"></Button>
+                        </StackLayout>
+                        <StackLayout class="sidedrawer-list-item">
+                            <Button class="btn btn-primary sidedrawer-list-item-text" text="Register" (tap)="navigateTo('admin/register')"></Button>
+                        </StackLayout>
+                        <StackLayout class="sidedrawer-list-item">
+                            <Button class="btn btn-primary sidedrawer-list-item-text" text="Report" (tap)="navigateTo('admin/reportlist')"></Button>
+                        </StackLayout>
+                        <StackLayout class="sidedrawer-list-item">
+                            <Button class="btn btn-primary sidedrawer-list-item-text" text="Logout" (tap)="logout()"></Button>
+                        </StackLayout>
+                    </StackLayout>
             </ScrollView>
         </StackLayout>
     </StackLayout>
