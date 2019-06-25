@@ -66,23 +66,6 @@ app.get('/users/:username', function(req, res) {
 
 
 //posts
-app.get('/lots', function(req, res){
-    console.log('GET /lots')
-    console.log(req.body)
-    let query = 'CALL db.get_lots(?, @return_code); select @return_code as return_code;'
-    console.log(query)
-    connection.query(query, [
-        'testbuilding1'], (err, rows) =>{
-            if (err) {
-                console.log(rows)
-                res.send('false')
-                throw err;
-            } else {
-                console.log(rows)
-                res.send(rows);
-            }
-        })
-})
 app.post('/login', function(req, res) {
     console.log('POST /login')
     console.log(req.body)
