@@ -22,6 +22,7 @@ export class AppComponent {
     logout(){
         appSettings.clear();
         this.routerExtensions.navigate(["login"], { clearHistory: true })
+        this.sideDrawerComponent.sideDrawer.closeDrawer();
     }
 
     ngOnInit(){
