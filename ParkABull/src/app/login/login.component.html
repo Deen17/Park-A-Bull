@@ -1,24 +1,19 @@
 <ActionBar backgroundcolor="{{this.greenColor}}" class="action-bar">
-  <Label class="action-bar-title" text="Login"></Label>
+    <NavigationButton ios:visibility="collapsed"></NavigationButton>
+    <Label class="action-bar-title" text="Login"></Label>
 </ActionBar>
 <ScrollView class="page">
-  <StackLayout class="form">
-    <StackLayout class="input-field">
-      <TextField class="input" autocapitalizationType="none" borderRadius=10 (textChange)="onTextChange1($event)"
-        backgroundColor="{{this.boxColor}}" height=75 id="text1" hint="username" autocorrect="false"
-        text="{{this.username}}"></TextField>
+    <StackLayout class="form">
+        <StackLayout class="input-field">
+            <TextField class="input" autocapitalizationType="none" borderRadius=10 (textChange)="onTextChange1($event)" backgroundColor="{{this.boxColor}}" height=75 id="text1" hint="username" autocorrect="false" text="{{this.username}}"></TextField>
+        </StackLayout>
+
+        <StackLayout class="input-field">
+            <TextField class="input" autocapitalizationType="none" secure=true borderRadius=10 (textChange)="onTextChange2($event)" backgroundColor="{{this.boxColor}}" height=75 hint="password" autocorrect="false" id="text2" text="{{this.password}}"></TextField>
+        </StackLayout>
+
+        <Button backgroundColor="{{this.greenColor}}" class="btn btn-primary btn-active" id="button" text="Login" (tap)="onTap($event)"></Button>
+        <Button backgroundColor="{{this.greenColor}}" class="btn btn-primary btn-active" id="button2" text="Register" (tap)="register($event)"></Button>
+
     </StackLayout>
-
-    <StackLayout class="input-field">
-      <TextField class="input" autocapitalizationType="none" secure=true borderRadius=10
-        (textChange)="onTextChange2($event)" backgroundColor="{{this.boxColor}}" height=75 hint="password"
-        autocorrect="false" id="text2" text="{{this.password}}"></TextField>
-    </StackLayout>
-
-    <Button backgroundColor="{{this.greenColor}}" class="btn btn-primary btn-active" id="button" text="Login"
-      (tap)="onTap($event)"></Button>
-    <Button backgroundColor="{{this.greenColor}}" class="btn btn-primary btn-active" id="button2" text="Register"
-      (tap)="register($event)"></Button>
-
-  </StackLayout>
 </ScrollView>

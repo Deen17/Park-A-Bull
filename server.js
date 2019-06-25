@@ -63,6 +63,24 @@ app.get('/users/:username', function(req, res) {
     console.log(res)
     res.end('hey ' + req.params.username)
 })
+app.get('/lots', function(req, res) {
+    console.log('GET /lots')
+    console.log(req.body)
+    let query = 'CALL db.get_lots(?, @return_code); select @return_code as return_code;'
+    console.log(query)
+    connection.query(query, [
+        'testbuilding1'
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send('false')
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
+        }
+    })
+})
 
 
 //posts
@@ -115,13 +133,3 @@ app.post('/register', function(req, res) {
     })
 })
 app.listen(config.appServer.port)
-    //curl -d "username=heh&password=oa" -X POST https://parkabull.localtunnel.me/register
-
-
-/* http.createServer(app).listen(7999) */
-/* https.createServer({
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
-}, app).listen(8000, () => {
-  console.log('Listening...')
-}) */

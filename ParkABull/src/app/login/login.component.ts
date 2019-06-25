@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   password: string;
   boxColor: Color = new Color(255, 207, 196, 147); //(255, 207,196,147) usf gold
   greenColor: Color = new Color(255, 0, 103, 71); //usf green
-  buttontext: string = "Tap Me!";
+  buttontext: string = "Tap Me!d";
   counter: number = 0;
   constructor(private routerExtensions: RouterExtensions) {
     // Use the component constructor to inject providers.

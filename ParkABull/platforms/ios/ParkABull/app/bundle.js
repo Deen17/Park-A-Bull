@@ -148,6 +148,11 @@ var AppComponent = /** @class */ (function () {
         tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["clear"]();
         this.routerExtensions.navigate(["login"], { clearHistory: true });
     };
+    AppComponent.prototype.setUserInfo = function () {
+        this.firstName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("firstName");
+        this.lastName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("lastName");
+        this.email = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email");
+    };
     AppComponent.prototype.ngOnInit = function () {
         console.log('app component initiated!');
         if (tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getBoolean"]("isLoggedIn", false)) {

@@ -24,7 +24,11 @@ export class AppComponent {
         this.routerExtensions.navigate(["login"], { clearHistory: true })
         this.sideDrawerComponent.sideDrawer.closeDrawer();
     }
-
+    setUserInfo() : void {
+        this.firstName = appSettings.getString("firstName")
+        this.lastName = appSettings.getString("lastName")
+        this.email = appSettings.getString("email")
+    }
     ngOnInit(){
         console.log('app component initiated!')
         if(appSettings.getBoolean("isLoggedIn", false)){
