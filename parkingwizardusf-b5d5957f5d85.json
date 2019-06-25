@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "parkingwizardusf",
+  "private_key_id": "b5d5957f5d85f57b09490828e14ec2d4039ccaec",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCeeY765eYp/nR4\nuilCM3OsSUZNTs9D4CrefkWUe9WiIxhwIVorE1YEpfbN4OtVoM/dTEEPiqj/QdJZ\n6cGYYlDBQAkejFh4s5ZicpPmjiwR1SzQsHw5NmKfgu3ce7WlxVANZG+80zRYEKXt\n4SXlPutTIyzCeus/4PJ59nxuA3TXClDWQl5p1sdFZYp0bJsTRUcaELAXT5KAUvX/\nLAXEu/F1ZmR0VkYTJFeasQH7HJdFpJvLrCU4IQZdAP9j+NzLqj/zAL2VQhmtqcbJ\nGH1iNgTDNOHPOft60Zd3x0rYeDHemKMWTe5dMI626ZGlwAUd+WEU/vTSkKcPHGW0\nAMpTrDfXAgMBAAECggEADYjUi8a9Dg1ugBhndAEgmhsV9yifGK0ZVtrnnA3+ybP/\n9HpSEPIRUMtQf/Z7fYWC9eOl04B5p3dFJ6sIVDiNV2aIgNnmp8RauHoQT0q0Jn++\nLe1CEWwnfHe6UzAjluP6TsfVp9r356TgWafMIenqP4r2WdO//2V5qq3rpEUE97qG\nN/bC6Cf5ZQ9yxrFch2Q0lHlITGg6/KgDw8Owsmqs+wKGZLhm17P1ZXSIQhtthxId\nDRiZ+iwMwSbd529r7gB4o1Va/OMdOpt9UU1ANPqanapzjIclX+ctslP/BKL+jdxQ\n2+pOclqzf+OAvyAFLftrqiuBWrS9JL+wz5HniS9hGQKBgQDRMB8/b/SbPDNSOEHA\nYsICueW3ChSvaj6Q12c5MbnDSLETs2V+neqNNMrUBMZcZqSzxZHD78kvWt+ecGso\nP7F/Y+pw8VCLg/kDkYxtEDjQGvg/VA8ZcjEgXqVvyF3eX3ruxww+DjRoYmx+02TQ\n7NjWA9vEass5f7JsE5AGYGw0HwKBgQDB8DPGfE8ng5LmnDHH7POhSHWUvac4kx47\nd9lzip0oocXgdvZFuf5R3l3+hL8+mzux4FrlnH+uN3B+iYy+Stan+fPxiR0pIFmd\nA03iIVVGwcFY5e7AFDvsFDbbMaxs9rPVw3m3Ovu6wlWiUSigkQ6J8TZrqe0W1cIR\n/itkZJtFSQKBgGLATuAJn/Vwc+HKgO+rL19OFq1T6vPsOeDybt5HJSSVOlLMi4s8\nTS+fzmhMYL/aDMJ48BkJJ3Zdddc7xrpXZxl2N4RdxuI1yOXwXdRWphtHwA1VR1OB\n3sMjKwIcGoQRmt0Bxju9ROxKGmG8tYkTZkGRzLtqlslsCPSQP5tjBXGNAoGAJRvN\nDGGk0669YRrp+5M/WtD+jqNrZ8vesQpRtWYEhE3QCw84OEdKfmfKHHVSEqypU3PW\ncLDtTWyWPeAb6h1vzVxqbQELb18dRonnUSmHo65XTKdSc7ZrcNS9Wlu63m6mInTw\nyTqkCCw/LnvRBkg7O/HHs/ojv4bPR5oWu3L0suECgYEArXF2uzHusjItduqyxNtw\n/cNmaw8BTE/kKffCJl5djiPdcp8A/MGpZlwVMkr1khG896UFDICE06WSP0D0gbQe\nUOj1MH72/PckD3WSwmbt28ifiDtqUcghz/yrqOvNPrqSHL+knPaNcNAEWH0oqaxK\nVtOpQS93Io6FiBQRMJQ3Loc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sawanp@parkingwizardusf.iam.gserviceaccount.com",
+  "client_id": "112882694712469726179",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sawanp%40parkingwizardusf.iam.gserviceaccount.com"
+}

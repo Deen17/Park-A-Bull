@@ -3,6 +3,12 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 
 import * as appSettings from "tns-core-modules/application-settings"
+import { EventData } from "tns-core-modules/data/observable"
+
+import { RadSideDrawer, SideDrawerLocation } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application";
+import { Page } from "tns-core-modules/ui/page";
+
 @Component({
     moduleId: module.id,
     selector: "ns-app",
