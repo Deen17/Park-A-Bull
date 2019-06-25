@@ -23,37 +23,9 @@ var map = {
 		"vendor",
 		3
 	],
-	"~/app/user/building-details/building-details.component": [
-		"./app/user/building-details/building-details.component.ts",
-		5
-	],
-	"~/app/user/building-list/building-list.component": [
-		"./app/user/building-list/building-list.component.ts",
-		6
-	],
-	"~/app/user/profile/profile.component": [
-		"./app/user/profile/profile.component.ts",
-		7
-	],
-	"~/app/user/report/report.component": [
-		"./app/user/report/report.component.ts",
-		8
-	],
-	"~/app/user/reserve/reserve.component": [
-		"./app/user/reserve/reserve.component.ts",
-		9
-	],
 	"~/app/user/user.module": [
 		"./app/user/user.module.ts",
 		1
-	],
-	"~/app/user/vehicle-details/vehicle-details.component": [
-		"./app/user/vehicle-details/vehicle-details.component.ts",
-		10
-	],
-	"~/app/user/vehicle-list/vehicle-list.component": [
-		"./app/user/vehicle-list/vehicle-list.component.ts",
-		11
 	]
 };
 function webpackAsyncContext(req) {

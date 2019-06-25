@@ -11,6 +11,7 @@ import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './user.component';
 
+
 const routes: Routes = [
   { path: "", component: UserComponent },
   { path: "user", component: UserComponent },
