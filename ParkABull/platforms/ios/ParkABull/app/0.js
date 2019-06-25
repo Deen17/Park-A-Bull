@@ -64,7 +64,7 @@ var AdminRoutingModule = /** @class */ (function () {
 /***/ "./app/admin/admin.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
@@ -182,7 +182,7 @@ var AdminModule = /** @class */ (function () {
 /***/ "./app/admin/building-details/building-details.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
@@ -225,7 +225,7 @@ var BuildingDetailsComponent = /** @class */ (function () {
 /***/ "./app/admin/building-list/building-list.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
@@ -268,7 +268,7 @@ var BuildingListComponent = /** @class */ (function () {
 /***/ "./app/admin/lot-details/lot-details.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
@@ -311,7 +311,7 @@ var LotDetailsComponent = /** @class */ (function () {
 /***/ "./app/admin/lot-list/lot-list.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
@@ -354,7 +354,7 @@ var LotListComponent = /** @class */ (function () {
 /***/ "./app/admin/register/register.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
@@ -397,7 +397,7 @@ var RegisterComponent = /** @class */ (function () {
 /***/ "./app/admin/report-details/report-details.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
@@ -440,7 +440,7 @@ var ReportDetailsComponent = /** @class */ (function () {
 /***/ "./app/admin/report-list/report-list.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
@@ -483,7 +483,7 @@ var ReportListComponent = /** @class */ (function () {
 /***/ "./app/admin/user-details/user-details.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
@@ -526,7 +526,7 @@ var UserDetailsComponent = /** @class */ (function () {
 /***/ "./app/admin/user-list/user-list.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* Add mobile styles for the component here.  */\n"
+module.exports = "/* Add mobile styles for the component here.  */\r\n"
 
 /***/ }),
 
