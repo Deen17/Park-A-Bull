@@ -10,10 +10,10 @@ const fs = require('fs')
 
 let tunnel;
 setTimeout(function() {
-    tunnel = localtunnel(config.appServer.port, { subdomain: 'parkabull1' }, (err, tunnel) => {
+    tunnel = localtunnel(config.appServer.port, { subdomain: 'parkabull' }, (err, tunnel) => {
         if (err) {
             throw err;
-        } else if (tunnel.url != 'https://parkabull1.localtunnel.me') throw new Error('Failed');
+        } else if (tunnel.url != 'https://parkabull.localtunnel.me') throw new Error('Failed');
         else {
             console.log(`tunnel is open on ${tunnel.url}`)
         }
