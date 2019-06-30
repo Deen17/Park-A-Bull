@@ -13,20 +13,20 @@ export class HomeComponent implements OnInit {
         // Use the component constructor to inject providers.
     }
     ngOnInit(): void {
-        appSettings.clear();
+        //appSettings.clear();
         console.log('Home Component initiated. usertype is ', appSettings.getString("userType"))
         console.log(this.routerExtensions)
         if (!appSettings.getBoolean("isLoggedIn", false)) {
             console.log("should navigate to login")
-            this.routerExtensions.navigateByUrl("login")
+            this.routerExtensions.navigateByUrl("login", { clearHistory: true })
         }
         else if (appSettings.getString("userType") == "student"){
             console.log("should navigate to user")
-            this.routerExtensions.navigateByUrl("user")
+            this.routerExtensions.navigateByUrl("user", { clearHistory: true })
         }
         else if (appSettings.getString("userType") == "admin"){
             console.log("should navigate to admin")
-            this.routerExtensions.navigateByUrl("admin")
+            this.routerExtensions.navigateByUrl("admin", { clearHistory: true })
         }
     }
 }

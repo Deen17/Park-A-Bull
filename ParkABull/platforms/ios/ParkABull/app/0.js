@@ -71,7 +71,7 @@ module.exports = "/* Add mobile styles for the component here.  */\n"
 /***/ "./app/admin/admin.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<Button text=\"admin works!\" class=\"btn btn-primary\"></Button>"
+module.exports = "<ActionBar class=\"action-bar\">\r\n    <NavigationButton ios:visibility=\"collapsed\" icon=\"res://menu\" (tap)=\"onDrawerButtonTap()\"></NavigationButton>\r\n    <ActionItem icon=\"res://navigation/menu\" android:visibility=\"collapsed\" (tap)=\"onDrawerButtonTap()\" ios.position=\"left\">\r\n    </ActionItem>\r\n    <Label class=\"action-bar-title\" text=\"Admin Home\"></Label>\r\n</ActionBar>\r\n\r\n<ScrollView class=\"page\">\r\n    <StackLayout class=\"home-panel\">\r\n        <Button class=\"btn\" text=\"View Reports\" [nsRouterLink]=\"['reportlist']\" clearHistory=\"true\"></Button>\r\n    </StackLayout>\r\n</ScrollView>"
 
 /***/ }),
 
@@ -83,19 +83,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminComponent", function() { return AdminComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("tns-core-modules/application");
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 var AdminComponent = /** @class */ (function () {
-    function AdminComponent() {
+    function AdminComponent(routerExtensions) {
+        this.routerExtensions = routerExtensions;
     }
     AdminComponent.prototype.ngOnInit = function () {
+        console.log("admin component initiated!");
     };
+    AdminComponent.prototype.onDrawerButtonTap = function () {
+        var sideDrawer = tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__["getRootView"]();
+        sideDrawer.showDrawer();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])("sideDrawer"),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], AdminComponent.prototype, "rSideDrawer", void 0);
     AdminComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ns-admin',
             template: __webpack_require__("./app/admin/admin.component.html"),
             styles: [__webpack_require__("./app/admin/admin.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
     ], AdminComponent);
     return AdminComponent;
 }());
@@ -232,7 +248,7 @@ module.exports = "/* Add mobile styles for the component here.  */\n"
 /***/ "./app/admin/building-list/building-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<Button text=\"building-list works!\" class=\"btn btn-primary\"></Button>"
+module.exports = "<ActionBar class=\"action-bar\">\r\n    <NavigationButton ios:visibility=\"collapsed\" icon=\"res://menu\" (tap)=\"onDrawerButtonTap()\"></NavigationButton>\r\n    <ActionItem icon=\"res://navigation/menu\" android:visibility=\"collapsed\" (tap)=\"onDrawerButtonTap()\" ios.position=\"left\">\r\n    </ActionItem>\r\n    <Label class=\"action-bar-title\" text=\"Buildings\"></Label>\r\n</ActionBar>\r\n    \r\n<ScrollView class=\"page\">\r\n    <StackLayout class=\"home-panel\">\r\n    </StackLayout>\r\n</ScrollView>"
 
 /***/ }),
 
@@ -244,19 +260,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BuildingListComponent", function() { return BuildingListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("tns-core-modules/application");
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 var BuildingListComponent = /** @class */ (function () {
-    function BuildingListComponent() {
+    function BuildingListComponent(routerExtensions) {
+        this.routerExtensions = routerExtensions;
     }
     BuildingListComponent.prototype.ngOnInit = function () {
+        console.log("user component initiated!");
     };
+    BuildingListComponent.prototype.onDrawerButtonTap = function () {
+        var sideDrawer = tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__["getRootView"]();
+        sideDrawer.showDrawer();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])("sideDrawer"),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], BuildingListComponent.prototype, "rSideDrawer", void 0);
     BuildingListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ns-building-list',
             template: __webpack_require__("./app/admin/building-list/building-list.component.html"),
             styles: [__webpack_require__("./app/admin/building-list/building-list.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
     ], BuildingListComponent);
     return BuildingListComponent;
 }());
@@ -318,7 +350,7 @@ module.exports = "/* Add mobile styles for the component here.  */\n"
 /***/ "./app/admin/lot-list/lot-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<Button text=\"lot-list works!\" class=\"btn btn-primary\"></Button>"
+module.exports = "<ActionBar class=\"action-bar\">\r\n    <NavigationButton ios:visibility=\"collapsed\" icon=\"res://menu\" (tap)=\"onDrawerButtonTap()\"></NavigationButton>\r\n    <ActionItem icon=\"res://navigation/menu\" android:visibility=\"collapsed\" (tap)=\"onDrawerButtonTap()\" ios.position=\"left\">\r\n    </ActionItem>\r\n    <Label class=\"action-bar-title\" text=\"Parking Lots\"></Label>\r\n</ActionBar>\r\n        \r\n<ScrollView class=\"page\">\r\n    <StackLayout class=\"home-panel\">\r\n    </StackLayout>\r\n</ScrollView>"
 
 /***/ }),
 
@@ -330,19 +362,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LotListComponent", function() { return LotListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("tns-core-modules/application");
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 var LotListComponent = /** @class */ (function () {
-    function LotListComponent() {
+    function LotListComponent(routerExtensions) {
+        this.routerExtensions = routerExtensions;
     }
     LotListComponent.prototype.ngOnInit = function () {
+        console.log("user component initiated!");
     };
+    LotListComponent.prototype.onDrawerButtonTap = function () {
+        var sideDrawer = tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__["getRootView"]();
+        sideDrawer.showDrawer();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])("sideDrawer"),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], LotListComponent.prototype, "rSideDrawer", void 0);
     LotListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ns-lot-list',
             template: __webpack_require__("./app/admin/lot-list/lot-list.component.html"),
             styles: [__webpack_require__("./app/admin/lot-list/lot-list.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
     ], LotListComponent);
     return LotListComponent;
 }());
@@ -361,7 +409,7 @@ module.exports = "/* Add mobile styles for the component here.  */\n"
 /***/ "./app/admin/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<Button text=\"register works!\" class=\"btn btn-primary\"></Button>"
+module.exports = "<ActionBar class=\"action-bar\">\r\n    <NavigationButton ios:visibility=\"collapsed\" icon=\"res://menu\" (tap)=\"onDrawerButtonTap()\"></NavigationButton>\r\n    <ActionItem icon=\"res://navigation/menu\" android:visibility=\"collapsed\" (tap)=\"onDrawerButtonTap()\" ios.position=\"left\">\r\n    </ActionItem>\r\n    <Label class=\"action-bar-title\" text=\"Register\"></Label>\r\n</ActionBar>\r\n        \r\n<ScrollView class=\"page\">\r\n    <StackLayout class=\"home-panel\">\r\n    </StackLayout>\r\n</ScrollView>"
 
 /***/ }),
 
@@ -373,19 +421,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("tns-core-modules/application");
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent() {
+    function RegisterComponent(routerExtensions) {
+        this.routerExtensions = routerExtensions;
     }
     RegisterComponent.prototype.ngOnInit = function () {
+        console.log("user component initiated!");
     };
+    RegisterComponent.prototype.onDrawerButtonTap = function () {
+        var sideDrawer = tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__["getRootView"]();
+        sideDrawer.showDrawer();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])("sideDrawer"),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], RegisterComponent.prototype, "rSideDrawer", void 0);
     RegisterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ns-register',
             template: __webpack_require__("./app/admin/register/register.component.html"),
             styles: [__webpack_require__("./app/admin/register/register.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
     ], RegisterComponent);
     return RegisterComponent;
 }());
@@ -447,7 +511,7 @@ module.exports = "/* Add mobile styles for the component here.  */\n"
 /***/ "./app/admin/report-list/report-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<Button text=\"report-list works!\" class=\"btn btn-primary\"></Button>"
+module.exports = "<ActionBar class=\"action-bar\">\r\n    <NavigationButton ios:visibility=\"collapsed\" icon=\"res://menu\" (tap)=\"onDrawerButtonTap()\"></NavigationButton>\r\n    <ActionItem icon=\"res://navigation/menu\" android:visibility=\"collapsed\" (tap)=\"onDrawerButtonTap()\" ios.position=\"left\">\r\n    </ActionItem>\r\n    <Label class=\"action-bar-title\" text=\"Reports\"></Label>\r\n</ActionBar>\r\n    \r\n<ScrollView class=\"page\">\r\n    <StackLayout class=\"home-panel\">\r\n    </StackLayout>\r\n</ScrollView>"
 
 /***/ }),
 
@@ -459,19 +523,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportListComponent", function() { return ReportListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("tns-core-modules/application");
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 var ReportListComponent = /** @class */ (function () {
-    function ReportListComponent() {
+    function ReportListComponent(routerExtensions) {
+        this.routerExtensions = routerExtensions;
     }
     ReportListComponent.prototype.ngOnInit = function () {
+        console.log("user component initiated!");
     };
+    ReportListComponent.prototype.onDrawerButtonTap = function () {
+        var sideDrawer = tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__["getRootView"]();
+        sideDrawer.showDrawer();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])("sideDrawer"),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], ReportListComponent.prototype, "rSideDrawer", void 0);
     ReportListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ns-report-list',
             template: __webpack_require__("./app/admin/report-list/report-list.component.html"),
             styles: [__webpack_require__("./app/admin/report-list/report-list.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
     ], ReportListComponent);
     return ReportListComponent;
 }());
@@ -533,7 +613,7 @@ module.exports = "/* Add mobile styles for the component here.  */\n"
 /***/ "./app/admin/user-list/user-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<Button text=\"user-list works!\" class=\"btn btn-primary\"></Button>"
+module.exports = "<ActionBar class=\"action-bar\">\r\n    <NavigationButton ios:visibility=\"collapsed\" icon=\"res://menu\" (tap)=\"onDrawerButtonTap()\"></NavigationButton>\r\n    <ActionItem icon=\"res://navigation/menu\" android:visibility=\"collapsed\" (tap)=\"onDrawerButtonTap()\" ios.position=\"left\">\r\n    </ActionItem>\r\n    <Label class=\"action-bar-title\" text=\"Users\"></Label>\r\n</ActionBar>\r\n            \r\n<ScrollView class=\"page\">\r\n    <StackLayout class=\"home-panel\">\r\n    </StackLayout>\r\n</ScrollView>"
 
 /***/ }),
 
@@ -545,19 +625,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserListComponent", function() { return UserListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("nativescript-angular/router");
+/* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("tns-core-modules/application");
+/* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 var UserListComponent = /** @class */ (function () {
-    function UserListComponent() {
+    function UserListComponent(routerExtensions) {
+        this.routerExtensions = routerExtensions;
     }
     UserListComponent.prototype.ngOnInit = function () {
+        console.log("user component initiated!");
     };
+    UserListComponent.prototype.onDrawerButtonTap = function () {
+        var sideDrawer = tns_core_modules_application__WEBPACK_IMPORTED_MODULE_2__["getRootView"]();
+        sideDrawer.showDrawer();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])("sideDrawer"),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], UserListComponent.prototype, "rSideDrawer", void 0);
     UserListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ns-user-list',
             template: __webpack_require__("./app/admin/user-list/user-list.component.html"),
             styles: [__webpack_require__("./app/admin/user-list/user-list.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
     ], UserListComponent);
     return UserListComponent;
 }());

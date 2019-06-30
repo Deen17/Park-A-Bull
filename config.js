@@ -8,12 +8,15 @@ module.exports = {
         multipleStatements: true,
     },
     appServer: {
-        ip: "10.100.2.141", //put your own ip address here. run Get-NetIpAddress and look for the right ip (check for wifi/ethernet, then for preferred) or put localhost
+        ip: "10.100.3.204", //put your own ip address here. run Get-NetIpAddress and look for the right ip (check for wifi/ethernet, then for preferred) or put localhost
         port: 8000,
 
     },
     queries: {
-        addStudent: `CALL db.add_student(?,?,?,?,?,?, @return_code); select @return_code return_code;`,
+        addStudent: 'CALL db.add_student(?,?,?,?,?,?, @return_code); select @return_code return_code;',
+        getBuildings: 'SELECT building_name, building_code, location, lot_code_1, lot_code_2, lot_code_3 FROM db.buildings;',
+        getLots: 'CALL db.get_lots(?, @return_code); select @return_code as return_code;',
+        login: 'SELECT * from db.users WHERE (username=? AND password=?);'
 
     }
 }

@@ -6,7 +6,7 @@ import { request, getFile, getImage, getJSON, getString } from "tns-core-modules
 import { fromObject, fromObjectRecursive, Observable, PropertyChangeData } from "tns-core-modules/data/observable";
 import { TextField } from "tns-core-modules/ui/text-field"
 import { Color } from "tns-core-modules/color"
-import { url } from "../../../db/config.js"
+import { url, localUrl } from "../../../db/config.js"
 import * as md5 from "md5/md5.js" //md5.js exports a function without a name.
 import { RouterExtensions } from "nativescript-angular/router"
 import * as appSettings from "tns-core-modules/application-settings"
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     }
     let newpass: string = md5(this.password);
     request({
-      url: url + "login", //http://10.100.0.232:8000/login
+      url: localUrl + "login", //http://10.100.0.232:8000/login
       method: "POST",
       headers: { "Content-Type": "application/json" },
       content: JSON.stringify({

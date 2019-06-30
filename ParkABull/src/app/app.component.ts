@@ -31,8 +31,16 @@ export class AppComponent {
     }
     ngOnInit(){
         console.log('app component initiated!')
-        if(appSettings.getBoolean("isLoggedIn", false)){
+/*         if(appSettings.getBoolean("isLoggedIn", false)){
             this.routerExtensions.navigate(["login"], { clearHistory: true })
         } 
+        else if (appSettings.getString("userType") == "student"){
+            console.log("should navigate to user")
+            this.routerExtensions.navigateByUrl("user", { clearHistory: true })
+        }
+        else if (appSettings.getString("userType") == "admin"){
+            console.log("should navigate to admin")
+            this.routerExtensions.navigateByUrl("admin", { clearHistory: true })
+        } */
     }
 }
