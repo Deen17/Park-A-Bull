@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 const localtunnel = require('localtunnel')
 const fs = require('fs')
 
-let tunnel;
+/* let tunnel;
 setTimeout(function() {
     tunnel = localtunnel(config.appServer.port, { subdomain: 'parkabull' }, (err, tunnel) => {
         if (err) {
@@ -18,7 +18,7 @@ setTimeout(function() {
             console.log(`tunnel is open on ${tunnel.url}`)
         }
     })
-}, 1000);
+}, 1000); */
 
 /* tunnel.on('close', function(){
   console.log('tunnel is closed')
@@ -46,6 +46,10 @@ connection.connect((err) => {
 //EXPRESS
 var app = express()
 app.use(function(req, res, next) {
+    console.clear()
+    next()
+})
+app.use(function(req, res, next) {
     let today = new Date();
     console.log(today.getMonth() + '/' +
         today.getDay() + '/' + today.getFullYear() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() +
@@ -54,44 +58,83 @@ app.use(function(req, res, next) {
 })
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
-    //Routes
-    //gets
+
+
+//Routes
+//gets
 app.get('/', function(req, res) {
-    res.send('hey there')
+    res.send('Welcome to the Parkabull API!')
 })
 app.get('/users/:username', function(req, res) {
     console.log(res)
     res.end('hey ' + req.params.username)
+})
+app.get('/lots', function(req, res) {
+    console.log('GET /lots')
+    console.log(req.body)
+    connection.query(config.queries.getLots, [
+        'testbuilding1'
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send('false')
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
+        }
+    })
+})
+app.get('/buildings', function(req, res) {
+    console.log('GET /buildings')
+    connection.query(
+        config.queries.getBuildings,
+        (err, rows) => {
+            if (err) {
+                res.send({ response_message: "Get Buildings Failed!" })
+                throw err;
+            } else {
+                /*                 console.log(rows)
+                                rows.forEach(row => {
+                                    console.log(typeof row, '\t', row)
+                                }); */
+                res.send(rows)
+            }
+        }
+    )
+
 })
 
 
 //posts
 app.post('/login', function(req, res) {
     console.log('POST /login')
-    console.log(req.body)
-    let query = 'SELECT * FROM db.users WHERE (username=\'' + req.body.username + '\' AND password=\'' + req.body.password + '\')'; //more elegant way to do this, look at mysql npm page
-    console.log(query)
-    connection.query(query, (err, rows) => {
-        if (err) {
-            res.send({ login: false })
-            throw err;
-        } else if (rows.length == 1) {
-            console.log('login success')
-            console.log("user info: ", rows[0])
-            console.log("first name", rows[0].first_name)
-            console.log("user type ", rows[0].user_type)
-            res.send({
-                login: true,
-                userType: rows[0].user_type,
-                username: rows[0].username,
-                email: rows[0].email,
-                firstName: rows[0].first_name,
-                lastName: rows[0].last_name
-            })
-        } else {
-            res.send({ login: false })
-        }
-    })
+    connection.query(
+        config.queries.login, [
+            req.body.username,
+            req.body.password
+        ],
+        (err, rows) => {
+            if (err) {
+                res.send({ login: false })
+                throw err;
+            } else if (rows.length == 1) {
+                console.log('login success')
+                console.log("user info: ", rows[0])
+                console.log("first name", rows[0].first_name)
+                console.log("user type ", rows[0].user_type)
+                res.send({
+                    login: true,
+                    userType: rows[0].user_type,
+                    username: rows[0].username,
+                    email: rows[0].email,
+                    firstName: rows[0].first_name,
+                    lastName: rows[0].last_name
+                })
+            } else {
+                res.send({ login: false })
+            }
+        })
 })
 
 app.post('/register', function(req, res) {
@@ -114,14 +157,4 @@ app.post('/register', function(req, res) {
         }
     })
 })
-app.listen(config.appServer.port)
-    //curl -d "username=heh&password=oa" -X POST https://parkabull.localtunnel.me/register
-
-
-/* http.createServer(app).listen(7999) */
-/* https.createServer({
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
-}, app).listen(8000, () => {
-  console.log('Listening...')
-}) */
+app.listen(config.appServer.port, config.appServer.ip)
