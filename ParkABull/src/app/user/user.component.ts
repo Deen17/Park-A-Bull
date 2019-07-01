@@ -12,7 +12,7 @@ import { RadSideDrawer, SideDrawerLocation } from "nativescript-ui-sidedrawer";
   moduleId: module.id,
 })
 export class UserComponent implements OnInit {
-  @ViewChild("sideDrawer") rSideDrawer: ElementRef;
+  //@ViewChild("sideDrawer") rSideDrawer: ElementRef;
   constructor(private routerExtensions: RouterExtensions) { }
 
 	ngOnInit(): void {

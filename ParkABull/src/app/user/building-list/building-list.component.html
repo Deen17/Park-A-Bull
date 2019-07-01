@@ -2,9 +2,12 @@
     <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
-    <Label class="action-bar-title" text="Buildings"></Label>
+    <Label class="action-bar-title" text="Buildings!"></Label>
 </ActionBar>
-
-<ScrollView class="page">
-    <ListPicker [items]="names" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event)" class="p-15"></ListPicker>
-</ScrollView>
+<StackLayout *ngIf="shouldShow" class="page">
+    <SearchBar height=75 hint="Enter a building name..." text="{{this.searchPhrase}}" (textChange)="onTextChanged($event)" (submit)="onSubmit($event)" color="black" textFieldBackgroundColor="white" textFieldHintColor="gray"></SearchBar>
+    <ScrollView>
+        <ListPicker [items]="filteredNames" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event)" class="p-15">
+        </ListPicker>
+    </ScrollView>
+</StackLayout>

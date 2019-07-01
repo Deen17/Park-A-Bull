@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import * as app from "tns-core-modules/application"
@@ -10,35 +10,45 @@ import { ListPicker } from 'tns-core-modules/ui/list-picker';
 import { EventData } from "tns-core-modules/data/observable";
 import { Page } from "tns-core-modules/ui/page";
 import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
-
-let pokemonList = ["Bulbasaur", "Parasect", "Venonat", "Venomoth", "Diglett",
-  "Dugtrio", "Meowth", "Persian", "Psyduck", "Arcanine", "Poliwrath", "Machoke"];
+import {SearchBar} from "tns-core-modules/ui/search-bar"
 
 @Component({
   selector: 'ns-building-list',
   templateUrl: './building-list.component.html',
   styleUrls: ['./building-list.component.css'],
   moduleId: module.id,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BuildingListComponent implements OnInit {
   buildings: Array<Building> = [];
   names: Array<string> = [];
+  filteredNames: Array<string> = [];
+  shouldShow: boolean = false;
 
-  public pokemons: Array<string> = [];
+  public searchPhrase : string = '';
   public picked: string;
 
   @ViewChild("sideDrawer") rSideDrawer: ElementRef;
-  constructor(private routerExtensions: RouterExtensions) {
-    for (let pokemon of pokemonList) {
-      this.pokemons.push(pokemon);
-    }
+  //@ViewChild("testLabel") testLabel: ElementRef;
+  constructor(private routerExtensions: RouterExtensions, private ref: ChangeDetectorRef) {
     
+  }
+
+  onTextChanged(args){
+    let searchBar = <SearchBar>args.object;
+    this.searchPhrase = searchBar.text;
+    this.filteredNames = this.names.filter(word => word.includes(this.searchPhrase.toLowerCase()))
+    console.log(this.filteredNames)
+  }
+
+  onSubmit(args){
+    //intentionally left blank
   }
 
   public selectedIndexChanged(args) {
     let picker = <ListPicker>args.object;
     this.picked = this.names[picker.selectedIndex];
-    console.log(this.picked)
+    console.log('this.picked: ',this.picked)
   }
 
   ngOnInit(): void {
@@ -65,7 +75,12 @@ export class BuildingListComponent implements OnInit {
         this.buildings.push(temp);
         this.names.push(row.building_name)
       });
-      console.log(this.names)
+      //after this line, the names and buildings arrays should be populated
+      //console.log(this.names) 
+      this.filteredNames = this.names;
+      console.log('filteredNames: ',this.filteredNames)
+      this.shouldShow = true;
+      this.ref.markForCheck();
     }, (e) => {
       console.log(e)
     })
@@ -74,5 +89,7 @@ export class BuildingListComponent implements OnInit {
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
+/*     this.shouldShow = true;
+    this.ref.markForCheck(); */
   }
 }
