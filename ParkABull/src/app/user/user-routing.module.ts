@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: "vehiclelist", component: VehicleListComponent },
   { path: "vehicledetails", component: VehicleDetailsComponent  },
   { path: "buildinglist", component: BuildingListComponent },
-  { path: "buildingdetails", component: BuildingDetailsComponent },
+  { path: "buildingdetails/:name", component: BuildingDetailsComponent },
   { path: "reserve", component: ReserveComponent },
   { path: "report", component: ReportComponent  },
   { path: "profile", component: ProfileComponent}

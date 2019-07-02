@@ -1,9 +1,11 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Building Details"></Label>
+    <Label class="action-bar-title" text="{{this.name}} Details"></Label>
 </ActionBar>
 
-<ScrollView class="page">
+<ScrollView height=100% class="page">
     <StackLayout class="home-panel">
-        <Button class="btn2" text="Make a Reservation" [nsRouterLink]="['/reserve']" clearHistory="true"></Button>
+        <Label textWrap="true" class="big" text="{{this.total}}"></Label>
+        <Label class="spots" text="Spots Available" textWrap="true"></Label>
+        <Button class="btn btn-primary btn-active" text="Make a Reservation"></Button>
     </StackLayout>
 </ScrollView>
