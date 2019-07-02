@@ -12,8 +12,8 @@
             <TextField class="input" autocapitalizationType="none" secure=true borderRadius=10 (textChange)="onTextChange2($event)" backgroundColor="{{this.boxColor}}" height=75 hint="password" autocorrect="false" id="text2" text="{{this.password}}"></TextField>
         </StackLayout>
 
-        <Button backgroundColor="{{this.greenColor}}" class="btn btn-primary btn-active" id="button" text="Login" (tap)="onTap($event)"></Button>
-        <Button backgroundColor="{{this.greenColor}}" class="btn btn-primary btn-active" id="button2" text="Register" (tap)="register($event)"></Button>
+        <Button class="btn btn-primary btn-active" id="button" text="Login" (tap)="onTap($event)"></Button>
+        <Button class="btn btn-primary btn-active" id="button2" text="Register" (tap)="register($event)"></Button>
 
     </StackLayout>
 </ScrollView>

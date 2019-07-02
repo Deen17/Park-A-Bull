@@ -37,7 +37,7 @@ export class BuildingListComponent implements OnInit {
   onTextChanged(args){
     let searchBar = <SearchBar>args.object;
     this.searchPhrase = searchBar.text;
-    this.filteredNames = this.names.filter(word => word.includes(this.searchPhrase.toLowerCase()))
+    this.filteredNames = this.names.filter(word => word.toLowerCase().includes(this.searchPhrase.toLowerCase()))
     console.log(this.filteredNames)
   }
 
@@ -84,6 +84,14 @@ export class BuildingListComponent implements OnInit {
     }, (e) => {
       console.log(e)
     })
+  }
+
+  reserve(): void{
+
+  }
+
+  buildingDetails(): void {
+    console.log(this.routerExtensions.navigateByUrl("user/buildingdetails/" + this.picked));
   }
 
   onDrawerButtonTap(): void {

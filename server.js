@@ -69,11 +69,11 @@ app.get('/users/:username', function(req, res) {
     console.log(res)
     res.end('hey ' + req.params.username)
 })
-app.get('/lots', function(req, res) {
-    console.log('GET /lots')
+app.get('/lots/:name', function(req, res) {
+    console.log('GET /lots/' + req.params.name)
     console.log(req.body)
     connection.query(config.queries.getLots, [
-        'testbuilding1'
+        req.params.name
     ], (err, rows) => {
         if (err) {
             console.log(rows)
@@ -86,27 +86,25 @@ app.get('/lots', function(req, res) {
     })
 })
 app.get('/buildings', function(req, res) {
-    console.log('GET /buildings')
-    connection.query(
-        config.queries.getBuildings,
-        (err, rows) => {
-            if (err) {
-                res.send({ response_message: "Get Buildings Failed!" })
-                throw err;
-            } else {
-                /*                 console.log(rows)
-                                rows.forEach(row => {
-                                    console.log(typeof row, '\t', row)
-                                }); */
-                res.send(rows)
+        console.log('GET /buildings')
+        connection.query(
+            config.queries.getBuildings,
+            (err, rows) => {
+                if (err) {
+                    res.send({ response_message: "Get Buildings Failed!" })
+                    throw err;
+                } else {
+                    /*                 console.log(rows)
+                                    rows.forEach(row => {
+                                        console.log(typeof row, '\t', row)
+                                    }); */
+                    res.send(rows)
+                }
             }
-        }
-    )
+        )
 
-})
-
-
-//posts
+    })
+    //posts
 app.post('/login', function(req, res) {
     console.log('POST /login')
     connection.query(
@@ -157,4 +155,9 @@ app.post('/register', function(req, res) {
         }
     })
 })
-app.listen(config.appServer.port, config.appServer.ip)
+const server = app.listen(config.appServer.port, config.appServer.ip, () => {
+    const host = server.address().address;
+    const port = server.address().port;
+    console.log(`ParkABull app listening at http://${host}:${port}`)
+    console.log(server._connectionKey)
+})

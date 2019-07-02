@@ -13,10 +13,11 @@ module.exports = {
 
     },
     queries: {
-        addStudent: 'CALL db.add_student(?,?,?,?,?,?, @return_code); select @return_code return_code;',
+        addStudent: 'CALL db.add_student(?,?,?,?,?,?, @return_code); select @return_code as return_code;',
         getBuildings: 'SELECT building_name, building_code, location, lot_code_1, lot_code_2, lot_code_3 FROM db.buildings;',
-        getLots: 'CALL db.get_lots(?, @return_code); select @return_code as return_code;',
-        login: 'SELECT * from db.users WHERE (username=? AND password=?);'
+        getLots: 'CALL db.get_lots_by_building_name(?, @return_code); select @return_code as return_code;', //returns lots per building and vacancies per lot
+        login: 'SELECT * from db.users WHERE (username=? AND password=?);',
+        getSpots: 'SELECT '
 
     }
 }
