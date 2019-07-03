@@ -6,7 +6,7 @@
         </StackLayout>
         <StackLayout class="sidedrawer-content">
             <ScrollView>
-                <StackLayout *ngIf="true">
+                <StackLayout *ngIf="isUser">
                     <StackLayout class="sidedrawer-list-item">
                         <Button class="btn btn-primary sidedrawer-list-item-text" text="Home" (tap)="navigateTo('user')"></Button>
                     </StackLayout>
@@ -30,7 +30,7 @@
                     </StackLayout>
                 </StackLayout>
 
-                <StackLayout *ngIf="false">
+                <StackLayout *ngIf="isAdmin">
                     <StackLayout class="sidedrawer-list-item">
                         <Button class="btn btn-primary sidedrawer-list-item-text" text="Home" (tap)="navigateTo('admin')"></Button>
                     </StackLayout>
