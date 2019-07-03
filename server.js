@@ -155,7 +155,7 @@ app.post('/register', function(req, res) {
         }
     })
 })
-const server = app.listen(config.appServer.port, config.appServer.ip, () => {
+const server = app.listen(config.appServer.port, () => {
     const host = server.address().address;
     const port = server.address().port;
     console.log(`ParkABull app listening at http://${host}:${port}`)

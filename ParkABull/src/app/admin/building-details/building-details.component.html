@@ -1,1 +1,17 @@
-<Button text="building-details works!" class="btn btn-primary"></Button>
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="{{this.name}} Details"></Label>
+</ActionBar>
+
+<ScrollView height=100% class="page">
+    <StackLayout class="home-panel">
+        <Label textWrap="true" class="big" text="{{this.total}}"></Label>
+        <Label class="spots" text="Spots Available" textWrap="true"></Label>
+        <Label class="spots" text="Building:" textWrap="true"></Label>
+        <Label class="spots" text="Name: {{this.name}}" textWrap="true"></Label> 
+        <Label class="spots" text="Location: {{this.location}}" textWrap="true"></Label> 
+        <Label class="spots" text="Lots:" textWrap="true"></Label>
+        <Button text="{{this.lots[0].getName()}}" class="btn btn-primary btn-active" (tap)="lotDetails()"></Button>
+        <Button text="{{this.lots[1].getName()}}" class="btn btn-primary btn-active" (tap)="lotDetails()"></Button>
+        <Button text="{{this.lots[2].getName()}}" class="btn btn-primary btn-active" (tap)="lotDetails()"></Button>
+    </StackLayout>
+</ScrollView>

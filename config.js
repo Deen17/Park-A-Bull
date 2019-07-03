@@ -8,7 +8,7 @@ module.exports = {
         multipleStatements: true,
     },
     appServer: {
-        ip: "10.100.3.204", //put your own ip address here. run Get-NetIpAddress and look for the right ip (check for wifi/ethernet, then for preferred) or put localhost
+        ip: "10.226.56.51", //put your own ip address here. run Get-NetIpAddress and look for the right ip (check for wifi/ethernet, then for preferred) or put localhost
         port: 8000,
 
     },

@@ -1,1 +1,37 @@
 /* Add mobile styles for the component here.  */
+
+.big {
+    border-radius: 250;
+    height: 300;
+    width: 300;
+    border-color: #006747;
+    border-width: 5;
+    background-color: white;
+    color: #006747;
+    font-size: 100;
+    text-align: center;
+    vertical-align: middle;
+    padding: 75;
+}
+
+.spots {
+    width: 100%;
+    text-align: center;
+    color: #006747;
+    height: 75;
+    font-size: 40;
+    border-color: white;
+    background-color: white;
+    border-width: 0;
+}
+
+.lots {
+    width: 100%;
+    text-align: center;
+    color: black;
+    height: 50;
+    font-size: 20;
+    border-color: white;
+    background-color: white;
+    border-width: 0;
+}
