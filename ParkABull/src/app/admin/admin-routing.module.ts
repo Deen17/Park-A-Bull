@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: "userlist", component: UserListComponent },
   { path: "userdetails", component: UserDetailsComponent  },
   { path: "buildinglist", component: BuildingListComponent },
-  { path: "buildingdetails/:name/:location", component: BuildingDetailsComponent },
+  { path: "buildingdetails/:name/:location/:code", component: BuildingDetailsComponent },
   { path: "register", component: RegisterComponent },
   { path: "reportlist", component: ReportListComponent  },
   { path: "reportdetails", component: ReportDetailsComponent},

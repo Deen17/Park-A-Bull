@@ -25,10 +25,10 @@ export class BuildingListComponent implements OnInit {
   names: Array<string> = [];
   filteredNames: Array<string> = [];
   shouldShow: boolean = false;
-  buildLoc: Array<string> = [];
   public searchPhrase : string = '';
   public picked: string;
   public locPicked: string;
+  public codePicked: string;
 
   @ViewChild("sideDrawer") rSideDrawer: ElementRef;
   constructor(private routerExtensions: RouterExtensions, private ref: ChangeDetectorRef) {
@@ -49,7 +49,8 @@ export class BuildingListComponent implements OnInit {
   public selectedIndexChanged(args) {
     let picker = <ListPicker>args.object;
     this.picked = this.filteredNames[picker.selectedIndex];
-    this.locPicked = this.buildLoc[picker.selectedIndex];
+    this.locPicked = this.buildings[picker.selectedIndex].getLocation();
+    this.codePicked = this.buildings[picker.selectedIndex].getCode();
     console.log('this.picked: ',this.picked)
     console.log('this.locPicked: ',this.locPicked)
   }
@@ -77,7 +78,6 @@ export class BuildingListComponent implements OnInit {
         //console.log(temp)
         this.buildings.push(temp);
         this.names.push(row.building_name);
-        this.buildLoc.push(row.location);
       });
       //after this line, the names and buildings arrays should be populated
       //console.log(this.names) 
@@ -91,7 +91,7 @@ export class BuildingListComponent implements OnInit {
   }
 
   buildingDetails(): void {
-    this.routerExtensions.navigateByUrl("admin/buildingdetails/" + this.picked + '/' + this.locPicked);
+    this.routerExtensions.navigateByUrl("admin/buildingdetails/" + this.picked + '/' + this.locPicked + '/' + this.codePicked);
   }
 
 	onDrawerButtonTap(): void {
