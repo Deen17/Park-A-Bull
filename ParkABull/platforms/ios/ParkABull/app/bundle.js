@@ -111,7 +111,7 @@ var AppRoutingModule = /** @class */ (function () {
 /***/ "./app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<RadSideDrawer #sideDrawer>\r\n    <StackLayout tkDrawerContent>\r\n        <StackLayout class=\"sidedrawer-header\">\r\n            <Label class=\"sidedrawer-header-text\" text=\"{{this.firstName}} {{this.lastName}}\" textWrap=\"true\"></Label>\r\n            <Label class=\"sidedrawer-header-text\" text=\"{{this.email}}\" textWrap=\"true\"></Label>\r\n        </StackLayout>\r\n        <StackLayout class=\"sidedrawer-content\">\r\n            <ScrollView>\r\n                <StackLayout *ngIf=\"true\">\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Home\" (tap)=\"navigateTo('user')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Profile\" (tap)=\"navigateTo('user/profile')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Reserve\" (tap)=\"navigateTo('user/reserve')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Buildings\" (tap)=\"navigateTo('user/buildinglist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Vehicles\" (tap)=\"navigateTo('user/vehiclelist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Report\" (tap)=\"navigateTo('user/report')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Logout\" (tap)=\"logout()\"></Button>\r\n                    </StackLayout>\r\n                </StackLayout>\r\n\r\n                <StackLayout *ngIf=\"false\">\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Home\" (tap)=\"navigateTo('admin')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Users\" (tap)=\"navigateTo('admin/userlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Buildings\" (tap)=\"navigateTo('admin/buildinglist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Parking Lots\" (tap)=\"navigateTo('admin/lostlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Register\" (tap)=\"navigateTo('admin/register')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Report\" (tap)=\"navigateTo('admin/reportlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Logout\" (tap)=\"logout()\"></Button>\r\n                    </StackLayout>\r\n                </StackLayout>\r\n            </ScrollView>\r\n        </StackLayout>\r\n    </StackLayout>\r\n\r\n    <page-router-outlet tkMainContent></page-router-outlet>\r\n</RadSideDrawer>"
+module.exports = "<RadSideDrawer #sideDrawer>\r\n    <StackLayout tkDrawerContent>\r\n        <StackLayout class=\"sidedrawer-header\">\r\n            <Label class=\"sidedrawer-header-text\" text=\"{{this.firstName}} {{this.lastName}}\" textWrap=\"true\"></Label>\r\n            <Label class=\"sidedrawer-header-text\" text=\"{{this.email}}\" textWrap=\"true\"></Label>\r\n        </StackLayout>\r\n        <StackLayout class=\"sidedrawer-content\">\r\n            <ScrollView>\r\n                <StackLayout *ngIf=\"isUser\">\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Home\" (tap)=\"navigateTo('user')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Profile\" (tap)=\"navigateTo('user/profile')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Reserve\" (tap)=\"navigateTo('user/reserve')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Buildings\" (tap)=\"navigateTo('user/buildinglist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Vehicles\" (tap)=\"navigateTo('user/vehiclelist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Report\" (tap)=\"navigateTo('user/report')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Logout\" (tap)=\"logout()\"></Button>\r\n                    </StackLayout>\r\n                </StackLayout>\r\n\r\n                <StackLayout *ngIf=\"isAdmin\">\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Home\" (tap)=\"navigateTo('admin')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Users\" (tap)=\"navigateTo('admin/userlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Buildings\" (tap)=\"navigateTo('admin/buildinglist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Parking Lots\" (tap)=\"navigateTo('admin/lostlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Register\" (tap)=\"navigateTo('admin/register')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Report\" (tap)=\"navigateTo('admin/reportlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Logout\" (tap)=\"logout()\"></Button>\r\n                    </StackLayout>\r\n                </StackLayout>\r\n            </ScrollView>\r\n        </StackLayout>\r\n    </StackLayout>\r\n\r\n    <page-router-outlet tkMainContent></page-router-outlet>\r\n</RadSideDrawer>"
 
 /***/ }),
 
@@ -129,16 +129,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("tns-core-modules/application-settings");
 /* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./app/user.service.ts");
+
 
 
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(routerExtensions) {
+    function AppComponent(routerExtensions, userService) {
         this.routerExtensions = routerExtensions;
-        this.firstName = "User";
-        this.lastName = "Name";
-        this.email = "username@mail.usf.edu";
+        this.userService = userService;
+        this.firstName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["hasKey"]("firstName") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("firstName") : "User";
+        this.lastName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["hasKey"]("lastName") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("lastName") : "Name";
+        this.email = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["hasKey"]("email") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email") : "username@mail.usf.edu";
+        this.isUser = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("userType") == "student";
+        this.isAdmin = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("userType") == "admin";
+        this.isGuest = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("userType") == "guest";
     }
     AppComponent.prototype.navigateTo = function (route) {
         this.routerExtensions.navigate(["/" + route], { clearHistory: true });
@@ -146,6 +152,10 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.logout = function () {
         tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["clear"]();
+        this.firstName = "User";
+        this.lastName = "Name";
+        this.email = "username@mail.usf.edu";
+        this.isUser = this.isAdmin = this.isGuest = false;
         this.routerExtensions.navigate(["login"], { clearHistory: true });
         this.sideDrawerComponent.sideDrawer.closeDrawer();
     };
@@ -153,20 +163,27 @@ var AppComponent = /** @class */ (function () {
         this.firstName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("firstName");
         this.lastName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("lastName");
         this.email = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email");
+        switch (tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("userType")) {
+            case 'student':
+                this.isUser = true;
+                break;
+            case 'admin':
+                this.isAdmin = true;
+                break;
+            case 'guest':
+                this.isGuest = true;
+                break;
+            default:
+                break;
+        }
     };
     AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
         console.log('app component initiated!');
-        /*         if(appSettings.getBoolean("isLoggedIn", false)){
-                    this.routerExtensions.navigate(["login"], { clearHistory: true })
-                }
-                else if (appSettings.getString("userType") == "student"){
-                    console.log("should navigate to user")
-                    this.routerExtensions.navigateByUrl("user", { clearHistory: true })
-                }
-                else if (appSettings.getString("userType") == "admin"){
-                    console.log("should navigate to admin")
-                    this.routerExtensions.navigateByUrl("admin", { clearHistory: true })
-                } */
+        this.userService.getLoggedInName.subscribe(function (text) {
+            //console.log(text)
+            _this.setUserInfo();
+        });
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__["RadSideDrawerComponent"]),
@@ -177,7 +194,8 @@ var AppComponent = /** @class */ (function () {
             selector: "ns-app",
             template: __webpack_require__("./app/app.component.html")
         }),
-        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"]])
+        __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"],
+            _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -278,6 +296,48 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./app/user.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("rxjs");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(rxjs__WEBPACK_IMPORTED_MODULE_1__);
+
+
+//import { Observable } from "tns-core-modules/data/observable/observable";
+var UserService = /** @class */ (function () {
+    function UserService() {
+        this.getLoggedInName = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"](); //Alternate method to Emitting data across Components. Subject() is doing both Emitting data and Subscribing it in another component. So its the best way to compare with Emitting using Output.
+        /*     login(email: string, password: string): Observable<boolean> {
+                if (successfulLogIn(email, password)) {
+                    this.getLoggedInName.next(fullName); //next() method is alternate to emit().
+                    return true;
+                } else {
+                    this.getLoggedInName.next('Sign In');
+                    return false;
+                }
+            }
+        
+            logout(): void {
+                this.getLoggedInName.next('Sign In');
+            } */
+    }
+    UserService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root',
+        })
+    ], UserService);
+    return UserService;
 }());
 
 
@@ -403,6 +463,13 @@ module.exports = require("nativescript-angular/router");
 /***/ (function(module, exports) {
 
 module.exports = require("nativescript-ui-sidedrawer/angular");
+
+/***/ }),
+
+/***/ "rxjs":
+/***/ (function(module, exports) {
+
+module.exports = require("rxjs");
 
 /***/ }),
 

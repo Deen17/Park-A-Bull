@@ -3,6 +3,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 
 import * as appSettings from "tns-core-modules/application-settings"
+import { UserService } from "./user.service";
 @Component({
     moduleId: module.id,
     selector: "ns-app",
@@ -10,10 +11,15 @@ import * as appSettings from "tns-core-modules/application-settings"
 })
 export class AppComponent { 
     @ViewChild(RadSideDrawerComponent) sideDrawerComponent: RadSideDrawerComponent;
-    firstName : string = "User"
-    lastName : string = "Name"
-    email: string = "username@mail.usf.edu"
-    constructor(private routerExtensions: RouterExtensions) { }
+    firstName: string = appSettings.hasKey("firstName") ? appSettings.getString("firstName") :  "User"
+    lastName: string = appSettings.hasKey("lastName") ? appSettings.getString("lastName") :  "Name"
+    email: string = appSettings.hasKey("email") ? appSettings.getString("email") :  "username@mail.usf.edu"
+    isUser: boolean = appSettings.getString("userType") == "student";
+    isAdmin: boolean = appSettings.getString("userType") == "admin"
+    isGuest: boolean = appSettings.getString("userType") == "guest"
+    constructor(
+        private routerExtensions: RouterExtensions,
+        private userService: UserService) { }
 
     navigateTo(route: string): void {
         this.routerExtensions.navigate(["/" + route], { clearHistory: true });
@@ -21,6 +27,10 @@ export class AppComponent {
     }
     logout(){
         appSettings.clear();
+        this.firstName = "User"
+        this.lastName = "Name"
+        this.email = "username@mail.usf.edu"
+        this.isUser = this.isAdmin = this.isGuest = false;
         this.routerExtensions.navigate(["login"], { clearHistory: true })
         this.sideDrawerComponent.sideDrawer.closeDrawer();
     }
@@ -28,19 +38,26 @@ export class AppComponent {
         this.firstName = appSettings.getString("firstName")
         this.lastName = appSettings.getString("lastName")
         this.email = appSettings.getString("email")
+        switch (appSettings.getString("userType")) {
+            case 'student':
+                this.isUser = true;
+                break;
+            case 'admin':
+                this.isAdmin = true;
+                break;
+            case 'guest':
+                this.isGuest = true;
+                break;
+            default:
+                break;
+        }
+
     }
     ngOnInit(){
         console.log('app component initiated!')
-/*         if(appSettings.getBoolean("isLoggedIn", false)){
-            this.routerExtensions.navigate(["login"], { clearHistory: true })
-        } 
-        else if (appSettings.getString("userType") == "student"){
-            console.log("should navigate to user")
-            this.routerExtensions.navigateByUrl("user", { clearHistory: true })
-        }
-        else if (appSettings.getString("userType") == "admin"){
-            console.log("should navigate to admin")
-            this.routerExtensions.navigateByUrl("admin", { clearHistory: true })
-        } */
+        this.userService.getLoggedInName.subscribe(text =>{
+            //console.log(text)
+            this.setUserInfo();
+        })  
     }
 }

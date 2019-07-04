@@ -6,7 +6,6 @@ import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 import { BuildingListComponent } from './building-list/building-list.component';
 import { BuildingDetailsComponent } from './building-details/building-details.component';
-import { ReserveComponent } from './reserve/reserve.component';
 import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './user.component';
@@ -19,7 +18,6 @@ const routes: Routes = [
   { path: "vehicledetails", component: VehicleDetailsComponent  },
   { path: "buildinglist", component: BuildingListComponent },
   { path: "buildingdetails/:name", component: BuildingDetailsComponent },
-  { path: "reserve", component: ReserveComponent },
   { path: "report", component: ReportComponent  },
   { path: "profile", component: ProfileComponent}
 ];

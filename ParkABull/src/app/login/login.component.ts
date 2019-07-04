@@ -10,6 +10,7 @@ import { url, localUrl } from "../../../db/config.js"
 import * as md5 from "md5/md5.js" //md5.js exports a function without a name.
 import { RouterExtensions } from "nativescript-angular/router"
 import * as appSettings from "tns-core-modules/application-settings"
+import {UserService} from "../user.service"
 
 @Component({
   selector: 'ns-login',
@@ -24,7 +25,9 @@ export class LoginComponent implements OnInit {
   greenColor: Color = new Color(255, 0, 103, 71); //usf green
   buttontext: string = "Tap Me!d";
   counter: number = 0;
-  constructor(private routerExtensions: RouterExtensions) {
+  constructor(
+    private routerExtensions: RouterExtensions,
+    private userService: UserService) {
     // Use the component constructor to inject providers.
   }
   onTap(args: EventData) {
@@ -74,6 +77,7 @@ export class LoginComponent implements OnInit {
       this.routerExtensions.navigateByUrl("user", { clearHistory: true })
     else if (userType == "admin")
       this.routerExtensions.navigateByUrl("admin", { clearHistory: true })
+    this.userService.getLoggedInName.next('hello there')
   }
 
   register(args: EventData) {

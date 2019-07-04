@@ -47,8 +47,7 @@ export class BuildingListComponent implements OnInit {
 
   public selectedIndexChanged(args) {
     let picker = <ListPicker>args.object;
-    this.picked = this.names[picker.selectedIndex];
-    console.log('this.picked: ',this.picked)
+    this.picked = this.filteredNames[picker.selectedIndex];
   }
 
   ngOnInit(): void {
@@ -78,7 +77,6 @@ export class BuildingListComponent implements OnInit {
       //after this line, the names and buildings arrays should be populated
       //console.log(this.names) 
       this.filteredNames = this.names;
-      console.log('filteredNames: ',this.filteredNames)
       this.shouldShow = true;
       this.ref.markForCheck();
     }, (e) => {
@@ -91,7 +89,7 @@ export class BuildingListComponent implements OnInit {
   }
 
   buildingDetails(): void {
-    console.log(this.routerExtensions.navigateByUrl("user/buildingdetails/" + this.picked));
+    this.routerExtensions.navigateByUrl("user/buildingdetails/" + this.picked);
   }
 
   onDrawerButtonTap(): void {

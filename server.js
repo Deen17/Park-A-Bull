@@ -159,5 +159,4 @@ const server = app.listen(config.appServer.port, config.appServer.ip, () => {
     const host = server.address().address;
     const port = server.address().port;
     console.log(`ParkABull app listening at http://${host}:${port}`)
-    console.log(server._connectionKey)
 })
