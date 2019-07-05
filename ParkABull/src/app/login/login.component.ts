@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     }
     let newpass: string = md5(this.password);
     request({
-      url: localUrl + "login", //http://10.100.0.232:8000/login
+      url: localUrl + "login",
       method: "POST",
       headers: { "Content-Type": "application/json" },
       content: JSON.stringify({

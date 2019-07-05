@@ -17,7 +17,8 @@ module.exports = {
         getBuildings: 'SELECT building_name, building_code, location, lot_code_1, lot_code_2, lot_code_3 FROM db.buildings;',
         getLots: 'CALL db.get_lots_by_building_name(?, @return_code); select @return_code as return_code;', //returns lots per building and vacancies per lot
         login: 'SELECT * from db.users WHERE (username=? AND password=?);',
-        getSpots: 'SELECT '
+        getVehiclesByEmail: 'CALL db.get_vehicles_by_email(?,@return_code); select @return_code as return_code;',
+        setDefaultVehicle: 'Call db.set_default_vehicle(?,?,@return_code); select @return_code as return_code;'
 
     }
 }

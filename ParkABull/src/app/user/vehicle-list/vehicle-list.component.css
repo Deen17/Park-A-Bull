@@ -1,1 +1,47 @@
 /* Add mobile styles for the component here.  */
+
+.vehicle-list-view {
+    height: 50%;
+}
+
+.third {
+    background-color: #0099CC;
+    color: whitesmoke;
+    text-align: left;
+    vertical-align: center;
+}
+
+.header {
+    background-color: #8C489F;
+    color: whitesmoke;
+    border-radius: 3;
+}
+
+.footer {
+    background-color: #8C489F;
+    color: whitesmoke;
+    border-radius: 3;
+}
+
+.item {
+    text-align: left;
+    vertical-align: center;
+}
+
+.big {
+    border-radius: 45;
+    height: 75%;
+    width: 300;
+    border-color: #006747;
+    border-width: 5;
+    background-color: white;
+    color: #006747;
+    font-size: 25;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: normal;
+}
+
+.header {
+    background-color: #006747;
+}
