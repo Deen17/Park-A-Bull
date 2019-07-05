@@ -53,6 +53,10 @@ export class VehicleService {
     private defaultVehicle: Vehicle = null;
     constructor() { }
 
+    clean(){
+        this.vehicles = [];
+        this.defaultVehicle = null;
+    }
     public async fetch() {
         this.vehicles = [];
         let link: string = localUrl + "vehicles/" + encodeURIComponent(appSettings.getString("email"));

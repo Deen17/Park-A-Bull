@@ -50,6 +50,17 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
+/***/ "../db/config.js":
+/***/ (function(module, exports) {
+
+//module.exports = config;
+module.exports = {
+    url: "https://parkabull.localtunnel.me/",
+    localUrl: "http://10.100.3.204:8000/"
+}
+
+/***/ }),
+
 /***/ "./app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -111,7 +122,7 @@ var AppRoutingModule = /** @class */ (function () {
 /***/ "./app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<RadSideDrawer #sideDrawer>\r\n    <StackLayout tkDrawerContent>\r\n        <StackLayout class=\"sidedrawer-header\">\r\n            <Label class=\"sidedrawer-header-text\" text=\"{{this.firstName}} {{this.lastName}}\" textWrap=\"true\"></Label>\r\n            <Label class=\"sidedrawer-header-text\" text=\"{{this.email}}\" textWrap=\"true\"></Label>\r\n        </StackLayout>\r\n        <StackLayout class=\"sidedrawer-content\">\r\n            <ScrollView>\r\n                <StackLayout *ngIf=\"isUser\">\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Home\" (tap)=\"navigateTo('user')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Profile\" (tap)=\"navigateTo('user/profile')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Reserve\" (tap)=\"navigateTo('user/reserve')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Buildings\" (tap)=\"navigateTo('user/buildinglist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Vehicles\" (tap)=\"navigateTo('user/vehiclelist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Report\" (tap)=\"navigateTo('user/report')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Logout\" (tap)=\"logout()\"></Button>\r\n                    </StackLayout>\r\n                </StackLayout>\r\n\r\n                <StackLayout *ngIf=\"isAdmin\">\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Home\" (tap)=\"navigateTo('admin')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Users\" (tap)=\"navigateTo('admin/userlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Buildings\" (tap)=\"navigateTo('admin/buildinglist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Parking Lots\" (tap)=\"navigateTo('admin/lostlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Register\" (tap)=\"navigateTo('admin/register')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Report\" (tap)=\"navigateTo('admin/reportlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Logout\" (tap)=\"logout()\"></Button>\r\n                    </StackLayout>\r\n                </StackLayout>\r\n            </ScrollView>\r\n        </StackLayout>\r\n    </StackLayout>\r\n\r\n    <page-router-outlet tkMainContent></page-router-outlet>\r\n</RadSideDrawer>"
+module.exports = "<RadSideDrawer #sideDrawer>\r\n    <StackLayout tkDrawerContent>\r\n        <StackLayout class=\"sidedrawer-header\">\r\n            <Label class=\"sidedrawer-header-text\" text=\"{{this.firstName}} {{this.lastName}}\" textWrap=\"true\"></Label>\r\n            <Label class=\"sidedrawer-header-text\" text=\"{{this.email}}\" textWrap=\"true\"></Label>\r\n        </StackLayout>\r\n        <StackLayout class=\"sidedrawer-content\">\r\n            <ScrollView>\r\n                <StackLayout *ngIf=\"isUser\">\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Home\" (tap)=\"navigateTo('user')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Profile\" (tap)=\"navigateTo('user/profile')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Buildings\" (tap)=\"navigateTo('user/buildinglist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Vehicles\" (tap)=\"navigateTo('user/vehiclelist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Report\" (tap)=\"navigateTo('user/report')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Logout\" (tap)=\"logout()\"></Button>\r\n                    </StackLayout>\r\n                </StackLayout>\r\n\r\n                <StackLayout *ngIf=\"isAdmin\">\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Home\" (tap)=\"navigateTo('admin')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Users\" (tap)=\"navigateTo('admin/userlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Buildings\" (tap)=\"navigateTo('admin/buildinglist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Parking Lots\" (tap)=\"navigateTo('admin/lostlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Register\" (tap)=\"navigateTo('admin/register')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Report\" (tap)=\"navigateTo('admin/reportlist')\"></Button>\r\n                    </StackLayout>\r\n                    <StackLayout class=\"sidedrawer-list-item\">\r\n                        <Button class=\"btn btn-primary sidedrawer-list-item-text\" text=\"Logout\" (tap)=\"logout()\"></Button>\r\n                    </StackLayout>\r\n                </StackLayout>\r\n            </ScrollView>\r\n        </StackLayout>\r\n    </StackLayout>\r\n\r\n    <page-router-outlet tkMainContent></page-router-outlet>\r\n</RadSideDrawer>"
 
 /***/ }),
 
@@ -130,15 +141,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("tns-core-modules/application-settings");
 /* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./app/user.service.ts");
+/* harmony import */ var _user_vehicle_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./app/user/vehicle.service.ts");
+
 
 
 
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(routerExtensions, userService) {
+    function AppComponent(routerExtensions, userService, vehicleService) {
         this.routerExtensions = routerExtensions;
         this.userService = userService;
+        this.vehicleService = vehicleService;
         this.firstName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["hasKey"]("firstName") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("firstName") : "User";
         this.lastName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["hasKey"]("lastName") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("lastName") : "Name";
         this.email = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["hasKey"]("email") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email") : "username@mail.usf.edu";
@@ -156,6 +170,7 @@ var AppComponent = /** @class */ (function () {
         this.lastName = "Name";
         this.email = "username@mail.usf.edu";
         this.isUser = this.isAdmin = this.isGuest = false;
+        this.vehicleService.clean();
         this.routerExtensions.navigate(["login"], { clearHistory: true });
         this.sideDrawerComponent.sideDrawer.closeDrawer();
     };
@@ -176,6 +191,7 @@ var AppComponent = /** @class */ (function () {
             default:
                 break;
         }
+        this.vehicleService.fetch();
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -195,7 +211,8 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__("./app/app.component.html")
         }),
         __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"],
-            _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
+            _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
+            _user_vehicle_service__WEBPACK_IMPORTED_MODULE_5__["VehicleService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -338,6 +355,162 @@ var UserService = /** @class */ (function () {
         })
     ], UserService);
     return UserService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./app/user/vehicle.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vehicle", function() { return Vehicle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VehicleService", function() { return VehicleService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _db_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("../db/config.js");
+/* harmony import */ var _db_config__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_db_config__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("tns-core-modules/http");
+/* harmony import */ var tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("tns-core-modules/application-settings");
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+var Vehicle = /** @class */ (function () {
+    function Vehicle(make, model, year, licensePlate, permit, isDefault) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.licensePlate = licensePlate;
+        this.permit = permit;
+        this.isDefault = isDefault;
+    }
+    Vehicle.prototype.getCarName = function () {
+        return this.make + " " + this.model + " " + this.year;
+    };
+    Vehicle.prototype.getLicensePlate = function () {
+        return this.licensePlate;
+    };
+    Vehicle.prototype.getPermit = function () {
+        return this.permit;
+    };
+    Vehicle.prototype.getDefault = function () {
+        return this.isDefault;
+    };
+    return Vehicle;
+}());
+
+var VehicleService = /** @class */ (function () {
+    function VehicleService() {
+        this.vehicles = [];
+        this.defaultVehicle = null;
+    }
+    VehicleService.prototype.clean = function () {
+        this.vehicles = [];
+        this.defaultVehicle = null;
+    };
+    VehicleService.prototype.fetch = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var link, response, rows, e_1;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.vehicles = [];
+                        link = _db_config__WEBPACK_IMPORTED_MODULE_1__["localUrl"] + "vehicles/" + encodeURIComponent(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email"));
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, Object(tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2__["request"])({
+                                url: link,
+                                method: 'GET'
+                            })];
+                    case 2:
+                        response = _a.sent();
+                        rows = response.content.toJSON();
+                        rows.forEach(function (row) {
+                            var temp = new Vehicle(row.make, row.model, row.year, row.license_plate, row.permit_id, row.is_default);
+                            _this.vehicles.push(temp);
+                            if (temp.getDefault())
+                                _this.defaultVehicle =
+                                    temp;
+                        });
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_1 = _a.sent();
+                        console.log(e_1);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    VehicleService.prototype.setDefaultVehicle = function (licensePlate) {
+        return __awaiter(this, void 0, void 0, function () {
+            var link, response, rows, e_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        link = _db_config__WEBPACK_IMPORTED_MODULE_1__["localUrl"] + "setVehicle/";
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, Object(tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2__["request"])({
+                                url: link,
+                                method: 'POST',
+                                headers: { "Content-Type": "application/json" },
+                                content: JSON.stringify({
+                                    email: tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email"),
+                                    licensePlate: licensePlate
+                                })
+                            })];
+                    case 2:
+                        response = _a.sent();
+                        rows = response.content.toJSON();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_2 = _a.sent();
+                        console.log(e_2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    VehicleService.prototype.getDefaultVehicle = function () {
+        return this.defaultVehicle;
+    };
+    VehicleService.prototype.getVehicle = function (index) {
+        return this.vehicles[index];
+    };
+    VehicleService.prototype.getVehicleNames = function () {
+        var names = [];
+        this.vehicles.forEach(function (element) {
+            names.push(element.getCarName());
+        });
+        return names;
+    };
+    VehicleService.prototype.getLicencePlates = function () {
+        var names = [];
+        this.vehicles.forEach(function (element) {
+            names.push(element.getLicensePlate());
+        });
+        return names;
+    };
+    VehicleService.prototype.getVehicles = function () {
+        return this.vehicles;
+    };
+    VehicleService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], VehicleService);
+    return VehicleService;
 }());
 
 

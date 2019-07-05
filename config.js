@@ -18,7 +18,8 @@ module.exports = {
         getLots: 'CALL db.get_lots_by_building_name(?, @return_code); select @return_code as return_code;', //returns lots per building and vacancies per lot
         login: 'SELECT * from db.users WHERE (username=? AND password=?);',
         getVehiclesByEmail: 'CALL db.get_vehicles_by_email(?,@return_code); select @return_code as return_code;',
-        setDefaultVehicle: 'Call db.set_default_vehicle(?,?,@return_code); select @return_code as return_code;'
+        setDefaultVehicle: 'Call db.set_default_vehicle(?,?,@return_code); select @return_code as return_code;',
+        createReservation: 'Call db.create_reservation(?,?,?,@return_code); select @return_code as return_code;'
 
     }
 }

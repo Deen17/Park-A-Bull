@@ -165,6 +165,25 @@ app.post('/register', function(req, res) {
         }
     })
 })
+
+app.post('/reserve', function(req, res) {
+    console.log('POST /reserve')
+    connection.query(config.queries.createReservation, [
+        req.body.email,
+        req.body.vehicleId,
+        req.body.buildingName
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
+        }
+    })
+})
+
 const server = app.listen(config.appServer.port, config.appServer.ip, () => {
     const host = server.address().address;
     const port = server.address().port;
