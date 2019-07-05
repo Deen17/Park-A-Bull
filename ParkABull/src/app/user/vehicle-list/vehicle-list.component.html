@@ -6,8 +6,20 @@
 </ActionBar>
 
 
-<ScrollView class="page">
-    <StackLayout class="home-panel">
-        <Button class="btn2" text="Look at Vehicle Details" [nsRouterLink]="['../vehicledetails']"></Button>
+<StackLayout class="page">
+    <StackLayout height="60%">
+        <Label textWrap="true" class="big" text="{{this.pickedVehicle}}
+        
+        {{this.pickedLicense}}"></Label>
+        <Label height="25%" text="Choose a Vehicle to Reserve Under:" class="header"></Label>
     </StackLayout>
-</ScrollView>
+
+    <ListView height="40%" [items]="vehicles" (itemTap)="onItemTap($event)" class="list-group">
+        <ng-template let-item="item" let-odd="odd" let-even="even">
+            <StackLayout>
+                <Label [text]="item" class="list-group-item"></Label>
+
+            </StackLayout>
+        </ng-template>
+    </ListView>
+</StackLayout>

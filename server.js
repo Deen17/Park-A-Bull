@@ -5,24 +5,8 @@ let http = require('http')
 let https = require('https')
 var express = require('express')
 const bodyParser = require('body-parser')
-const localtunnel = require('localtunnel')
 const fs = require('fs')
 
-/* let tunnel;
-setTimeout(function() {
-    tunnel = localtunnel(config.appServer.port, { subdomain: 'parkabull' }, (err, tunnel) => {
-        if (err) {
-            throw err;
-        } else if (tunnel.url != 'https://parkabull.localtunnel.me') throw new Error('Failed');
-        else {
-            console.log(`tunnel is open on ${tunnel.url}`)
-        }
-    })
-}, 1000); */
-
-/* tunnel.on('close', function(){
-  console.log('tunnel is closed')
-}) */
 
 //following exit code isnt tested.
 process.on("beforeExit", (code) => {
@@ -45,10 +29,6 @@ connection.connect((err) => {
 
 //EXPRESS
 var app = express()
-app.use(function(req, res, next) {
-    console.clear()
-    next()
-})
 app.use(function(req, res, next) {
     let today = new Date();
     console.log(today.getMonth() + '/' +
@@ -86,19 +66,32 @@ app.get('/lots/:name', function(req, res) {
     })
 })
 app.get('/buildings', function(req, res) {
-        console.log('GET /buildings')
+    console.log('GET /buildings')
+    connection.query(
+        config.queries.getBuildings,
+        (err, rows) => {
+            if (err) {
+                res.send({ response_message: "Get Buildings Failed!" })
+                throw err;
+            } else {
+                res.send(rows)
+            }
+        }
+    )
+
+})
+app.get('/vehicles/:email', function(req, res) {
+        console.log('GET /vehicles')
         connection.query(
-            config.queries.getBuildings,
+            config.queries.getVehiclesByEmail, [
+                req.params.email
+            ],
             (err, rows) => {
                 if (err) {
                     res.send({ response_message: "Get Buildings Failed!" })
                     throw err;
                 } else {
-                    /*                 console.log(rows)
-                                    rows.forEach(row => {
-                                        console.log(typeof row, '\t', row)
-                                    }); */
-                    res.send(rows)
+                    res.send(rows[0])
                 }
             }
         )
@@ -133,6 +126,23 @@ app.post('/login', function(req, res) {
                 res.send({ login: false })
             }
         })
+})
+
+app.post('/setVehicle', function(req, res) {
+    console.log('POST /setVehicle')
+    connection.query(config.queries.setDefaultVehicle, [
+        req.body.email,
+        req.body.licensePlate
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send({ response: false })
+            throw err;
+        } else {
+            console.log(rows)
+            res.send({ response: true });
+        }
+    })
 })
 
 app.post('/register', function(req, res) {
