@@ -20,7 +20,7 @@ module.exports = {
         getVehiclesByEmail: 'CALL db.get_vehicles_by_email(?,@return_code); select @return_code as return_code;',
         setDefaultVehicle: 'Call db.set_default_vehicle(?,?,@return_code); select @return_code as return_code;',
         createReservationByBuilding: 'Call db.create_reservation_by_building(?,?,?,@reservation_id_out,@return_code); select @reservation_id_out as reservation_id; select @return_code as return_code;',
-        getSpotByEmail: 'Call get_reservation_by_email(?,@return_code); select @return_code as return_code;'
-
+        getSpotByEmail: 'Call get_reservation_by_email(?,@return_code); select @return_code as return_code;',
+        getUsers: 'SELECT unumber, first_name, last_name, email, username FROM db.users;'
     }
 }

@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: "", component: AdminComponent },
   { path: "admin", component: AdminComponent },
   { path: "userlist", component: UserListComponent },
-  { path: "userdetails", component: UserDetailsComponent  },
+  { path: "userdetails/:name/:firstname/:lastname/:unumber/:email/:username", component: UserDetailsComponent  },
   { path: "buildinglist", component: BuildingListComponent },
   { path: "buildingdetails/:name/:location/:code", component: BuildingDetailsComponent },
   { path: "register", component: RegisterComponent },

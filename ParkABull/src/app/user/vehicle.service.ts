@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { localUrl, url } from "../../../db/config";
-import {request, HttpResponse} from "tns-core-modules/http"
+import { request, HttpResponse } from "tns-core-modules/http"
 import * as appSettings from "tns-core-modules/application-settings"
 
- export class Vehicle{
+export class Vehicle {
+    private id: number
     private make: string;
     private model: string;
     private year: string;
@@ -11,13 +12,15 @@ import * as appSettings from "tns-core-modules/application-settings"
     private permit: string;
     private isDefault: boolean
     constructor(
+        id: number,
         make: string,
         model: string,
         year: string,
         licensePlate: string,
         permit: string,
         isDefault: boolean
-    ){
+    ) {
+        this.id = id;
         this.make = make;
         this.model = model;
         this.year = year;
@@ -26,74 +29,110 @@ import * as appSettings from "tns-core-modules/application-settings"
         this.isDefault = isDefault
     }
 
-     public getCar() : string {
-        return  `${this.make} ${this.model} ${this.year}`;
+    public getID(): number{
+        return this.id;
     }
 
-     public getLicensePlate(): string {
+    public getCarName(): string {
+        return `${this.make} ${this.model} ${this.year}`;
+    }
+
+    public getLicensePlate(): string {
         return this.licensePlate;
     }
 
-     public getPermit(): string{
+    public getPermit(): string {
         return this.permit;
     }
 
-     public getDefault() : boolean{
+    public getDefault(): boolean {
         return this.isDefault;
     }
 
- }
+}
 
 
- @Injectable({
+@Injectable({
     providedIn: 'root'
 })
-export class VehicleService{
+export class VehicleService {
     private vehicles: Array<Vehicle> = [];
     private defaultVehicle: Vehicle = null;
-    constructor(){}
-    fetch(){
+    constructor() { }
+
+    clean(){
         this.vehicles = [];
-        request({
-            url: localUrl + "vehicles",
-            method: 'POST'
-        }).then((response: HttpResponse) => {
-            var rows = response.content.toJSON()
-            //console.log(rows)
+        this.defaultVehicle = null;
+    }
+    public async fetch() {
+        this.vehicles = [];
+        let link: string = localUrl + "vehicles/" + encodeURIComponent(appSettings.getString("email"));
+        try {
+
+            const response: HttpResponse =
+                await request({
+                    url: link,
+                    method: 'GET'
+                });
+            let rows = response.content.toJSON();
             rows.forEach(row => {
-              let temp = new Vehicle(
-                row.make,
-                row.model,
-                row.year,
-                row.license_plate,
-                row.permit_id,
-                row.is_default
-              );
-              this.vehicles.push(temp);
-              if (temp.getDefault) this.defaultVehicle = temp;
+                const temp = new
+                    Vehicle(
+                        row.vehicle_id,
+                        row.make,
+                        row.model,
+                        row.year,
+                        row.license_plate,
+                        row.permit_id,
+                        row.is_default);
+
+                this.vehicles.push(temp);
+
+                if (temp.getDefault())
+                    this.defaultVehicle =
+                        temp;
             });
-          }, (e) => {
+        } catch (e) {
             console.log(e)
-          })
+        }
     }
 
-     public getDefaultVehicle(): Vehicle{
+    public async setDefaultVehicle(licensePlate: string){
+        let link: string = localUrl + "setVehicle/";
+        try{
+            const response: HttpResponse = 
+                await request({
+                    url: link,
+                    method: 'POST',
+                    headers: {"Content-Type": "application/json"},
+                    content: JSON.stringify({
+                        email: appSettings.getString("email"),
+                        licensePlate: licensePlate
+                    })
+                })
+            let rows = response.content.toJSON();
+        } catch(e){
+            console.log(e)
+        }
+    }
+
+    public getDefaultVehicle(): Vehicle {
         return this.defaultVehicle;
     }
 
-     public getVehicle(index: number){
+    public getVehicle(index: number) {
         return this.vehicles[index];
     }
 
-     public getVehicleNames(): Array<string>{
+    public getVehicleNames(): Array<string> {
         let names: Array<string> = [];
         this.vehicles.forEach(element => {
-            names.push(element.getCar())
+            names.push(element.getCarName())
         });
         return names;
     }
 
-     public getLicencePlates(): Array<string>{
+    public getLicencePlates(): Array<string> {
         let names: Array<string> = [];
         this.vehicles.forEach(element => {
             names.push(element.getLicensePlate())
@@ -101,10 +140,10 @@ export class VehicleService{
         return names;
     }
 
-     public getVehicles(): Array<Vehicle>{
+    public getVehicles(): Array<Vehicle> {
         return this.vehicles
     }
 
 
 
- } 
+}

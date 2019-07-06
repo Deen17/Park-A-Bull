@@ -77,6 +77,22 @@ app.get('/buildings', function(req, res) {
 
     })
 
+app.get('/users', function(req, res) {
+        console.log('GET /users')
+        connection.query(
+            config.queries.getUsers,
+            (err, rows) => {
+                if (err) {
+                    res.send({ response_message: "Get Users Failed!" })
+                    throw err;
+                } else {
+                    res.send(rows)
+                }
+            }
+        )
+
+    })
+
 app.get('/vehicles/:email', function(req, res) {
     console.log('GET /vehicles')
     connection.query(

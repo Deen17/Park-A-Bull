@@ -28,15 +28,8 @@ export class BuildingDetailsComponent implements OnInit {
   lots: Array<Lot> = []; // lot_id, lot_name, location, spots_available
   lotNames: Array<string> = [];
 
-  /* public selectedIndex = 1;
-  public items: Array<string>;
- */
   constructor(private activatedRoute: ActivatedRoute) {
 
-    /* this.items = [];
-        for (var i = 0; i < 5; i++) {
-            this.items.push("data item " + i);
-        } */
     
   }
 
@@ -82,7 +75,7 @@ export class BuildingDetailsComponent implements OnInit {
 
   displayAlertDialog() {
     let options = {
-        title: "Code",
+        title: "Alert",
         message: "Code cannot be changed",
         okButtonText: "OK"
     };
@@ -117,18 +110,6 @@ export class BuildingDetailsComponent implements OnInit {
     });
   }
 
-  /* public onchange(args: SelectedIndexChangedEventData) {
-        console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
-    }
- 
-    public onopen() {
-        console.log("Drop Down opened.");
-    }
- 
-    public onclose() {
-        console.log("Drop Down closed.");
-    } */
-
   fetchBuilding(): void {
     request({
       url: localUrl + "lots/" + encodeURI(this.name),
@@ -161,22 +142,4 @@ export class BuildingDetailsComponent implements OnInit {
       console.log(e)
     })
   }
-
-  /* myFunction(): void {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-  // Close the dropdown menu if the user clicks outside of it
-  window.onclick= function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  } */
 }

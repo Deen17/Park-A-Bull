@@ -1,1 +1,35 @@
-<Button text="user-details works!" class="btn btn-primary"></Button>
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="{{this.name}} Details"></Label>
+    <!-- <ActionItem text="Submit" ios.position="right" android.position="actionBar" (tap)="onSubmit()"></ActionItem> -->
+</ActionBar>
+
+<ScrollView height=100% class="page">
+    <StackLayout class="home-panel">
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="Unumber: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.unumber}}"></Button>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="First Name: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.firstName}}"></Button>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="Last Name: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.lastName}}"></Button>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="Username: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.userName}}"></Button>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="Email: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.email}}"></Button>
+        </StackLayout>
+    </StackLayout>
+
+    
+</ScrollView>

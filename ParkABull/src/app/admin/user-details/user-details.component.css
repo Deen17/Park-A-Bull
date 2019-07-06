@@ -1,1 +1,32 @@
 /* Add mobile styles for the component here.  */
+.my-label {
+    background-color: #bc7474;
+    color: whitesmoke;
+    font-size: 24;
+    padding: 8;
+    text-align: center;
+    vertical-align: middle;
+    width: 90%;
+}
+.border {
+    border-color: darkred;
+    border-radius: 10;
+    border-width: 2;
+}
+
+.lots {
+    width: 40%;
+    text-align: center;
+    color: black;
+    height: 50;
+    font-size: 20;
+    border-color: white;
+    background-color: white;
+    border-width: 0;
+    vertical-align: middle;
+    padding: 10;
+}
+
+.lotbutton{
+    width: 60%
+}

@@ -1,9 +1,10 @@
 import { Component, ViewChild } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
-import { UserService } from "./user.service";
 
 import * as appSettings from "tns-core-modules/application-settings"
+import { UserService } from "./user.service";
+import { VehicleService } from "./user/vehicle.service";
 @Component({
     moduleId: module.id,
     selector: "ns-app",
@@ -19,7 +20,8 @@ export class AppComponent {
     isGuest: boolean = appSettings.getString("userType") == "guest"
     constructor(
         private routerExtensions: RouterExtensions,
-        private userService: UserService) { }
+        private userService: UserService,
+        private vehicleService: VehicleService) { }
 
     navigateTo(route: string): void {
         this.routerExtensions.navigate(["/" + route], { clearHistory: true });
@@ -31,6 +33,7 @@ export class AppComponent {
         this.lastName = "Name"
         this.email = "username@mail.usf.edu"
         this.isUser = this.isAdmin = this.isGuest = false;
+        this.vehicleService.clean();
         this.routerExtensions.navigate(["login"], { clearHistory: true })
         this.sideDrawerComponent.sideDrawer.closeDrawer();
     }
@@ -51,11 +54,11 @@ export class AppComponent {
             default:
                 break;
         }
+
     }
     ngOnInit(){
         console.log('app component initiated!')
         this.userService.getLoggedInName.subscribe(text =>{
-            //console.log(text)
             this.setUserInfo();
         })  
     }
