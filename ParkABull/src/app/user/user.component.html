@@ -6,7 +6,10 @@
 </ActionBar>
 
 <ScrollView class="page">
-    <StackLayout class="home-panel">
-        <Button class="btn" text="Make a Reservation" [nsRouterLink]="['reserve']" clearHistory="true"></Button>
+    <StackLayout class="home-panel" height=50%>
+        <StackLayout>
+            <Progress value="{{this.seconds}}" class="progress" maxValue="{{this.timer}}" color="{{this.color}}"></Progress>
+            <Label class="progresstext" text="{{this.seconds}} seconds until your reservation expires!" textWrap="true"></Label>
+        </StackLayout>
     </StackLayout>
 </ScrollView>

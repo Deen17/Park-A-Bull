@@ -54,13 +54,11 @@ export class AppComponent {
             default:
                 break;
         }
-        this.vehicleService.fetch();
 
     }
     ngOnInit(){
         console.log('app component initiated!')
         this.userService.getLoggedInName.subscribe(text =>{
-            //console.log(text)
             this.setUserInfo();
         })  
     }

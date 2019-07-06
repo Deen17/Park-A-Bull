@@ -4,6 +4,7 @@ import { request, HttpResponse } from "tns-core-modules/http"
 import * as appSettings from "tns-core-modules/application-settings"
 
 export class Vehicle {
+    private id: number
     private make: string;
     private model: string;
     private year: string;
@@ -11,6 +12,7 @@ export class Vehicle {
     private permit: string;
     private isDefault: boolean
     constructor(
+        id: number,
         make: string,
         model: string,
         year: string,
@@ -18,12 +20,17 @@ export class Vehicle {
         permit: string,
         isDefault: boolean
     ) {
+        this.id = id;
         this.make = make;
         this.model = model;
         this.year = year;
         this.licensePlate = licensePlate;
         this.permit = permit;
         this.isDefault = isDefault
+    }
+
+    public getID(): number{
+        return this.id;
     }
 
     public getCarName(): string {
@@ -70,7 +77,9 @@ export class VehicleService {
             let rows = response.content.toJSON();
             rows.forEach(row => {
                 const temp = new
-                    Vehicle(row.make,
+                    Vehicle(
+                        row.vehicle_id,
+                        row.make,
                         row.model,
                         row.year,
                         row.license_plate,

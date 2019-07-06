@@ -84,9 +84,6 @@ export class BuildingListComponent implements OnInit {
     })
   }
 
-  reserve(): void{
-
-  }
 
   buildingDetails(): void {
     this.routerExtensions.navigateByUrl("user/buildingdetails/" + this.picked);
