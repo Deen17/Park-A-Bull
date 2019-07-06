@@ -28,6 +28,8 @@ export class UserComponent implements OnInit {
   color: Color = new Color("green");
   counter: Observable<number> = null;
   subscription: Subscription;
+  spotName: string;
+  lotName: string;
   constructor(
     private routerExtensions: RouterExtensions,
     private vehicleService: VehicleService) {
@@ -89,6 +91,8 @@ export class UserComponent implements OnInit {
         let reservation = rows[0][0];
         switch (reservation.status) {
           case 'reserved':
+            this.lotName = reservation.lot_name;
+            this.spotName = reservation.spot_name
             let time = new Date(reservation.reservation_dt_tm).getTime();
             time = time + (1000*60*30 - 1000*60*60*4);
             this.timer = (time - Date.now())/1000;

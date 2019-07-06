@@ -6,8 +6,9 @@
 </ActionBar>
 
 <ScrollView class="page">
-    <StackLayout class="home-panel" height=50%>
+    <StackLayout class="home-panel" height=100%>
         <StackLayout>
+            <Label class="big" text="{{this.lotName}} {{this.spotName}}" textWrap="true"></Label>
             <Progress value="{{this.seconds}}" class="progress" maxValue="{{this.timer}}" color="{{this.color}}"></Progress>
             <Label class="progresstext" text="{{this.seconds}} seconds until your reservation expires!" textWrap="true"></Label>
         </StackLayout>
