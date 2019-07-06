@@ -5,24 +5,8 @@ let http = require('http')
 let https = require('https')
 var express = require('express')
 const bodyParser = require('body-parser')
-const localtunnel = require('localtunnel')
 const fs = require('fs')
 
-/* let tunnel;
-setTimeout(function() {
-    tunnel = localtunnel(config.appServer.port, { subdomain: 'parkabull' }, (err, tunnel) => {
-        if (err) {
-            throw err;
-        } else if (tunnel.url != 'https://parkabull.localtunnel.me') throw new Error('Failed');
-        else {
-            console.log(`tunnel is open on ${tunnel.url}`)
-        }
-    })
-}, 1000); */
-
-/* tunnel.on('close', function(){
-  console.log('tunnel is closed')
-}) */
 
 //following exit code isnt tested.
 process.on("beforeExit", (code) => {
@@ -46,10 +30,6 @@ connection.connect((err) => {
 //EXPRESS
 var app = express()
 app.use(function(req, res, next) {
-    console.clear()
-    next()
-})
-app.use(function(req, res, next) {
     let today = new Date();
     console.log(today.getMonth() + '/' +
         today.getDay() + '/' + today.getFullYear() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() +
@@ -65,13 +45,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/', function(req, res) {
     res.send('Welcome to the Parkabull API!')
 })
-app.get('/users/:username', function(req, res) {
-    console.log(res)
-    res.end('hey ' + req.params.username)
-})
+
 app.get('/lots/:name', function(req, res) {
     console.log('GET /lots/' + req.params.name)
-    console.log(req.body)
     connection.query(config.queries.getLots, [
         req.params.name
     ], (err, rows) => {
@@ -94,17 +70,51 @@ app.get('/buildings', function(req, res) {
                     res.send({ response_message: "Get Buildings Failed!" })
                     throw err;
                 } else {
-                    /*                 console.log(rows)
-                                    rows.forEach(row => {
-                                        console.log(typeof row, '\t', row)
-                                    }); */
                     res.send(rows)
                 }
             }
         )
 
     })
-    //posts
+
+app.get('/vehicles/:email', function(req, res) {
+    console.log('GET /vehicles')
+    connection.query(
+        config.queries.getVehiclesByEmail, [
+            req.params.email
+        ],
+        (err, rows) => {
+            if (err) {
+                res.send({ response_message: "Get Buildings Failed!" })
+                throw err;
+            } else {
+                res.send(rows[0])
+            }
+        }
+    )
+
+})
+
+app.get('/getspotbyemail/:email', function(req, res) {
+    console.log('GET /getspotbyemail/' + req.params.email)
+    connection.query(
+        config.queries.getSpotByEmail, [
+            req.params.email
+        ],
+        (err, rows) => {
+            if (err) {
+                res.send({ response_message: "Get Buildings Failed!" })
+                throw err;
+            } else {
+                console.log(rows)
+                res.send(rows)
+            }
+        }
+    )
+
+})
+
+//posts
 app.post('/login', function(req, res) {
     console.log('POST /login')
     connection.query(
@@ -135,6 +145,23 @@ app.post('/login', function(req, res) {
         })
 })
 
+app.post('/setVehicle', function(req, res) {
+    console.log('POST /setVehicle')
+    connection.query(config.queries.setDefaultVehicle, [
+        req.body.email,
+        req.body.licensePlate
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send({ response: false })
+            throw err;
+        } else {
+            console.log(rows)
+            res.send({ response: true });
+        }
+    })
+})
+
 app.post('/register', function(req, res) {
     console.log('POST /register')
     connection.query(config.queries.addStudent, [
@@ -155,6 +182,25 @@ app.post('/register', function(req, res) {
         }
     })
 })
+
+app.post('/reserve', function(req, res) {
+    console.log('POST /reserve')
+    connection.query(config.queries.createReservationByBuilding, [
+        req.body.email,
+        req.body.vehicleId,
+        req.body.buildingName
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
+        }
+    })
+})
+
 const server = app.listen(config.appServer.port, () => {
     const host = server.address().address;
     const port = server.address().port;

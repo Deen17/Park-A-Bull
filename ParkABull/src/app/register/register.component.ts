@@ -6,7 +6,7 @@ import { TextField } from "tns-core-modules/ui/text-field"
 import { AutocapitalizationType, EventData } from "tns-core-modules/ui/editable-text-base"
 import * as md5 from "md5/md5.js"
 import { request } from 'tns-core-modules/http/http';
-import {url} from "../../../db/config.js"
+import {localUrl} from "../../../db/config.js"
 import { validateConfig } from '@angular/router/src/config';
 
 
@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
     console.log('after validate')
     let newpass: string = md5(this.password);
     request({
-      url: url + "register", //http://10.100.0.232:8000/login
+      url: localUrl + "register", //http://10.100.0.232:8000/login
       method: "POST",
       headers: { "Content-Type": "application/json" },
       content: JSON.stringify({
