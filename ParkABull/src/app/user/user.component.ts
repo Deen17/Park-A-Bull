@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router"
 import * as appSettings from "tns-core-modules/application-settings"
 import { getRootView } from "tns-core-modules/application";
@@ -19,7 +19,7 @@ import { Color } from "tns-core-modules/color"
   styleUrls: ['./user.component.css'],
   moduleId: module.id,
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   showTimer: boolean = true;
   showSpot: boolean = false;
   timer : number = 0;
@@ -28,6 +28,7 @@ export class UserComponent implements OnInit {
   color: Color = new Color("green");
   counter: Observable<number> = null;
   subscription: Subscription;
+  subscribed: boolean= false;
   spotName: string;
   lotName: string;
   constructor(
@@ -35,6 +36,16 @@ export class UserComponent implements OnInit {
     private vehicleService: VehicleService) {
 
     }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    console.log('user component destroyed')
+    if (this.subscribed){
+      this.subscription.unsubscribe();
+      console.log('unsubscribed from timer')
+    }
+  }
 
 	ngOnInit(): void {
     console.log("user component initiated")
@@ -60,6 +71,7 @@ export class UserComponent implements OnInit {
   }
 
   public countDown(){
+    this.subscribed = true;
     const source = interval(1000)
     const timer$ = timer(this.timer * 1000)
     this.counter = source.pipe(

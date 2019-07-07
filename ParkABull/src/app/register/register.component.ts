@@ -7,8 +7,6 @@ import { AutocapitalizationType, EventData } from "tns-core-modules/ui/editable-
 import * as md5 from "md5/md5.js"
 import { request } from 'tns-core-modules/http/http';
 import {url, localUrl} from "../../../db/config.js"
-import { validateConfig } from '@angular/router/src/config';
-
 
 @Component({
   selector: 'ns-register',

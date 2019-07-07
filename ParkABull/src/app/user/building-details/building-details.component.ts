@@ -61,7 +61,7 @@ export class BuildingDetailsComponent implements OnInit {
           alert('Open reservation was succesfully claimed. This should not happen here')
           break;
         case 28:
-          alert('Error: no spots availabe for selected building')
+          alert('Error: no spots available for selected building.')
           break;
         case 29:
           alert('Reservation expired; new parking spot in selected lot is assigned')
