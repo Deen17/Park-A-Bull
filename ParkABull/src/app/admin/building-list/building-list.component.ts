@@ -94,6 +94,11 @@ export class BuildingListComponent implements OnInit {
     this.routerExtensions.navigateByUrl("admin/buildingdetails/" + this.picked + '/' + this.locPicked + '/' + this.codePicked);
   }
 
+  addBuilding(): void{
+    //console.log("please runnn");
+    this.routerExtensions.navigateByUrl("admin/addbuilding");
+  }
+
 	onDrawerButtonTap(): void {
 		const sideDrawer = <RadSideDrawer>app.getRootView();
 		sideDrawer.showDrawer();

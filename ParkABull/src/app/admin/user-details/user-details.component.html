@@ -31,8 +31,17 @@
         </StackLayout>
 
         <Label class="spots" text="Linked Vehicles: " textWrap="true"></Label>
-        <Button text="{{this.vehicles[0]}}" class="lotbutton" (tap)="lotDetails()"></Button>
-        <!-- <Button text="{{this.vehicles[1]}}" class="lotbutton" (tap)="lotDetails()"></Button>
+
+        <ListView [items]="vehicles" class="list-group">
+            <ng-template class="item" let-item="item" let-odd="odd" let-even="even">
+                <StackLayout>
+                    <Label [text]="item" class="btn btn-primary btn-active"></Label>
+    
+                </StackLayout>
+            </ng-template>
+        </ListView>
+        <!-- <Button text="{{this.vehicles[0]}}" class="lotbutton" (tap)="lotDetails()"></Button>
+        <Button text="{{this.vehicles[1]}}" class="lotbutton" (tap)="lotDetails()"></Button>
         <Button text="{{this.vehicles[2]}}" class="lotbutton" (tap)="lotDetails()"></Button> -->
     </StackLayout>
 

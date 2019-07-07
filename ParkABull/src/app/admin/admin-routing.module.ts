@@ -12,6 +12,7 @@ import { ReportDetailsComponent } from './report-details/report-details.componen
 import { LotListComponent } from './lot-list/lot-list.component';
 import { LotDetailsComponent } from './lot-details/lot-details.component';
 import { AdminComponent } from './admin.component';
+import { AddBuildingComponent } from './add-building/add-building.component';
 
 const routes: Routes = [
   { path: "", component: AdminComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: "reportlist", component: ReportListComponent  },
   { path: "reportdetails", component: ReportDetailsComponent},
   { path: "lostlist", component: LotListComponent},
-  { path: "lotdetails", component: LotDetailsComponent}
+  { path: "lotdetails", component: LotDetailsComponent},
+  { path: "addbuilding", component: AddBuildingComponent}
 
 ];
 

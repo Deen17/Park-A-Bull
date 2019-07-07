@@ -29,27 +29,9 @@
         <Button text="{{this.newLots[0]}}" class="lotbutton" (tap)="lotDetails()"></Button>
         <Button text="{{this.newLots[1]}}" class="lotbutton" (tap)="lotDetails()"></Button>
         <Button text="{{this.newLots[2]}}" class="lotbutton" (tap)="lotDetails()"></Button>
-    
 
-        <!-- <GridLayout rows="auto, auto, *" columns="auto, *">
-            <DropDown #dd
-                  backroundColor="red"
-                  [items]="items"
-                  [(ngModel)]="selectedIndex"
-                  (selectedIndexChanged)="onchange($event)"
-                  (opened)="onopen()"
-                  (closed)="onclose()"
-                  row="0"
-                  colSpan="2"></DropDown>
-            <Label text="Selected Index:"
-               row="1"
-               col="0"
-               fontSize="18"
-               verticalAlignment="bottom"></Label>
-            <TextField [text]="selectedIndex"
-                   row="1"
-                   col="1"></TextField>
-        </GridLayout> -->
+        <Button text="Delete Building" class="lotbutton" (tap)="deleteBuilding()"></Button>
+
     </StackLayout>
 
     

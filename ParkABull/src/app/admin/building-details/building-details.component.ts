@@ -104,6 +104,22 @@ export class BuildingDetailsComponent implements OnInit {
     });
   }
 
+  /* showDialogBox4(){
+    const promptOptions: PromptOptions = {
+      title: "Delete Building",
+      message: "Please enter new building code",
+      okButtonText: "Ok",
+      cancelButtonText: "Cancel",
+      defaultText: this.code,
+      inputType: inputType.text, // email, number, text, password, or email
+    };
+    prompt(promptOptions).then((r: PromptResult) => {
+      console.log("Dialog result: ", r.result);
+      console.log("Text: ", r.text);
+      this.newCode = r.text;
+    });
+  } */
+
   displayAlertDialog() {
     let options = {
         title: "Alert",
@@ -115,6 +131,45 @@ export class BuildingDetailsComponent implements OnInit {
         console.log("code unchanged!");
         this.routerExtensions.navigateByUrl('admin/buildinglist')
     });
+  }
+
+  displayAlertDialog1() {
+    let options = {
+        title: "Alert",
+        message: "Building deleted successfully",
+        okButtonText: "OK"
+    };
+
+    alert(options).then(() => {
+        this.routerExtensions.navigateByUrl('admin/buildinglist')
+    });
+  }
+
+  deleteBuilding(){
+    request({
+      url: localUrl + "deletebuilding",
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      content: JSON.stringify({
+        name: this.name
+      })
+    }).then((response) => {
+      let rows = response.content.toJSON();
+      console.log('name: ' + this.name)
+      console.log('result:', rows)
+      if (!rows.response){
+        this.displayAlertDialog1();
+      }else {
+        (alert({
+          title: "Error: Building doesnot exist",
+          message: rows.duplicate_entry,
+          okButtonText:"Try Again"
+        }))
+      }
+    }, (e) => {
+      console.log(e)
+    });
+  
   }
 
   onSubmit(){

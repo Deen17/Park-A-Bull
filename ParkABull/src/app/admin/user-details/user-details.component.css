@@ -31,3 +31,9 @@
 .header {
     background-color: #006747;
 }
+
+.item {
+    text-align: center;
+    vertical-align: center;
+    background-color:#006747;
+}

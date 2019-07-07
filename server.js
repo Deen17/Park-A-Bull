@@ -200,6 +200,47 @@ app.post('/register', function(req, res) {
     })
 })
 
+app.post('/adminregister', function(req, res) {
+    console.log('POST /adminregister')
+    connection.query(config.queries.addAdmin, [
+        req.body.firstName,
+        req.body.lastName,
+        req.body.email,
+        req.body.username,
+        req.body.password
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send({ response: false })
+            throw err;
+        } else {
+            console.log(rows)
+            res.send({ response: true });
+        }
+    })
+})
+
+app.post('/addbuilding', function(req, res) {
+    console.log('POST /addbuilding')
+    connection.query(config.queries.addBuilding, [
+        req.body.buildingName,
+        req.body.code,
+        req.body.location,
+        req.body.lot1,
+        req.body.lot2,
+        req.body.lot3
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
+        }
+    })
+})
+
 app.post('/editbuildings', function(req, res) {
     console.log('POST /editBuildings')
     connection.query(config.queries.editBuilding, [
@@ -210,6 +251,22 @@ app.post('/editbuildings', function(req, res) {
         req.body.newLot1,
         req.body.newLot2,
         req.body.newLot3
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
+        }
+    })
+})
+
+app.post('/deletebuilding', function(req, res) {
+    console.log('POST /deletebuilding')
+    connection.query(config.queries.deleteBuilding, [
+        req.body.name
     ], (err, rows) => {
         if (err) {
             console.log(rows)
