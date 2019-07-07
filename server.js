@@ -199,6 +199,24 @@ app.post('/reserve', function(req, res) {
     })
 })
 
+app.post('/password', function(req, res) {
+    console.log('POST /password')
+    connection.query(config.queries.changePassword, [
+        req.body.email,
+        req.body.oldPassword,
+        req.body.newPassword
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows)
+        }
+    })
+})
+
 const server = app.listen(config.appServer.port, () => {
     const host = server.address().address;
     const port = server.address().port;

@@ -20,7 +20,7 @@ import { Color } from "tns-core-modules/color"
   moduleId: module.id,
 })
 export class UserComponent implements OnInit, OnDestroy {
-  showTimer: boolean = true;
+  showTimer: boolean = false;
   showSpot: boolean = false;
   timer : number = 0;
   seconds: number = 0;
@@ -53,11 +53,11 @@ export class UserComponent implements OnInit, OnDestroy {
     if(!(this.subscription == undefined))
       this.subscription.unsubscribe();
     this.getReservation();
+    //alert('Make sure you are not using this app while driving. Trying to beat the clock doesn\'t turn back time!')
 	}
 
   public onValueChanged(){
     let portion = this.seconds / this.timer;
-    console.log(portion)
     if(portion > .75){
       this.color = new Color('green')
     }
@@ -103,6 +103,7 @@ export class UserComponent implements OnInit, OnDestroy {
         let reservation = rows[0][0];
         switch (reservation.status) {
           case 'reserved':
+            this.showTimer = true;
             this.lotName = reservation.lot_name;
             this.spotName = reservation.spot_name
             let time = new Date(reservation.reservation_dt_tm).getTime();
@@ -112,7 +113,9 @@ export class UserComponent implements OnInit, OnDestroy {
             this.countDown();
             break;
           case 'claimed':
-
+            this.showSpot = true;
+            this.lotName = reservation.lot_name;
+            this.spotName = reservation.spot_name;
             break;
           default:
             break;

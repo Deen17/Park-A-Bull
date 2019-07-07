@@ -1,1 +1,9 @@
 /* Add mobile styles for the component here.  */
+
+.details {
+    font-size: 20%;
+    color: black;
+    border-color: black;
+    text-align: right;
+    border-bottom-width: 2;
+}

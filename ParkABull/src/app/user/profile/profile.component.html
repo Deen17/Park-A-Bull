@@ -5,8 +5,12 @@
     <Label class="action-bar-title" text="User Profile"></Label>
 </ActionBar>
 
-<ScrollView class="page">
-    <StackLayout class="home-panel">
-        <Button class="btn2" text="Make a Reservation" [nsRouterLink]="['/reserve']" clearHistory="true"></Button>
+<StackLayout class="page" height=100%>
+    <StackLayout height=40%>
+        <Label class="details" text="{{this.name}}" textWrap="true"></Label>
+        <Label class="details" text="{{this.email}}" textWrap="true"></Label>
+        <Label class="details" text="{{this.username}}" textWrap="true"></Label>
+        <Label class="details" text="{{this.userType}}" textWrap="true"></Label>
     </StackLayout>
-</ScrollView>
+    <Button class="btn btn-primary btn-active" text="Change Password" (tap)="onTap()"></Button>
+</StackLayout>
