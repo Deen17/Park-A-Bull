@@ -61,6 +61,7 @@ app.get('/lots/:name', function(req, res) {
         }
     })
 })
+
 app.get('/buildings', function(req, res) {
         console.log('GET /buildings')
         connection.query(
@@ -195,6 +196,28 @@ app.post('/register', function(req, res) {
         } else {
             console.log(rows)
             res.send({ response: true });
+        }
+    })
+})
+
+app.post('/editbuildings', function(req, res) {
+    console.log('POST /editBuildings')
+    connection.query(config.queries.editBuilding, [
+        req.body.name,
+        req.body.newName,
+        req.body.newCode,
+        req.body.newLoc,
+        req.body.newLot1,
+        req.body.newLot2,
+        req.body.newLot3
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
         }
     })
 })

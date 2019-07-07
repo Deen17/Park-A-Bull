@@ -50,6 +50,17 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
+/***/ "../db/config.js":
+/***/ (function(module, exports) {
+
+//module.exports = config;
+module.exports = {
+    url: "https://parkabull.localtunnel.me/",
+    localUrl: "https://a066b8fc.ngrok.io/"
+}
+
+/***/ }),
+
 /***/ "./app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -127,43 +138,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("nativescript-ui-sidedrawer/angular");
 /* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./app/user.service.ts");
-/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("tns-core-modules/application-settings");
-/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("tns-core-modules/application-settings");
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./app/user.service.ts");
+/* harmony import */ var _user_vehicle_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./app/user/vehicle.service.ts");
+
 
 
 
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(routerExtensions, userService) {
+    function AppComponent(routerExtensions, userService, vehicleService) {
         this.routerExtensions = routerExtensions;
         this.userService = userService;
-        this.firstName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["hasKey"]("firstName") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("firstName") : "User";
-        this.lastName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["hasKey"]("lastName") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("lastName") : "Name";
-        this.email = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["hasKey"]("email") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("email") : "username@mail.usf.edu";
-        this.isUser = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("userType") == "student";
-        this.isAdmin = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("userType") == "admin";
-        this.isGuest = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("userType") == "guest";
+        this.vehicleService = vehicleService;
+        this.firstName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["hasKey"]("firstName") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("firstName") : "User";
+        this.lastName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["hasKey"]("lastName") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("lastName") : "Name";
+        this.email = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["hasKey"]("email") ? tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email") : "username@mail.usf.edu";
+        this.isUser = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("userType") == "student";
+        this.isAdmin = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("userType") == "admin";
+        this.isGuest = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("userType") == "guest";
     }
     AppComponent.prototype.navigateTo = function (route) {
         this.routerExtensions.navigate(["/" + route], { clearHistory: true });
         this.sideDrawerComponent.sideDrawer.closeDrawer();
     };
     AppComponent.prototype.logout = function () {
-        tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["clear"]();
+        tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["clear"]();
         this.firstName = "User";
         this.lastName = "Name";
         this.email = "username@mail.usf.edu";
         this.isUser = this.isAdmin = this.isGuest = false;
+        this.vehicleService.clean();
         this.routerExtensions.navigate(["login"], { clearHistory: true });
         this.sideDrawerComponent.sideDrawer.closeDrawer();
     };
     AppComponent.prototype.setUserInfo = function () {
-        this.firstName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("firstName");
-        this.lastName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("lastName");
-        this.email = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("email");
-        switch (tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_4__["getString"]("userType")) {
+        this.firstName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("firstName");
+        this.lastName = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("lastName");
+        this.email = tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email");
+        switch (tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("userType")) {
             case 'student':
                 this.isUser = true;
                 break;
@@ -181,7 +196,6 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         console.log('app component initiated!');
         this.userService.getLoggedInName.subscribe(function (text) {
-            //console.log(text)
             _this.setUserInfo();
         });
     };
@@ -195,7 +209,8 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__("./app/app.component.html")
         }),
         __metadata("design:paramtypes", [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterExtensions"],
-            _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
+            _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
+            _user_vehicle_service__WEBPACK_IMPORTED_MODULE_5__["VehicleService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -216,11 +231,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("nativescript-ui-sidedrawer/angular");
 /* harmony import */ var nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var nativescript_drop_down_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("../node_modules/nativescript-drop-down/angular/index.js");
-/* harmony import */ var nativescript_drop_down_angular__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(nativescript_drop_down_angular__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./app/app.component.ts");
-
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./app/app.component.ts");
 
 
 
@@ -282,16 +294,15 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             bootstrap: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
             ],
             imports: [
                 nativescript_angular_nativescript_module__WEBPACK_IMPORTED_MODULE_1__["NativeScriptModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
-                nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__["NativeScriptUISideDrawerModule"],
-                nativescript_drop_down_angular__WEBPACK_IMPORTED_MODULE_3__["DropDownModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
+                nativescript_ui_sidedrawer_angular__WEBPACK_IMPORTED_MODULE_2__["NativeScriptUISideDrawerModule"]
             ],
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
             ],
             schemas: [
                 _angular_core__WEBPACK_IMPORTED_MODULE_0__["NO_ERRORS_SCHEMA"]
@@ -341,6 +352,166 @@ var UserService = /** @class */ (function () {
         })
     ], UserService);
     return UserService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./app/user/vehicle.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vehicle", function() { return Vehicle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VehicleService", function() { return VehicleService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@angular/core");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_angular_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _db_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("../db/config.js");
+/* harmony import */ var _db_config__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_db_config__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("tns-core-modules/http");
+/* harmony import */ var tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("tns-core-modules/application-settings");
+/* harmony import */ var tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+var Vehicle = /** @class */ (function () {
+    function Vehicle(id, make, model, year, licensePlate, permit, isDefault) {
+        this.id = id;
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.licensePlate = licensePlate;
+        this.permit = permit;
+        this.isDefault = isDefault;
+    }
+    Vehicle.prototype.getID = function () {
+        return this.id;
+    };
+    Vehicle.prototype.getCarName = function () {
+        return this.make + " " + this.model + " " + this.year;
+    };
+    Vehicle.prototype.getLicensePlate = function () {
+        return this.licensePlate;
+    };
+    Vehicle.prototype.getPermit = function () {
+        return this.permit;
+    };
+    Vehicle.prototype.getDefault = function () {
+        return this.isDefault;
+    };
+    return Vehicle;
+}());
+
+var VehicleService = /** @class */ (function () {
+    function VehicleService() {
+        this.vehicles = [];
+        this.defaultVehicle = null;
+    }
+    VehicleService.prototype.clean = function () {
+        this.vehicles = [];
+        this.defaultVehicle = null;
+    };
+    VehicleService.prototype.fetch = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var link, response, rows, e_1;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.vehicles = [];
+                        link = _db_config__WEBPACK_IMPORTED_MODULE_1__["localUrl"] + "vehicles/" + encodeURIComponent(tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email"));
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, Object(tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2__["request"])({
+                                url: link,
+                                method: 'GET'
+                            })];
+                    case 2:
+                        response = _a.sent();
+                        rows = response.content.toJSON();
+                        rows.forEach(function (row) {
+                            var temp = new Vehicle(row.vehicle_id, row.make, row.model, row.year, row.license_plate, row.permit_id, row.is_default);
+                            _this.vehicles.push(temp);
+                            if (temp.getDefault())
+                                _this.defaultVehicle =
+                                    temp;
+                        });
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_1 = _a.sent();
+                        console.log(e_1);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    VehicleService.prototype.setDefaultVehicle = function (licensePlate) {
+        return __awaiter(this, void 0, void 0, function () {
+            var link, response, rows, e_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        link = _db_config__WEBPACK_IMPORTED_MODULE_1__["localUrl"] + "setVehicle/";
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, Object(tns_core_modules_http__WEBPACK_IMPORTED_MODULE_2__["request"])({
+                                url: link,
+                                method: 'POST',
+                                headers: { "Content-Type": "application/json" },
+                                content: JSON.stringify({
+                                    email: tns_core_modules_application_settings__WEBPACK_IMPORTED_MODULE_3__["getString"]("email"),
+                                    licensePlate: licensePlate
+                                })
+                            })];
+                    case 2:
+                        response = _a.sent();
+                        rows = response.content.toJSON();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_2 = _a.sent();
+                        console.log(e_2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    VehicleService.prototype.getDefaultVehicle = function () {
+        return this.defaultVehicle;
+    };
+    VehicleService.prototype.getVehicle = function (index) {
+        return this.vehicles[index];
+    };
+    VehicleService.prototype.getVehicleNames = function () {
+        var names = [];
+        this.vehicles.forEach(function (element) {
+            names.push(element.getCarName());
+        });
+        return names;
+    };
+    VehicleService.prototype.getLicencePlates = function () {
+        var names = [];
+        this.vehicles.forEach(function (element) {
+            names.push(element.getLicensePlate());
+        });
+        return names;
+    };
+    VehicleService.prototype.getVehicles = function () {
+        return this.vehicles;
+    };
+    VehicleService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], VehicleService);
+    return VehicleService;
 }());
 
 
@@ -413,24 +584,10 @@ nativescript_angular_platform__WEBPACK_IMPORTED_MODULE_0__["platformNativeScript
 
 /***/ }),
 
-/***/ "./package.json":
-/***/ (function(module) {
-
-module.exports = {"main":"main.js","android":{"v8Flags":"--expose_gc"}};
-
-/***/ }),
-
 /***/ "@angular/core":
 /***/ (function(module, exports) {
 
 module.exports = require("@angular/core");
-
-/***/ }),
-
-/***/ "@angular/forms":
-/***/ (function(module, exports) {
-
-module.exports = require("@angular/forms");
 
 /***/ }),
 
@@ -445,20 +602,6 @@ module.exports = require("@angular/router");
 /***/ (function(module, exports) {
 
 module.exports = require("nativescript-angular/common");
-
-/***/ }),
-
-/***/ "nativescript-angular/element-registry":
-/***/ (function(module, exports) {
-
-module.exports = require("nativescript-angular/element-registry");
-
-/***/ }),
-
-/***/ "nativescript-angular/forms/value-accessors/base-value-accessor":
-/***/ (function(module, exports) {
-
-module.exports = require("nativescript-angular/forms/value-accessors/base-value-accessor");
 
 /***/ }),
 
@@ -501,6 +644,13 @@ module.exports = require("nativescript-ui-sidedrawer/angular");
 /***/ (function(module, exports) {
 
 module.exports = require("rxjs");
+
+/***/ }),
+
+/***/ "rxjs/operators":
+/***/ (function(module, exports) {
+
+module.exports = require("rxjs/operators");
 
 /***/ }),
 

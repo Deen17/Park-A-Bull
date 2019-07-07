@@ -1,5 +1,5 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="{{this.name}} Details"></Label>
+    <Label class="action-bar-title" text="{{this.newName}} Details"></Label>
     <ActionItem text="Submit" ios.position="right" android.position="actionBar" (tap)="onSubmit()"></ActionItem>
 </ActionBar>
 
@@ -11,24 +11,24 @@
         
         <StackLayout orientation="horizontal">
             <Label class="lots" text="Name: " textWrap="true"></Label>
-            <Button class="lotbutton" text="{{this.name}}" (tap)="showDialogBox()"></Button>
+            <Button class="lotbutton" text="{{this.newName}}" (tap)="showDialogBox()"></Button>
         </StackLayout>
 
         <StackLayout orientation="horizontal">
             <Label class="lots" text="Location: " textWrap="true"></Label>
-            <Button class="lotbutton" text="{{this.location}}" (tap)="showDialogBox1()"></Button>
+            <Button class="lotbutton" text="{{this.newLocation}}" (tap)="showDialogBox1()"></Button>
         </StackLayout>
         
         <StackLayout orientation="horizontal">
             <Label class="lots" text="Code: " textWrap="true"></Label>
-            <Button class="lotbutton" text="{{this.code}}" (tap)="displayAlertDialog()"></Button>
+            <Button class="lotbutton" text="{{this.newCode}}" (tap)="showDialogBox3()"></Button>
         </StackLayout>
 
         <Label class="spots" text="Linked Lots:" textWrap="true"></Label>
 
-        <Button text="{{this.lotNames[0]}}" class="lotbutton" (tap)="lotDetails()"></Button>
-        <Button text="{{this.lotNames[1]}}" class="lotbutton" (tap)="lotDetails()"></Button>
-        <Button text="{{this.lotNames[2]}}" class="lotbutton" (tap)="lotDetails()"></Button>
+        <Button text="{{this.newLots[0]}}" class="lotbutton" (tap)="lotDetails()"></Button>
+        <Button text="{{this.newLots[1]}}" class="lotbutton" (tap)="lotDetails()"></Button>
+        <Button text="{{this.newLots[2]}}" class="lotbutton" (tap)="lotDetails()"></Button>
     
 
         <!-- <GridLayout rows="auto, auto, *" columns="auto, *">

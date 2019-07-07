@@ -8,6 +8,8 @@ import { Page } from "tns-core-modules/ui/page";
 import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
 import { prompt, PromptOptions, PromptResult, capitalizationType, inputType } from "tns-core-modules/ui/dialogs";
 import { alert } from "tns-core-modules/ui/dialogs";
+//import {Vehicle} from "../vehicle"
+import { AdminVehicleService, Vehicle } from '../adminVehicle.service';
 
 @Component({
   selector: 'ns-user-details',
@@ -22,7 +24,8 @@ export class UserDetailsComponent implements OnInit {
   public unumber: string;
   public email: string;
   public userName: string;
-  constructor(private activatedRoute: ActivatedRoute) { }
+  vehicles: Array<string> = [];
+  constructor(private activatedRoute: ActivatedRoute, private vehicleService: AdminVehicleService) { }
 
   ngOnInit() {
     this.name = this.activatedRoute.snapshot.paramMap.get("name");
@@ -32,6 +35,15 @@ export class UserDetailsComponent implements OnInit {
     this.email = this.activatedRoute.snapshot.paramMap.get("email");
     this.userName = this.activatedRoute.snapshot.paramMap.get("username");
     console.log('user-details initiated: ' + this.name);
+    this.refresh();
   }
 
+  async refresh(){
+    await this.vehicleService.fetch(this.email)
+    this.vehicles = this.vehicleService.getVehicleNames()
+    console.log('vehicles')
+    this.vehicles.forEach(element => {
+      console.log(element)
+    });
+  }
 }

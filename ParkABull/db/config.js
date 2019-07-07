@@ -1,5 +1,5 @@
 //module.exports = config;
 module.exports = {
     url: "https://parkabull.localtunnel.me/",
-    localUrl: "https://35230770.ngrok.io/"
+    localUrl: "https://a066b8fc.ngrok.io/"
 }
