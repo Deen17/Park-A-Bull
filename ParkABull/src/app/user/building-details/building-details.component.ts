@@ -3,8 +3,10 @@ import { ActivatedRoute } from "@angular/router"
 import { localUrl, url } from "../../../../db/config"
 import { request, HttpResponse } from "tns-core-modules/http"
 import { Building } from "../building"
-import {Lot} from "../lot"
-
+import { Lot } from "../lot"
+import { VehicleService } from '../vehicle.service';
+import * as appSettings from 'tns-core-modules/application-settings'
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'ns-building-details',
@@ -14,8 +16,11 @@ import {Lot} from "../lot"
 })
 export class BuildingDetailsComponent implements OnInit {
   public name: string;
-  total : number = 0;
-  constructor(private activatedRoute: ActivatedRoute) { }
+  total: number = 0;
+  constructor(
+    private routerExtensions: RouterExtensions,
+    private activatedRoute: ActivatedRoute,
+    private vehicleService: VehicleService) { }
   building: Building;
   lots: Array<Lot> = []; // lot_id, lot_name, location, spots_available
   ngOnInit() {
@@ -24,30 +29,102 @@ export class BuildingDetailsComponent implements OnInit {
     this.fetchBuilding();
   }
 
+  public async checkforReservation(): Promise<boolean> {
+    let link = `${localUrl}getspotbyemail/${encodeURI(appSettings.getString("email"))}`;
+    try {
+      const response: HttpResponse =
+        await request({
+          url: link,
+          method: "GET"
+        })
+      let rows = response.content.toJSON();
+      let return_code = rows[rows.length - 1][0].return_code
+      let notreserved = (return_code == 31);
+      return notreserved;
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  public async onReserve() {
+    console.log('reservation status: ')
+    if (await this.checkforReservation()) {
+      let link = `${localUrl}reserve/`;
+      try {
+        const response: HttpResponse =
+          await request({
+            url: link,
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            content: JSON.stringify({
+              email: appSettings.getString("email"),
+              vehicleId: this.vehicleService.getDefaultVehicle().getID(),
+              buildingName: this.name
+            })
+          })
+        let rows = response.content.toJSON();
+        console.log(rows[2][0].return_code)
+        switch (rows[2][0].return_code) {
+          case 0:
+            console.log('reservation successful')
+            this.routerExtensions.navigateByUrl("user", { clearHistory: true })
+            break;
+          case 23:
+            alert('Invalid reservation status: options are \'reserved\', \'claimed\'')
+            break;
+          case 26:
+            await alert('Error: No vehicle was selected for reservation.')
+            this.routerExtensions.navigateByUrl('user/vehiclelist')
+            break;
+          case 27:
+            alert('Open reservation was succesfully claimed. This should not happen here')
+            break;
+          case 28:
+            alert('Error: no spots available for selected building.')
+            break;
+          case 29:
+            alert('Reservation expired; new parking spot in selected lot is assigned')
+            break;
+          case 30:
+            alert('Reservation expired; no spots available in selected lot')
+            break;
+          default:
+            alert('Error: Unknown Error Code')
+            break;
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    else{
+      await alert('You already have an active reservation!')
+      this.routerExtensions.navigateByUrl("user", { clearHistory: true })
+    }
+  }
+
   fetchBuilding(): void {
     request({
       url: localUrl + "lots/" + encodeURI(this.name),
       method: "GET"
     }).then((response: HttpResponse) => {
       var rows = response.content.toJSON()
-      if(rows.length == 2){
+      if (rows.length == 2) {
         alert('Error: that building does not exist')
       }
-      else if(rows[2][0].return_code != 0){
+      else if (rows[2][0].return_code != 0) {
         alert('Error Code :' + rows[2][0].return_code)
       }
-      else{
+      else {
         let i = 0;
         rows[0].forEach(row => {
-          let temp = new Lot( 
+          let temp = new Lot(
             row.lot_id,
             row.lot_name,
             row.location,
             row.spots_available
           );
-          this.lots.push( temp );
-          //this.lots[i].printLotInfo()
-          this.total+= temp.getSpots();
+          this.lots.push(temp);
+          this.total += temp.getSpots();
           i++;
         });
       }

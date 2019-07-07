@@ -10,6 +10,5 @@
         <ListPicker [items]="filteredNames" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event)" class="p-15">
         </ListPicker>
     </ScrollView>
-    <Button text="Reserve!" class="btn btn-primary btn-active" (tap)="reserve()"></Button>
     <Button text="Check {{this.picked}}" class="btn btn-primary btn-active" (tap)="buildingDetails()"></Button>
 </StackLayout>

@@ -5,8 +5,18 @@
     <Label class="action-bar-title" text="User Home"></Label>
 </ActionBar>
 
-<ScrollView class="page">
-    <StackLayout class="home-panel">
-        <Button class="btn" text="Make a Reservation" [nsRouterLink]="['reserve']" clearHistory="true"></Button>
+<ScrollView class="page" height=100%>
+    <StackLayout class="home-panel" height=100%>
+        <StackLayout *ngIf="this.showTimer" height=100%>
+            <Label class="big" text="{{this.lotName}} {{this.spotName}}" textWrap="true"></Label>
+            <Progress value="{{this.seconds}}" class="progress" maxValue="{{this.timer}}" color="{{this.color}}"></Progress>
+            <Label class="progresstext" text="{{this.seconds}} seconds until your reservation expires!" textWrap="true"></Label>
+        </StackLayout>
+        <StackLayout *ngIf="this.showSpot" height=100%>
+            <Label class="big" text="{{this.lotName}} {{this.spotName}}" textWrap="true"></Label>
+            <Label class="progresstext" text="your reserved parking spot!" textWrap="true"></Label>
+
+
+        </StackLayout>
     </StackLayout>
 </ScrollView>

@@ -45,13 +45,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/', function(req, res) {
     res.send('Welcome to the Parkabull API!')
 })
-app.get('/users/:username', function(req, res) {
-    console.log(res)
-    res.end('hey ' + req.params.username)
-})
 app.get('/lots/:name', function(req, res) {
     console.log('GET /lots/' + req.params.name)
-    console.log(req.body)
     connection.query(config.queries.getLots, [
         req.params.name
     ], (err, rows) => {
@@ -81,23 +76,43 @@ app.get('/buildings', function(req, res) {
 
 })
 app.get('/vehicles/:email', function(req, res) {
-        console.log('GET /vehicles')
-        connection.query(
-            config.queries.getVehiclesByEmail, [
-                req.params.email
-            ],
-            (err, rows) => {
-                if (err) {
-                    res.send({ response_message: "Get Buildings Failed!" })
-                    throw err;
-                } else {
-                    res.send(rows[0])
-                }
+    console.log('GET /vehicles')
+    connection.query(
+        config.queries.getVehiclesByEmail, [
+            req.params.email
+        ],
+        (err, rows) => {
+            if (err) {
+                res.send({ response_message: "Get Buildings Failed!" })
+                throw err;
+            } else {
+                res.send(rows[0])
             }
-        )
+        }
+    )
 
-    })
-    //posts
+})
+
+app.get('/getspotbyemail/:email', function(req, res) {
+    console.log('GET /getspotbyemail/' + req.params.email)
+    connection.query(
+        config.queries.getSpotByEmail, [
+            req.params.email
+        ],
+        (err, rows) => {
+            if (err) {
+                res.send({ response_message: "Get Buildings Failed!" })
+                throw err;
+            } else {
+                console.log(rows)
+                res.send(rows)
+            }
+        }
+    )
+
+})
+
+//posts
 app.post('/login', function(req, res) {
     console.log('POST /login')
     connection.query(
@@ -165,7 +180,44 @@ app.post('/register', function(req, res) {
         }
     })
 })
-const server = app.listen(config.appServer.port, config.appServer.ip, () => {
+
+app.post('/reserve', function(req, res) {
+    console.log('POST /reserve')
+    connection.query(config.queries.createReservationByBuilding, [
+        req.body.email,
+        req.body.vehicleId,
+        req.body.buildingName
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
+        }
+    })
+})
+
+app.post('/password', function(req, res) {
+    console.log('POST /password')
+    connection.query(config.queries.changePassword, [
+        req.body.email,
+        req.body.oldPassword,
+        req.body.newPassword
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows)
+        }
+    })
+})
+
+const server = app.listen(config.appServer.port, () => {
     const host = server.address().address;
     const port = server.address().port;
     console.log(`ParkABull app listening at http://${host}:${port}`)

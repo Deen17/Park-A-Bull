@@ -6,6 +6,6 @@
     <StackLayout class="home-panel">
         <Label textWrap="true" class="big" text="{{this.total}}"></Label>
         <Label class="spots" text="Spots Available" textWrap="true"></Label>
-        <Button class="btn btn-primary btn-active" text="Make a Reservation"></Button>
+        <Button (tap)="onReserve()" class="btn btn-primary btn-active" text="Make a Reservation"></Button>
     </StackLayout>
 </ScrollView>
