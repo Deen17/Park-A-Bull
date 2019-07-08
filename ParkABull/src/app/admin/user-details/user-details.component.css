@@ -5,7 +5,7 @@
     text-align: center;
     color: #006747;
     height: 75;
-    font-size: 40;
+    font-size: 24;
     border-color: white;
     background-color: white;
     border-width: 0;
@@ -35,5 +35,6 @@
 .item {
     text-align: center;
     vertical-align: center;
-    background-color:#006747;
+    background-color:white;
+    font-size: 24
 }

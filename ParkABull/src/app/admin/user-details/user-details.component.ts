@@ -25,9 +25,12 @@ export class UserDetailsComponent implements OnInit {
   public email: string;
   public userName: string;
   vehicles: Array<string> = [];
+  licensePlates: Array<string> = [];
+  show: Array<string> = [];
+  toggle: boolean = true;
   constructor(private activatedRoute: ActivatedRoute, private vehicleService: AdminVehicleService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.name = this.activatedRoute.snapshot.paramMap.get("name");
     this.firstName = this.activatedRoute.snapshot.paramMap.get("firstname");
     this.lastName = this.activatedRoute.snapshot.paramMap.get("lastname");
@@ -35,15 +38,20 @@ export class UserDetailsComponent implements OnInit {
     this.email = this.activatedRoute.snapshot.paramMap.get("email");
     this.userName = this.activatedRoute.snapshot.paramMap.get("username");
     console.log('user-details initiated: ' + this.name);
-    this.refresh();
+    await this.refresh();
+    this.show = this.vehicles;
   }
 
   async refresh(){
     await this.vehicleService.fetch(this.email)
     this.vehicles = this.vehicleService.getVehicleNames()
-    console.log('vehicles')
-    this.vehicles.forEach(element => {
-      console.log(element)
-    });
+    this.licensePlates = this.vehicleService.getLicencePlates()
+  }
+
+  onToggle() {
+    this.toggle = !this.toggle;
+    if(this.toggle)
+      this.show = this.vehicles
+    else this.show = this.licensePlates;
   }
 }

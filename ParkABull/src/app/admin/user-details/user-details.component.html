@@ -30,12 +30,15 @@
             <Button class="lotbutton" text="{{this.email}}"></Button>
         </StackLayout>
 
-        <Label class="spots" text="Linked Vehicles: " textWrap="true"></Label>
+        <StackLayout orientation="horizontal">
+            <Label  class="lots" text="Linked Vehicles: " textWrap="true"></Label>
+            <Button  class="lotbutton" text="Toggle" (tap)="onToggle()"></Button>
+        </StackLayout>
 
-        <ListView [items]="vehicles" class="list-group">
+        <ListView [items]="show" class="list-group">
             <ng-template class="item" let-item="item" let-odd="odd" let-even="even">
                 <StackLayout>
-                    <Label [text]="item" class="btn btn-primary btn-active"></Label>
+                    <Label [text]="item" class="item"></Label>
     
                 </StackLayout>
             </ng-template>

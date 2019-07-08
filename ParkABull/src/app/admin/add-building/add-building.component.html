@@ -4,17 +4,17 @@
 </ActionBar>
 <ScrollView>
     <StackLayout class="form">
-        <TextField (textChange)="onTextChange($event)" id="buildingName" hint="Building Name" autocorrect="false" text="{{this.buildingName}}"></TextField>
+        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" id="buildingName" hint="Building Name" autocorrect="false" text="{{this.buildingName}}"></TextField>
 
         <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" id="code" hint="Code" autocorrect="false" text="{{this.code}}"></TextField>
 
-        <TextField (textChange)="onTextChange($event)" autocorrect="false" text="{{this.location}}" hint="Location" id="location"></TextField>
+        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" autocorrect="false" text="{{this.location}}" hint="Location" id="location"></TextField>
 
-        <TextField (textChange)="onTextChange($event)" autocorrect="false" text="{{this.lot1}}" hint="Lot1" id="lot1"></TextField>
+        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" autocorrect="false" text="{{this.lot1}}" hint="Lot1" id="lot1"></TextField>
 
-        <TextField (textChange)="onTextChange($event)" autocorrect="false" text="{{this.lot2}}" hint="Lot2" id="lot2"></TextField>
+        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" autocorrect="false" text="{{this.lot2}}" hint="Lot2" id="lot2"></TextField>
 
-        <TextField (textChange)="onTextChange($event)" autocorrect="false" text="{{this.lot3}}" hint="Lot3" id="lot3"></TextField>
+        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" autocorrect="false" text="{{this.lot3}}" hint="Lot3" id="lot3"></TextField>
     
     </StackLayout>
 </ScrollView>
