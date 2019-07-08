@@ -27,5 +27,6 @@ module.exports = {
         getUsers: 'SELECT unumber, first_name, last_name, email, username FROM db.users;',
         editBuilding: 'Call db.edit_building(?,?,?,?,?,?,?, @return_code); select @return_code as return_code;',
         deleteBuilding: 'Call db.delete_building(?, @return_code); select @return_code as return_code;',
+        getAllLots: 'Select * from db.lots;'
     }
 }
