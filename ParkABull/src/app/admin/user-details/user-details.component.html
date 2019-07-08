@@ -1,1 +1,94 @@
-<Button text="user-details works!" class="btn btn-primary"></Button>
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="{{this.name}} Details"></Label>
+    <!-- <ActionItem text="Submit" ios.position="right" android.position="actionBar" (tap)="onSubmit()"></ActionItem> -->
+</ActionBar>
+
+<ScrollView height=100% class="page">
+    <StackLayout class="home-panel">
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="Unumber: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.unumber}}"></Button>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="First Name: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.firstName}}"></Button>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="Last Name: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.lastName}}"></Button>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="Username: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.userName}}"></Button>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="Email: " textWrap="true"></Label>
+            <Button class="lotbutton" text="{{this.email}}"></Button>
+        </StackLayout>
+
+        <Label class="spots" text="Linked Vehicles: " textWrap="true"></Label>
+
+        <ListView [items]="vehicles" class="list-group">
+            <ng-template class="item" let-item="item" let-odd="odd" let-even="even">
+                <StackLayout>
+                    <Label [text]="item" class="btn btn-primary btn-active"></Label>
+    
+                </StackLayout>
+            </ng-template>
+        </ListView>
+        <!-- <Button text="{{this.vehicles[0]}}" class="lotbutton" (tap)="lotDetails()"></Button>
+        <Button text="{{this.vehicles[1]}}" class="lotbutton" (tap)="lotDetails()"></Button>
+        <Button text="{{this.vehicles[2]}}" class="lotbutton" (tap)="lotDetails()"></Button> -->
+    </StackLayout>
+
+    
+</ScrollView>
+
+<!-- <StackLayout class="page">
+        <StackLayout height="60%">
+                <ScrollView height=100% class="page">
+                        <StackLayout class="home-panel">
+                            <StackLayout orientation="horizontal">
+                                <Label class="lots" text="Unumber: " textWrap="true"></Label>
+                                <Button class="lotbutton" text="{{this.unumber}}"></Button>
+                            </StackLayout>
+                    
+                            <StackLayout orientation="horizontal">
+                                <Label class="lots" text="First Name: " textWrap="true"></Label>
+                                <Button class="lotbutton" text="{{this.firstName}}"></Button>
+                            </StackLayout>
+                    
+                            <StackLayout orientation="horizontal">
+                                <Label class="lots" text="Last Name: " textWrap="true"></Label>
+                                <Button class="lotbutton" text="{{this.lastName}}"></Button>
+                            </StackLayout>
+                    
+                            <StackLayout orientation="horizontal">
+                                <Label class="lots" text="Username: " textWrap="true"></Label>
+                                <Button class="lotbutton" text="{{this.userName}}"></Button>
+                            </StackLayout>
+                    
+                            <StackLayout orientation="horizontal">
+                                <Label class="lots" text="Email: " textWrap="true"></Label>
+                                <Button class="lotbutton" text="{{this.email}}"></Button>
+                            </StackLayout>
+
+                            <Label height="25%" text="Linked Vehicles: " class="header"></Label>
+                        </StackLayout>
+                    
+                </ScrollView>
+        </StackLayout>
+    
+        <ListView height="40%" [items]="vehicles" (itemTap)="onItemTap($event)" class="list-group">
+            <ng-template let-item="item" let-odd="odd" let-even="even">
+                <StackLayout>
+                    <Label [text]="item" class="list-group-item"></Label>
+    
+                </StackLayout>
+            </ng-template>
+        </ListView>
+</StackLayout> -->

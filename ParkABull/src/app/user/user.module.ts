@@ -15,7 +15,7 @@ import { UserRoutingModule } from './user-routing.module';
     VehicleListComponent, 
     VehicleDetailsComponent, 
     BuildingListComponent, 
-    BuildingDetailsComponent, 
+    BuildingDetailsComponent,
     ReportComponent, 
     ProfileComponent, 
     UserComponent],

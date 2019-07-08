@@ -84,7 +84,6 @@ export class BuildingListComponent implements OnInit {
     })
   }
 
-
   buildingDetails(): void {
     this.routerExtensions.navigateByUrl("user/buildingdetails/" + this.picked);
   }

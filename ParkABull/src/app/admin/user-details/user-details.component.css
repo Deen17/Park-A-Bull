@@ -1,1 +1,39 @@
 /* Add mobile styles for the component here.  */
+
+.spots {
+    width: 100%;
+    text-align: center;
+    color: #006747;
+    height: 75;
+    font-size: 40;
+    border-color: white;
+    background-color: white;
+    border-width: 0;
+}
+
+.lots {
+    width: 40%;
+    text-align: center;
+    color: black;
+    height: 50;
+    font-size: 20;
+    border-color: white;
+    background-color: white;
+    border-width: 0;
+    vertical-align: middle;
+    padding: 10;
+}
+
+.lotbutton{
+    width: 60%
+}
+
+.header {
+    background-color: #006747;
+}
+
+.item {
+    text-align: center;
+    vertical-align: center;
+    background-color:#006747;
+}

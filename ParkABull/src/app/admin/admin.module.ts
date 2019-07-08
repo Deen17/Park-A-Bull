@@ -10,8 +10,10 @@ import { ReportDetailsComponent } from './report-details/report-details.componen
 import { LotListComponent } from './lot-list/lot-list.component';
 import { LotDetailsComponent } from './lot-details/lot-details.component';
 
+
 import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { AddBuildingComponent } from './add-building/add-building.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { AdminRoutingModule } from './admin-routing.module';
     ReportDetailsComponent, 
     LotListComponent, 
     LotDetailsComponent, 
-    AdminComponent],
+    AdminComponent,
+    AddBuildingComponent],
   imports: [
     NativeScriptCommonModule,
     AdminRoutingModule

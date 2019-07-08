@@ -8,12 +8,14 @@ module.exports = {
         multipleStatements: true,
     },
     appServer: {
-        ip: "10.100.3.204", //put your own ip address here. run Get-NetIpAddress and look for the right ip (check for wifi/ethernet, then for preferred) or put localhost
+        ip: "10.226.56.51", //put your own ip address here. run Get-NetIpAddress and look for the right ip (check for wifi/ethernet, then for preferred) or put localhost
         port: 8000,
 
     },
     queries: {
         addStudent: 'CALL db.add_student(?,?,?,?,?,?, @return_code); select @return_code as return_code;',
+        addAdmin: 'CALL db.add_admin(?,?,?,?,?, @return_code); select @return_code as return_code;',
+        addBuilding: 'CALL db.add_building(?,?,?,?,?,?, @return_code); select @return_code as return_code;',
         getBuildings: 'SELECT building_name, building_code, location, lot_code_1, lot_code_2, lot_code_3 FROM db.buildings;',
         getLots: 'CALL db.get_lots_by_building_name(?, @return_code); select @return_code as return_code;', //returns lots per building and vacancies per lot
         login: 'SELECT * from db.users WHERE (username=? AND password=?);',
@@ -22,6 +24,8 @@ module.exports = {
         createReservationByBuilding: 'Call db.create_reservation_by_building(?,?,?,@reservation_id_out,@return_code); select @reservation_id_out as reservation_id; select @return_code as return_code;',
         getSpotByEmail: 'Call get_reservation_by_email(?,@return_code); select @return_code as return_code;',
         changePassword: 'CALL db.change_user_password(?,?,?,@return_code); select @return_code as return_code;',
-
+        getUsers: 'SELECT unumber, first_name, last_name, email, username FROM db.users;',
+        editBuilding: 'Call db.edit_building(?,?,?,?,?,?,?, @return_code); select @return_code as return_code;',
+        deleteBuilding: 'Call db.delete_building(?, @return_code); select @return_code as return_code;',
     }
 }
