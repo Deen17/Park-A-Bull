@@ -32,6 +32,7 @@ module.exports = {
         editLot: 'call db.edit_lot(?,?,?,@return_code); select @return_code as return_code;',
         banUser: 'call db.disable_user(?,@return_code); select @return_code as return_code;',
         enableUser: 'call db.enable_user(?,@return_code); select @return_code as return_code;',
+        selectUserByID: 'Select * from db.users where user_id=?;'
 
     }
 }

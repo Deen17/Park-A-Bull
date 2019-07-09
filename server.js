@@ -350,6 +350,7 @@ app.post('/editlot', function(req, res) {
 
 app.post('/editbuildings', function(req, res) {
     console.log('POST /editBuildings')
+    console.log(req.body)
     connection.query(config.queries.editBuilding, [
         req.body.name,
         req.body.newName,

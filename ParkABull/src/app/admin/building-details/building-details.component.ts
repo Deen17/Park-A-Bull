@@ -62,7 +62,7 @@ export class BuildingDetailsComponent implements OnInit {
     let index = args.index;
     let pickedLot = this.unsetLotNames[index]
     let pickedSlot = this.lotNames[this.lotToChange]
-    this.lotNames[this.lotToChange] = pickedLot
+    this.lotNames[this.lotToChange - 1] = pickedLot
     this.unsetLotNames.push(pickedSlot)
     this.unsetLotNames.splice(index, 1)
     this.showSet = true;
@@ -88,7 +88,7 @@ export class BuildingDetailsComponent implements OnInit {
     this.newName = this.name;
     this.newCode = this.code;
     this.newLocation = this.location;
-    console.log('building-details initiated: ' + this.name);
+    console.log('building-details initiated. ' + this.name);
     await this.lotService.fetch();
     this.allLotNames = this.lotService.getLotNames();
     await this.fetchBuilding();
@@ -243,9 +243,9 @@ export class BuildingDetailsComponent implements OnInit {
             newName: this.tempName,
             newCode: this.tempCode,
             newLoc: this.tempLocation,
-            newLot1: this.tempLot1,
-            newLot2: this.tempLot2,
-            newLot3: this.tempLot3
+            newLot1: this.lotNames[0],
+            newLot2: this.lotNames[1],
+            newLot3: this.lotNames[2]
           })
         })
       let rows = response.content.toJSON();
