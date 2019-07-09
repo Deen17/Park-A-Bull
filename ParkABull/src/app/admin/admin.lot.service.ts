@@ -47,6 +47,14 @@ export class AdminLotService{
         return this.lots;
     }
 
+    public getLotNames(): Array<string>{
+        let names: Array<string> = [];
+        this.lots.forEach(element => {
+            names.push(element.getName())
+        });
+        return names;
+    }
+    
     public getLot(name: string): Lot {
         let lot : Lot = null;
         this.lots.forEach(element => {

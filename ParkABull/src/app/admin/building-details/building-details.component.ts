@@ -1,10 +1,10 @@
-import { Component, OnInit, ElementRef} from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { ActivatedRoute } from "@angular/router"
 import { localUrl, url } from "../../../../db/config"
-import { request,getFile, getImage, getJSON, getString, HttpResponse } from "tns-core-modules/http"
+import { request, getFile, getImage, getJSON, getString, HttpResponse } from "tns-core-modules/http"
 import { Building } from "../building"
-import {Lot} from "../lot"
+import { Lot } from "../lot"
 import { GridLayout, ItemSpec } from "tns-core-modules/ui/layouts/grid-layout";
 import { EventData } from "tns-core-modules/data/observable";
 import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
@@ -12,6 +12,7 @@ import { prompt, PromptOptions, PromptResult, capitalizationType, inputType } fr
 import { alert } from "tns-core-modules/ui/dialogs";
 import { stringify } from '@angular/core/src/render3/util';
 import { Button } from 'tns-core-modules/ui/button/button';
+import { AdminLotService } from '../admin.lot.service';
 /* import { DropDownModule } from "nativescript-drop-down/angular";
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 import { GestureTypes, GestureEventData } from "tns-core-modules/ui/gestures"; */
@@ -34,34 +35,35 @@ export class BuildingDetailsComponent implements OnInit {
   public tempLot3: string;
   public tempName: string;
   public tempCode: string;
-  total : number = 0;
+  total: number = 0;
   building: Building;
   public location: string;
   public code: string;
-  lots: Array<Lot> = []; // lot_id, lot_name, location, spots_available
   lotNames: Array<string> = [];
   allLotNames: Array<string> = [];
   unsetLotNames: Array<string> = [];
-  showSet : boolean = true;
+  showSet: boolean = true;
   lotToChange: number = 0;
 
-  constructor(private routerExtensions: RouterExtensions, private activatedRoute: ActivatedRoute) 
-  {
+  constructor(
+    private routerExtensions: RouterExtensions,
+    private activatedRoute: ActivatedRoute,
+    private lotService: AdminLotService) {
 
   }
 
-  public setLotToChange(args: EventData){
+  public setLotToChange(args: EventData) {
     this.showSet = false;
     let button = <Button>args.object
-    this.lotToChange =parseInt( button.id);
+    this.lotToChange = parseInt(button.id);
   }
 
-  onItemTap(args){
+  onItemTap(args) {
     let index = args.index;
     let pickedLot = this.unsetLotNames[index]
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.name = this.activatedRoute.snapshot.paramMap.get("name");
     this.location = this.activatedRoute.snapshot.paramMap.get("location");
     this.code = this.activatedRoute.snapshot.paramMap.get("code");
@@ -69,10 +71,19 @@ export class BuildingDetailsComponent implements OnInit {
     this.newCode = this.code;
     this.newLocation = this.location;
     console.log('building-details initiated: ' + this.name);
-    this.fetchBuilding();
+    await this.lotService.fetch();
+    this.allLotNames = this.lotService.getLotNames();
+    await this.fetchBuilding();
+    this.setUnsetLotNames();
   }
 
-  showDialogBox(){
+  public setUnsetLotNames(){
+    this.unsetLotNames = this.allLotNames.filter(element => {
+      !this.lotNames.includes(element)
+    })
+  }
+
+  showDialogBox() {
     const promptOptions: PromptOptions = {
       title: "Building Name",
       message: "Please enter new building name",
@@ -88,7 +99,7 @@ export class BuildingDetailsComponent implements OnInit {
     });
   }
 
-  showDialogBox1(){
+  showDialogBox1() {
     const promptOptions: PromptOptions = {
       title: "Building Location",
       message: "Please enter new location",
@@ -104,7 +115,7 @@ export class BuildingDetailsComponent implements OnInit {
     });
   }
 
-  showDialogBox3(){
+  showDialogBox3() {
     const promptOptions: PromptOptions = {
       title: "Building Code",
       message: "Please enter new building code",
@@ -120,48 +131,32 @@ export class BuildingDetailsComponent implements OnInit {
     });
   }
 
-  /* showDialogBox4(){
-    const promptOptions: PromptOptions = {
-      title: "Delete Building",
-      message: "Please enter new building code",
-      okButtonText: "Ok",
-      cancelButtonText: "Cancel",
-      defaultText: this.code,
-      inputType: inputType.text, // email, number, text, password, or email
-    };
-    prompt(promptOptions).then((r: PromptResult) => {
-      console.log("Dialog result: ", r.result);
-      console.log("Text: ", r.text);
-      this.newCode = r.text;
-    });
-  } */
-
   displayAlertDialog() {
     let options = {
-        title: "Alert",
-        message: "Building Details edits successful",
-        okButtonText: "OK"
+      title: "Alert",
+      message: "Building Details edits successful",
+      okButtonText: "OK"
     };
 
     alert(options).then(() => {
-        console.log("code unchanged!");
-        this.routerExtensions.navigateByUrl('admin/buildinglist')
+      console.log("code unchanged!");
+      this.routerExtensions.navigateByUrl('admin/buildinglist')
     });
   }
 
   displayAlertDialog1() {
     let options = {
-        title: "Alert",
-        message: "Building deleted successfully",
-        okButtonText: "OK"
+      title: "Alert",
+      message: "Building deleted successfully",
+      okButtonText: "OK"
     };
 
     alert(options).then(() => {
-        this.routerExtensions.navigateByUrl('admin/buildinglist')
+      this.routerExtensions.navigateByUrl('admin/buildinglist')
     });
   }
 
-  deleteBuilding(){
+  deleteBuilding() {
     request({
       url: localUrl + "deletebuilding",
       method: "POST",
@@ -173,131 +168,142 @@ export class BuildingDetailsComponent implements OnInit {
       let rows = response.content.toJSON();
       console.log('name: ' + this.name)
       console.log('result:', rows)
-      switch(rows[rows.length - 1][0].return_code){
+      switch (rows[rows.length - 1][0].return_code) {
         case 0:
-            this.displayAlertDialog1();
-            break;
+          this.displayAlertDialog1();
+          break;
         case 10:
-            alert('Error: Building doesnot exist');
-            break;
+          alert('Error: Building doesnot exist');
+          break;
         default:
-            alert('Unknown Error Code');
-            break;
-          
+          alert('Unknown Error Code');
+          break;
+
       }
     }, (e) => {
       console.log(e)
     });
-  
+
   }
 
-  onSubmit(){
-    if(this.newName == this.name){
+  public async onSubmit() {
+    if (this.newName == this.name) {
       this.tempName = null;
-    }else{
+    } else {
       this.tempName = this.newName;
     }
 
-    if(this.newCode == this.code){
+    if (this.newCode == this.code) {
       this.tempCode = null;
-    }else{
+    } else {
       this.tempCode = this.newCode;
     }
 
-    if(this.newLocation == this.location){
+    if (this.newLocation == this.location) {
       this.tempLocation = null;
-    }else{
+    } else {
       this.tempLocation = this.newLocation;
     }
 
-    if(this.newLots[0] == this.lotNames[0]){
+    if (this.newLots[0] == this.lotNames[0]) {
       this.tempLot1 = null;
-    }else{
+    } else {
       this.tempLot1 = this.newLots[0];
     }
 
-    if(this.newLots[1] == this.lotNames[1]){
+    if (this.newLots[1] == this.lotNames[1]) {
       this.tempLot2 = null;
-    }else{
+    } else {
       this.tempLot2 = this.newLots[1];
     }
 
-    if(this.newLots[2] == this.lotNames[2]){
+    if (this.newLots[2] == this.lotNames[2]) {
       this.tempLot3 = null;
-    }else{
+    } else {
       this.tempLot3 = this.newLots[2];
     }
-
-    request({
-      url: localUrl + "editbuildings",
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      content: JSON.stringify({
-        name: this.name,
-        newName: this.tempName,
-        newCode: this.tempCode,
-        newLoc: this.tempLocation,
-        newLot1: this.tempLot1,
-        newLot2: this.tempLot2,
-        newLot3: this.tempLot3
-      })
-    }).then((response) => {
-      let rows = response.content.toJSON();
-      console.log('result:', rows)
-      switch(rows[rows.length - 1][0].return_code) {
-          case 0:
-            console.log('Edits successful')
-            this.displayAlertDialog();
-            break;
-          case 17:
-            alert('Error: Duplicate building name')
-            break;
-          case 19:
-            alert('Error: Duplicate lot names')
-            break;
-          case 22:
-            alert('Error: Duplicate building code')
-            break;
-          default:
-            alert('Error: Unknown Error Code')
-            break;
-      }
-    }, (e) => {
-      console.log(e)
-    });
+    await this.editBuilding();
   }
 
-  fetchBuilding(): void {
-    request({
-      url: localUrl + "lots/" + encodeURI(this.name),
-      method: "GET"
-    }).then((response: HttpResponse) => {
-      var rows = response.content.toJSON()
-      if(rows.length == 2){
-        alert('Error: that building does not exist')
+  async editBuilding() {
+    let link = `${localUrl}editbuildings`
+    try {
+      let response: HttpResponse =
+        await request({
+          url: link,
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          content: JSON.stringify({
+            name: this.name,
+            newName: this.tempName,
+            newCode: this.tempCode,
+            newLoc: this.tempLocation,
+            newLot1: this.tempLot1,
+            newLot2: this.tempLot2,
+            newLot3: this.tempLot3
+          })
+        })
+      let rows = response.content.toJSON();
+      switch (rows[rows.length - 1][0].return_code) {
+        case 0:
+          console.log('Edits successful')
+          this.displayAlertDialog();
+          break;
+        case 17:
+          alert('Error: Duplicate building name')
+          break;
+        case 19:
+          alert('Error: Duplicate lot names')
+          break;
+        case 22:
+          alert('Error: Duplicate building code')
+          break;
+        default:
+          alert('Error: Unknown Error Code')
+          break;
       }
-      else if(rows[2][0].return_code != 0){
-        alert('Error Code :' + rows[2][0].return_code)
-      }
-      else{
-        let i = 0;
-        rows[0].forEach(row => {
-          let temp = new Lot( 
-            row.lot_id,
-            row.lot_name,
-            row.location,
-            row.spots_available
-          );
-          this.lots.push( temp );
-          this.lotNames.push(row.lot_name);
-          this.newLots.push(row.lot_name);
-          console.log('lotNames: ', this.lotNames)
-          this.total+= temp.getSpots();
-          i++;
-        });
-      }
-    }, (e) => {
+    } catch (e) {
       console.log(e)
-    })
+    }
+  }
+
+  async fetchBuilding() {
+    let link = `${localUrl}lots/${encodeURI(this.name)}`
+    try {
+      let response: HttpResponse =
+        await request({
+          url: link,
+          method: "GET"
+        })
+      let rows = response.content.toJSON();
+      if (rows.length == 2) {
+        await alert('Error: this building does not exist.')
+        this.routerExtensions.navigateByUrl('admin')
+      }
+      let return_code = rows[rows.length - 1][0].return_code;
+      switch (return_code) {
+        case 0:
+          let i = 0;
+          rows[0].forEach(row => {
+            let temp = new Lot(
+              row.lot_id,
+              row.lot_name,
+              row.location,
+              row.spots_available
+            );
+            this.lotNames.push(row.lot_name);
+            this.newLots.push(row.lot_name);
+            console.log('lotNames: ', this.lotNames)
+            this.total += temp.getSpots();
+            i++;
+          });
+          break;
+        default:
+          await alert('error code: ' + return_code)
+          break;
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
