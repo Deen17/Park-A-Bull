@@ -3,9 +3,9 @@ import { localUrl, url} from "../../../db/config"
 import { request, HttpResponse } from "tns-core-modules/http";
 
 export class Lot {
-    private id: number;
-    private name: string;
-    private location: string;
+    private id: number = null;;
+    private name: string = null;
+    private location: string = null;
     
     constructor(id: number, name: string, location: string){
         this.id = id;
@@ -48,11 +48,12 @@ export class AdminLotService{
     }
 
     public getLot(name: string): Lot {
+        let lot : Lot = null;
         this.lots.forEach(element => {
             if(element.getName() == name)
-                return element;
+                lot = element;
         })
-        return null;
+        return lot;
     }
 
     public async fetch(): Promise<void>{

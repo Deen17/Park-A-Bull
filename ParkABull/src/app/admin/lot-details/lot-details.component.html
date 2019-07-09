@@ -1,1 +1,15 @@
-<Button text="lot-details works!" class="btn btn-primary"></Button>
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="{{this.name}} Details"></Label>
+    <ActionItem text="Submit" ios.position="right" android.position="actionBar" (tap)="checkInput()"></ActionItem>
+</ActionBar>
+
+<StackLayout height=100% class="page">
+    <StackLayout width="100%" orientation="horizontal">
+        <Label class="field" text="Name:" textWrap="true"></Label>
+        <TextField id="name" (textChange)="onTextChange($event)" autocorrect="false" class="value" text="{{this.newName}}"></TextField>
+    </StackLayout>
+    <StackLayout width="100%" orientation="horizontal">
+        <Label class="field" text="Location:" textWrap="true"></Label>
+        <TextField id="location" (textChange)="onTextChange($event)" autocorrect="false" class="value" text="{{this.newLocation}}"></TextField>
+    </StackLayout>
+</StackLayout>

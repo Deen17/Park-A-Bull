@@ -308,6 +308,46 @@ app.post('/password', function(req, res) {
     })
 })
 
+app.post('/disableuser', function(req, res){
+    console.log('POST /disableuser')
+    connection.query(config.queries.banUser,[
+        req.body.email
+    ]
+    , (err, rows) =>{
+        if(err) throw err;
+        else res.send(rows)
+    })
+})
+
+app.post('/enableuser', function(req, res){
+    console.log('POST /enableuser')
+    connection.query(config.queries.enableUser,[
+        req.body.email
+    ]
+    , (err, rows) =>{
+        if(err) throw err;
+        else res.send(rows)
+    })
+})
+
+app.post('/editlot', function(req, res) {
+    console.log('POST /editlot')
+    connection.query(config.queries.editLot, [
+        req.body.id,
+        req.body.name,
+        req.body.location
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
+        }
+    })
+})
+
 app.post('/editbuildings', function(req, res) {
     console.log('POST /editBuildings')
     connection.query(config.queries.editBuilding, [

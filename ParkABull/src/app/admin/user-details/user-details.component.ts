@@ -1,15 +1,13 @@
-import { Component, OnInit, ElementRef} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from "@angular/router"
 import { localUrl, url } from "../../../../db/config"
 import { request,getFile, getImage, getJSON, getString, HttpResponse } from "tns-core-modules/http"
 import { User } from "../user"
-import { GridLayout, ItemSpec } from "tns-core-modules/ui/layouts/grid-layout";
-import { Page } from "tns-core-modules/ui/page";
-import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
-import { prompt, PromptOptions, PromptResult, capitalizationType, inputType } from "tns-core-modules/ui/dialogs";
-import { alert } from "tns-core-modules/ui/dialogs";
 //import {Vehicle} from "../vehicle"
 import { AdminVehicleService, Vehicle } from '../adminVehicle.service';
+import { Switch } from "tns-core-modules/ui/switch";
+import { EventData } from "tns-core-modules/data/observable";
+import { BrowserPlatformLocation } from '@angular/platform-browser/src/browser/location/browser_platform_location';
 
 @Component({
   selector: 'ns-user-details',
@@ -40,6 +38,38 @@ export class UserDetailsComponent implements OnInit {
     console.log('user-details initiated: ' + this.name);
     await this.refresh();
     this.show = this.vehicles;
+  }
+
+  onCheckedChange(args: EventData) {
+    let mySwitch = args.object as Switch;
+    let isChecked = mySwitch.checked;
+    this.toggleUserStatus(isChecked);
+  }  
+
+  public async toggleUserStatus(isChecked: boolean){
+    let link = `${localUrl}${isChecked ? 'enableuser' : 'disableuser'}`
+    let response: HttpResponse = 
+      await request({
+        url: link,
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        content: JSON.stringify({
+          email: this.email
+        })
+      })
+    let rows = response.content.toJSON();
+    let return_code = rows[rows.length - 1][0].return_code;
+    switch(return_code){
+      case 0:
+        await alert(`Successfully ${isChecked? 'enabled ' : 'disabled '} this user.`)
+        break;
+      case 8:
+        await alert('This user was not found.')
+        break;
+      default:
+        alert('Invalid return code')
+        break;
+    }
   }
 
   async refresh(){

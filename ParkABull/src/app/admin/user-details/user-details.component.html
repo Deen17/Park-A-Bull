@@ -34,7 +34,10 @@
             <Label  class="lots" text="Linked Vehicles: " textWrap="true"></Label>
             <Button  class="lotbutton" text="Toggle" (tap)="onToggle()"></Button>
         </StackLayout>
-
+        <StackLayout orientation="horizontal">
+            <Label class="lots" text="User Status:" textWrap="true"></Label>
+            <Switch checked="true" (checkedChange)="onCheckedChange($event)" class="m-15" row="1" col="1"></Switch>
+        </StackLayout>
         <ListView [items]="show" class="list-group">
             <ng-template class="item" let-item="item" let-odd="odd" let-even="even">
                 <StackLayout>
@@ -43,9 +46,7 @@
                 </StackLayout>
             </ng-template>
         </ListView>
-        <!-- <Button text="{{this.vehicles[0]}}" class="lotbutton" (tap)="lotDetails()"></Button>
-        <Button text="{{this.vehicles[1]}}" class="lotbutton" (tap)="lotDetails()"></Button>
-        <Button text="{{this.vehicles[2]}}" class="lotbutton" (tap)="lotDetails()"></Button> -->
+     
     </StackLayout>
 
     
