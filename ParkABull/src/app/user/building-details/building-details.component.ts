@@ -66,7 +66,7 @@ export class BuildingDetailsComponent implements OnInit {
         let return_code = rows[rows.length - 1][0].return_code
         switch (return_code) {
           case 0:
-            console.log('reservation successful')
+            await alert('Sucessfully reserved a spot!')
             this.routerExtensions.navigateByUrl("user", { clearHistory: true })
             break;
           case 23:

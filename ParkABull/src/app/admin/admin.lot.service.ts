@@ -47,6 +47,14 @@ export class AdminLotService{
         return this.lots;
     }
 
+    public getLot(name: string): Lot {
+        this.lots.forEach(element => {
+            if(element.getName() == name)
+                return element;
+        })
+        return null;
+    }
+
     public async fetch(): Promise<void>{
         this.lots= [];
         let link: string = `${localUrl}lots`
