@@ -47,7 +47,7 @@ export class ReportComponent implements OnInit {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       content: JSON.stringify({
-        email: this.email,
+        email: appSettings.getString("email"),
         license: this.license
       })
     }).then((response) => {
@@ -55,7 +55,7 @@ export class ReportComponent implements OnInit {
       console.log('result:', rows)
       switch(rows[rows.length - 1][0].return_code){
         case 0:
-            alert('Successfully reported');
+            alert('Successfully reported')
             this.goToHome();
             break;
         case 15:

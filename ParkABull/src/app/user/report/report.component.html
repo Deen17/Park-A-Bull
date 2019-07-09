@@ -7,7 +7,6 @@
 
 <ScrollView>
     <StackLayout class="form">
-        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" text="{{this.email}}" hint="email" id="email" autocorrect="false" keyboardType="email"></TextField>
         <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" id="license" hint="License Plate No." autocorrect="false" text="{{this.license}}"></TextField>
         <Button text="Submit" class="btn btn-primary btn-active" (tap)="onSubmit()"></Button>
     </StackLayout>
