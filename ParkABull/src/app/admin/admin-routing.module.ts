@@ -24,8 +24,8 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent },
   { path: "reportlist", component: ReportListComponent  },
   { path: "reportdetails", component: ReportDetailsComponent},
-  { path: "lostlist", component: LotListComponent},
-  { path: "lotdetails", component: LotDetailsComponent},
+  { path: "lotlist", component: LotListComponent},
+  { path: "lotdetails/:name", component: LotDetailsComponent},
   { path: "addbuilding", component: AddBuildingComponent}
 
 ];

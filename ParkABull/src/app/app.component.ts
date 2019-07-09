@@ -56,10 +56,20 @@ export class AppComponent {
         }
 
     }
+    public clearUserInfo(){
+        this.firstName = "User"
+        this.lastName = "Name"
+        this.email = "username@mail.usf.edu"
+        this.isUser = this.isGuest = this.isAdmin = false;
+    }
+
     ngOnInit(){
         console.log('app component initiated!')
         this.userService.getLoggedInName.subscribe(text =>{
             this.setUserInfo();
         })  
+        this.userService.clearUserInfo.subscribe(()=> {
+            this.clearUserInfo();
+        })
     }
 }

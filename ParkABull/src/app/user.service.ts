@@ -7,7 +7,7 @@ import { Subject } from "rxjs";
 })
 export class UserService {
     public getLoggedInName = new Subject(); //Alternate method to Emitting data across Components. Subject() is doing both Emitting data and Subscribing it in another component. So its the best way to compare with Emitting using Output.
-
+    public clearUserInfo = new Subject();
 /*     login(email: string, password: string): Observable<boolean> {
         if (successfulLogIn(email, password)) {
             this.getLoggedInName.next(fullName); //next() method is alternate to emit().

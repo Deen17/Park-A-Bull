@@ -11,6 +11,7 @@ import { interval, Observable, of, timer, Subscription } from 'rxjs'
 import {repeat, delay, takeUntil, map} from 'rxjs/operators'
 import {Progress} from "tns-core-modules/ui/progress"
 import { Color } from "tns-core-modules/color"
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class UserComponent implements OnInit, OnDestroy {
   lotName: string;
   constructor(
     private routerExtensions: RouterExtensions,
-    private vehicleService: VehicleService) {
+    private vehicleService: VehicleService,
+    private userService: UserService) {
 
     }
 
@@ -97,6 +99,12 @@ export class UserComponent implements OnInit, OnDestroy {
       console.log('return code: ' + rows[rows.length-1][0].return_code)
       if(rows[rows.length-1][0].return_code == 31){
         console.log('no reservation found')
+      }
+      else if (rows[rows.length-1][0].return_code==35){
+        appSettings.clear()
+        this.userService.clearUserInfo.next();
+        await alert('You have been banned. Logging out')
+        this.routerExtensions.navigateByUrl('login', {clearHistory: true})
       }
       else if(rows[rows.length-1][0].return_code == 0){
         console.log('return code is 0')

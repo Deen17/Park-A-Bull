@@ -92,17 +92,25 @@ export class RegisterComponent implements OnInit {
         password: newpass
       })
     }).then((response) => {
-      const result = response.content.toJSON();
-      console.log('result:', result)
-      if (result.response){
-        this.goToHome();
-      } 
-      else {
-        (alert({
-          title: "Admin Register failed!",
-          message: result.duplicate_entry,
-          okButtonText:"Try Again"
-        }))
+      const rows = response.content.toJSON();
+      console.log('result:', rows)
+      switch(rows[rows.length - 1][0].return_code){
+        case 0:
+            this.goToHome();
+            break;
+        case 1:
+            alert('Error: Duplicate email');
+            break;
+        case 3:
+            alert('Error: Duplicate username');
+            break;
+        case 4:
+            alert('Please enter all input field');
+            break;
+        default:
+            alert('Unknown Error Code');
+            break;
+          
       }
     }, (e) => {
       console.log(e)

@@ -1,1 +1,10 @@
 /* Add mobile styles for the component here.  */
+
+
+.field{
+    width:30%;
+}
+
+.value{
+    width: 70%;
+}
