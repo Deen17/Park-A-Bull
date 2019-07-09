@@ -5,8 +5,10 @@
     <Label class="action-bar-title" text="Make a Report"></Label>
 </ActionBar>
 
-<ScrollView class="page">
-    <StackLayout class="home-panel">
-        <Button class="btn2" text="Make a Reservation" [nsRouterLink]="['/reserve']" clearHistory="true"></Button>
+<ScrollView>
+    <StackLayout class="form">
+        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" text="{{this.email}}" hint="email" id="email" autocorrect="false" keyboardType="email"></TextField>
+        <TextField autocapitalizationType="none" (textChange)="onTextChange($event)" id="license" hint="License Plate No." autocorrect="false" text="{{this.license}}"></TextField>
+        <Button text="Submit" class="btn btn-primary btn-active" (tap)="onSubmit()"></Button>
     </StackLayout>
 </ScrollView>

@@ -62,7 +62,7 @@ export class BuildingDetailsComponent implements OnInit {
       message: "Please enter new building name",
       okButtonText: "Ok",
       cancelButtonText: "Cancel",
-      defaultText: this.name,
+      defaultText: this.newName,
       inputType: inputType.text, // email, number, text, password, or email
     };
     prompt(promptOptions).then((r: PromptResult) => {
@@ -157,14 +157,17 @@ export class BuildingDetailsComponent implements OnInit {
       let rows = response.content.toJSON();
       console.log('name: ' + this.name)
       console.log('result:', rows)
-      if (!rows.response){
-        this.displayAlertDialog1();
-      }else {
-        (alert({
-          title: "Error: Building doesnot exist",
-          message: rows.duplicate_entry,
-          okButtonText:"Try Again"
-        }))
+      switch(rows[rows.length - 1][0].return_code){
+        case 0:
+            this.displayAlertDialog1();
+            break;
+        case 10:
+            alert('Error: Building doesnot exist');
+            break;
+        default:
+            alert('Unknown Error Code');
+            break;
+          
       }
     }, (e) => {
       console.log(e)
