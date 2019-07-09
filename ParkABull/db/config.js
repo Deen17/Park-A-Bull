@@ -2,5 +2,5 @@
 module.exports = {
     url: "https://parkabull.localtunnel.me/",
     //localUrl: "http://10.100.3.204:8000/"
-    localUrl: "https://b11442aa.ngrok.io/"
+    localUrl: "https://862069a2.ngrok.io/"
 }

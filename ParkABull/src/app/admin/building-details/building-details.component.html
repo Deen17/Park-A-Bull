@@ -26,12 +26,12 @@
         <Button text="Delete Building" class="lotbutton" (tap)="deleteBuilding()"></Button>
         <Label class="lots" text="Linked Lots:" textWrap="true"></Label>
 
-        <StackLayout *ngIf="showSet" height=50%>
-            <Button id="lot1" text="{{this.newLots[0]}}" class="lotbutton" (tap)="setLotToChange($event)"></Button>
-            <Button id="lot2" text="{{this.newLots[1]}}" class="lotbutton" (tap)="setLotToChange($event)"></Button>
-            <Button id="lot3" text="{{this.newLots[2]}}" class="lotbutton" (tap)="setLotToChange($event)"></Button>
+        <StackLayout *ngIf="showSet" height=300>
+            <Button id="1" text="{{this.lotNames[0]}}" class="lotbutton" (tap)="setLotToChange($event)"></Button>
+            <Button id="2" text="{{this.lotNames[1]}}" class="lotbutton" (tap)="setLotToChange($event)"></Button>
+            <Button id="3" text="{{this.lotNames[2]}}" class="lotbutton" (tap)="setLotToChange($event)"></Button>
         </StackLayout>
-        <ListView *ngIf="!showSet" height="200" [items]="unpickedLots" (itemTap)="onItemTap(event)" class="list-group">
+        <ListView *ngIf="!showSet" height="300" [items]="unsetLotNames" (itemTap)="onItemTap($event)" class="list-group">
             <ng-template let-item="item" let-odd="odd" let-even="even">
               <StackLayout>
                 <Label [text]="item" class="list-group-item"></Label>

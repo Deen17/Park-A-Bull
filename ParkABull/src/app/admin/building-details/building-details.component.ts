@@ -61,7 +61,25 @@ export class BuildingDetailsComponent implements OnInit {
   onItemTap(args) {
     let index = args.index;
     let pickedLot = this.unsetLotNames[index]
+    let pickedSlot = this.lotNames[this.lotToChange]
+    this.lotNames[this.lotToChange] = pickedLot
+    this.unsetLotNames.push(pickedSlot)
+    this.unsetLotNames.splice(index, 1)
+    this.showSet = true;
   }
+/* 
+  deleteFromAllByName(name: string){
+    this.allLotNames = this.allLotNames.filter(element => {
+      this.allLotNames.includes(name)
+    })
+  } */
+
+  deleteFromSetByName(name: string){
+    this.lotNames = this.lotNames.filter(element => {
+      !(element == name)
+    })
+  }
+
 
   async ngOnInit() {
     this.name = this.activatedRoute.snapshot.paramMap.get("name");
@@ -78,15 +96,20 @@ export class BuildingDetailsComponent implements OnInit {
   }
 
   public setUnsetLotNames(){
-    this.unsetLotNames = this.allLotNames.filter(element => {
-      !this.lotNames.includes(element)
-    })
+    for(let i = 0; i < this.allLotNames.length; i++){
+      let element = this.allLotNames[i]
+      let temp = this.lotNames.indexOf(element);
+      console.log(`element: ${element}, temp: ${temp}`)
+      if(temp == -1){
+        this.unsetLotNames.push(element)
+      }
+    }
   }
 
   showDialogBox() {
     const promptOptions: PromptOptions = {
       title: "Building Name",
-      message: "Please enter new building name",
+      message: "Please enter a new building name",
       okButtonText: "Ok",
       cancelButtonText: "Cancel",
       defaultText: this.newName,
@@ -204,24 +227,6 @@ export class BuildingDetailsComponent implements OnInit {
     } else {
       this.tempLocation = this.newLocation;
     }
-
-    if (this.newLots[0] == this.lotNames[0]) {
-      this.tempLot1 = null;
-    } else {
-      this.tempLot1 = this.newLots[0];
-    }
-
-    if (this.newLots[1] == this.lotNames[1]) {
-      this.tempLot2 = null;
-    } else {
-      this.tempLot2 = this.newLots[1];
-    }
-
-    if (this.newLots[2] == this.lotNames[2]) {
-      this.tempLot3 = null;
-    } else {
-      this.tempLot3 = this.newLots[2];
-    }
     await this.editBuilding();
   }
 
@@ -293,7 +298,6 @@ export class BuildingDetailsComponent implements OnInit {
             );
             this.lotNames.push(row.lot_name);
             this.newLots.push(row.lot_name);
-            console.log('lotNames: ', this.lotNames)
             this.total += temp.getSpots();
             i++;
           });
