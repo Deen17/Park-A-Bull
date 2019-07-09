@@ -63,8 +63,8 @@ export class BuildingDetailsComponent implements OnInit {
             })
           })
         let rows = response.content.toJSON();
-        console.log(rows[2][0].return_code)
-        switch (rows[2][0].return_code) {
+        let return_code = rows[rows.length - 1][0].return_code
+        switch (return_code) {
           case 0:
             console.log('reservation successful')
             this.routerExtensions.navigateByUrl("user", { clearHistory: true })

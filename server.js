@@ -115,7 +115,7 @@ app.get('/vehicles/:email', function(req, res) {
         ],
         (err, rows) => {
             if (err) {
-                res.send({ response_message: "Get Buildings Failed!" })
+                res.send({ response_message: "Get Vehicles Failed!" })
                 throw err;
             } else {
                 res.send(rows[0])
@@ -133,7 +133,7 @@ app.get('/getspotbyemail/:email', function(req, res) {
         ],
         (err, rows) => {
             if (err) {
-                res.send({ response_message: "Get Buildings Failed!" })
+                res.send({ response_message: "Get spots Failed!" })
                 throw err;
             } else {
                 console.log(rows)
@@ -204,11 +204,11 @@ app.post('/register', function(req, res) {
     ], (err, rows) => {
         if (err) {
             console.log(rows)
-            res.send({ response: false })
+            res.send(rows)
             throw err;
         } else {
             console.log(rows)
-            res.send({ response: true });
+            res.send(rows);
         }
     })
 })
@@ -242,15 +242,33 @@ app.post('/adminregister', function(req, res) {
     ], (err, rows) => {
         if (err) {
             console.log(rows)
-            res.send({ response: false })
+            res.send(rows)
             throw err;
         } else {
             console.log(rows)
-            res.send({ response: true });
+            res.send(rows);
         }
     })
 })
 
+app.post('/report', function(req, res) {
+    console.log('POST /userReport')
+    connection.query(config.queries.userReport, [
+        req.body.email,
+        req.body.license
+    ], (err, rows) => {
+        if (err) {
+            console.log(rows)
+            res.send(rows)
+            throw err;
+        } else {
+            console.log(rows)
+            res.send(rows);
+        }
+    })
+})
+
+//wrong
 app.post('/addbuilding', function(req, res) {
     console.log('POST /addbuilding')
     connection.query(config.queries.addBuilding, [
@@ -289,6 +307,7 @@ app.post('/password', function(req, res) {
         }
     })
 })
+
 app.post('/editbuildings', function(req, res) {
     console.log('POST /editBuildings')
     connection.query(config.queries.editBuilding, [
