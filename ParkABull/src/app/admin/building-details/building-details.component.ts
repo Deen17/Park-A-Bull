@@ -6,11 +6,12 @@ import { request,getFile, getImage, getJSON, getString, HttpResponse } from "tns
 import { Building } from "../building"
 import {Lot} from "../lot"
 import { GridLayout, ItemSpec } from "tns-core-modules/ui/layouts/grid-layout";
-import { Page } from "tns-core-modules/ui/page";
+import { EventData } from "tns-core-modules/data/observable";
 import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
 import { prompt, PromptOptions, PromptResult, capitalizationType, inputType } from "tns-core-modules/ui/dialogs";
 import { alert } from "tns-core-modules/ui/dialogs";
 import { stringify } from '@angular/core/src/render3/util';
+import { Button } from 'tns-core-modules/ui/button/button';
 /* import { DropDownModule } from "nativescript-drop-down/angular";
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 import { GestureTypes, GestureEventData } from "tns-core-modules/ui/gestures"; */
@@ -39,10 +40,25 @@ export class BuildingDetailsComponent implements OnInit {
   public code: string;
   lots: Array<Lot> = []; // lot_id, lot_name, location, spots_available
   lotNames: Array<string> = [];
+  allLotNames: Array<string> = [];
+  unsetLotNames: Array<string> = [];
+  showSet : boolean = true;
+  lotToChange: number = 0;
 
-  constructor(private routerExtensions: RouterExtensions, private activatedRoute: ActivatedRoute) {
+  constructor(private routerExtensions: RouterExtensions, private activatedRoute: ActivatedRoute) 
+  {
 
-    
+  }
+
+  public setLotToChange(args: EventData){
+    this.showSet = false;
+    let button = <Button>args.object
+    this.lotToChange =parseInt( button.id);
+  }
+
+  onItemTap(args){
+    let index = args.index;
+    let pickedLot = this.unsetLotNames[index]
   }
 
   ngOnInit() {
