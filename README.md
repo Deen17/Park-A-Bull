@@ -17,7 +17,7 @@ npm install -g ngrok
 
 or figure out how you'll server your server.js
 
-##Setup
+## Setup
 
 This setup assumes you use a proxy to connect to GCP Cloud SQL. if you connect to MySQL differently, you don'y need connect.ps1, and you should connect your way to MySQL.
 
