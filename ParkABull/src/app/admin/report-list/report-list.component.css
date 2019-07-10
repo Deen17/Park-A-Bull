@@ -1,1 +1,16 @@
 /* Add mobile styles for the component here.  */
+
+.reviewed {
+    background-color: #1168bc;
+    color: white;
+}
+
+.rejected {
+    background-color: #a90b30;
+    color: white;
+}
+
+.accepted {
+    background-color: #2cc9ff;
+    color: white;
+}

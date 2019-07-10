@@ -138,6 +138,7 @@ export class ReportService {
                     spot[0].lot_name
                 )
                 this.reports.push(temp)
+                console.log(element.violation_report_id, '|' + element.report_status + '|')
             });
             return this.reports;
         } catch (e) {
@@ -211,6 +212,12 @@ export class ReportService {
             R.filter(report => report.lotName == lot)
         )(this.reports)
     }
+
+    public filterReportsByReportStatus(status: string): Array<Report> {
+        return R.pipe(
+             R.filter(report => report.reportStatus == status)
+         )(this.reports)
+     }
 
     public sortByLatest(): Array<Report>{
         return R.pipe(

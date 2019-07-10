@@ -51,6 +51,18 @@ export class ReportListComponent implements OnInit {
     this.reports = this.reportService.getReports();
   }
 
+  public async onFilter(){
+    let options = {
+      title: "Filter by Report Status",
+      message: "How would you like to filter reports?",
+      cancelButtonText: "cancel",
+      actions: ["reviewed", "rejected", "accepted", "all"]
+    };
+    let result = await action(options)
+    if(result == 'all') this.reports = this.reportService.getReports();
+    else this.reports = this.reportService.filterReportsByReportStatus(result);
+  }
+
   public async onTap(args: EventData, i: number) {
     let btn = <Button>args.object
     let options = {

@@ -3,12 +3,13 @@
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="Reports"></Label>
+    <ActionItem text="Filter" ios.position="right" android.position="actionBar" (tap)="onFilter()"></ActionItem>
 </ActionBar>
 <StackLayout class="page" height="100%">
     <SearchBar autocapitalizationType="none" (clear)="onClear($event)" height=75 hint="Enter a building name..." text="{{this.searchPhrase}}" (submit)="onSubmit($event)" color="black" textFieldBackgroundColor="white" textFieldHintColor="gray"></SearchBar>
     <ScrollView>
         <StackLayout>
-            <Button *ngFor="let report of reports; let i = index" height="200" class="btn btn-primary btn-active" text="{{report.getText()}}" (tap)="onTap($event, i)" textWrap="true"></Button>
+            <Button *ngFor="let report of reports; let i = index" height="200" text="{{report.getText()}}" (tap)="onTap($event, i)" textWrap="true" [ngClass]="{'reviewed': (report.reportStatus == 'reviewed'), 'accepted': (report.reportStatus == 'accepted'), 'rejected': (report.reportStatus=='rejected'), 'btn btn-primary btn-active': (report.reportStatus == 'created')}"></Button>
         </StackLayout>
     </ScrollView>
 </StackLayout>
