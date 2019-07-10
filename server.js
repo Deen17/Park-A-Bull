@@ -379,6 +379,17 @@ app.post('/password', function(req, res) {
     })
 })
 
+app.post('/cancelreservation', function(req, res) {
+    console.log('POST /cancelreservation')
+    connection.query(config.queries.cancelReservation, [
+        req.body.email,
+        req.body.lot
+    ], (err, rows) => {
+        if (err) throw err;
+        else res.send(rows)
+    })
+})
+
 app.post('/disableuser', function(req, res) {
     console.log('POST /disableuser')
     connection.query(config.queries.banUser, [
