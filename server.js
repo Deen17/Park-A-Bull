@@ -94,7 +94,24 @@ app.get('/buildings', function(req, res) {
 app.get('/users', function(req, res) {
     console.log('GET /users')
     connection.query(
-        config.queries.getUsers,
+        config.queries.id,
+        (err, rows) => {
+            if (err) {
+                throw err;
+            } else {
+                res.send(rows)
+            }
+        }
+    )
+
+})
+
+app.get('/getuserbyid/:id', function(req, res) {
+    console.log(`getuserbyid/${req.params.id}`)
+    connection.query(
+        config.queries.selectUserByID, [
+            req.params.id
+        ],
         (err, rows) => {
             if (err) {
                 res.send({ response_message: "Get Users Failed!" })
@@ -144,7 +161,61 @@ app.get('/getspotbyemail/:email', function(req, res) {
 
 })
 
+app.get('/getreports', function(req, res) {
+    console.log('GET /getreports')
+    connection.query(
+        config.queries.getReports,
+        (err, rows) => {
+            if (err) throw err;
+            else res.send(rows)
+        }
+    )
+})
+
+app.get('/getlotbyreservationid/:lotid', function(req, res) {
+    console.log(`GET /getlotbyreservationid/${req.params.lotid}`)
+    connection.query(
+        config.queries.getLotByReservationId, [
+            req.params.lotid
+        ],
+        (err, rows) => {
+            if (err) throw err;
+            else res.send(rows)
+        }
+    )
+})
+
 //posts
+app.post('/updatereport', function(req, res) {
+    console.log('POST /updatereport')
+    let i = 1;
+    switch (req.body.reportStatus) {
+        case 'reviewed':
+            i = 2;
+            break;
+        case 'accepted':
+            i = 3;
+            break;
+        case 'rejected':
+            i = 4;
+            break;
+        default:
+            break;
+    }
+    connection.query(config.queries.updateReport, [
+        req.body.reportStatus,
+        req.body.reportID
+    ], (err, rows) => {
+        if (err) {
+            res.send()
+            throw err;
+        } else {
+            res.send();
+        }
+    })
+})
+
+
 app.post('/login', function(req, res) {
     console.log('POST /login')
     connection.query(
@@ -308,24 +379,22 @@ app.post('/password', function(req, res) {
     })
 })
 
-app.post('/disableuser', function(req, res){
+app.post('/disableuser', function(req, res) {
     console.log('POST /disableuser')
-    connection.query(config.queries.banUser,[
+    connection.query(config.queries.banUser, [
         req.body.email
-    ]
-    , (err, rows) =>{
-        if(err) throw err;
+    ], (err, rows) => {
+        if (err) throw err;
         else res.send(rows)
     })
 })
 
-app.post('/enableuser', function(req, res){
+app.post('/enableuser', function(req, res) {
     console.log('POST /enableuser')
-    connection.query(config.queries.enableUser,[
+    connection.query(config.queries.enableUser, [
         req.body.email
-    ]
-    , (err, rows) =>{
-        if(err) throw err;
+    ], (err, rows) => {
+        if (err) throw err;
         else res.send(rows)
     })
 })
