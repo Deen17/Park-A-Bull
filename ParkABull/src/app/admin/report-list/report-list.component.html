@@ -4,8 +4,11 @@
     </ActionItem>
     <Label class="action-bar-title" text="Reports"></Label>
 </ActionBar>
-    
-<ScrollView class="page">
-    <StackLayout class="home-panel">
-    </StackLayout>
-</ScrollView>
+<StackLayout class="page" height="100%">
+    <SearchBar autocapitalizationType="none" (clear)="onClear($event)" height=75 hint="Enter a building name..." text="{{this.searchPhrase}}" (submit)="onSubmit($event)" color="black" textFieldBackgroundColor="white" textFieldHintColor="gray"></SearchBar>
+    <ScrollView>
+        <StackLayout>
+            <Button *ngFor="let report of reports; let i = index" height="200" class="btn btn-primary btn-active" text="{{report.getText()}}" (tap)="onTap($event, i)" textWrap="true"></Button>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>

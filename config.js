@@ -32,7 +32,9 @@ module.exports = {
         editLot: 'call db.edit_lot(?,?,?,@return_code); select @return_code as return_code;',
         banUser: 'call db.disable_user(?,@return_code); select @return_code as return_code;',
         enableUser: 'call db.enable_user(?,@return_code); select @return_code as return_code;',
-        selectUserByID: 'Select * from db.users where user_id=?;'
-
+        selectUserByID: 'Select * from db.users where user_id=?;',
+        getReports: 'select * from db.violation_reports;',
+        getLotByReservationId: 'call db.get_lot_by_reservation_id(?,@return_code);', //didnt select return_code
+        updateReport: 'update db.violation_reports set report_status=? where (violation_report_id=?);'
     }
 }
