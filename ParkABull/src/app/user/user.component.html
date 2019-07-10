@@ -11,6 +11,8 @@
             <Label class="big" text="{{this.lotName}} {{this.spotName}}" textWrap="true"></Label>
             <Progress value="{{this.seconds}}" class="progress" maxValue="{{this.timer}}" color="{{this.color}}"></Progress>
             <Label class="progresstext" text="{{this.seconds}} seconds until your reservation expires!" textWrap="true"></Label>
+            <Button class="btn btn-primary btn-active" text="Cancel Reservation" (tap)="onCancel()"></Button>
+
         </StackLayout>
         <StackLayout *ngIf="this.showSpot" height=100%>
             <Label class="big" text="{{this.lotName}} {{this.spotName}}" textWrap="true"></Label>
