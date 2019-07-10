@@ -94,7 +94,7 @@ app.get('/buildings', function(req, res) {
 app.get('/users', function(req, res) {
     console.log('GET /users')
     connection.query(
-        config.queries.id,
+        config.queries.getUsers,
         (err, rows) => {
             if (err) {
                 throw err;
