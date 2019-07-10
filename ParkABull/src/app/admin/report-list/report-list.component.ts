@@ -17,7 +17,7 @@ import { request, HttpResponse } from "tns-core-modules/http"
   templateUrl: './report-list.component.html',
   styleUrls: ['./report-list.component.css'],
   moduleId: module.id,
-  //changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ReportListComponent implements OnInit {
   reports: Array<Report>;
