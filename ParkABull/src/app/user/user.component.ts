@@ -66,6 +66,9 @@ export class UserComponent implements OnInit, OnDestroy {
         switch(return_code){
           case 0:
             alert('reservation successfully cancelled.')
+            if (this.subscribed) 
+              this.subscription.unsubscribe();
+            this.showTimer =this.showSpot = false;
             break;
           case 8:
             alert('indicated user does not exist')
