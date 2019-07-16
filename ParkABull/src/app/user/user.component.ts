@@ -32,6 +32,8 @@ export class UserComponent implements OnInit, OnDestroy {
   subscribed: boolean = false;
   spotName: string;
   lotName: string;
+  total: number = 1800;
+
   constructor(
     private routerExtensions: RouterExtensions,
     private vehicleService: VehicleService,
@@ -109,7 +111,7 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   public onValueChanged() {
-    let portion = this.seconds / this.timer;
+    let portion = this.seconds / 1800; // this.timer or 1800
     if (portion > .75) {
       this.color = new Color('green')
     }
