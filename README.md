@@ -28,6 +28,7 @@ in the parent folder:
 ```
 ngrok http 8000
 ```
+update ./ParkABull/db/config.js with the approprate URL in the localUrl key-value pair. then,
 
 ```
 connect.ps1
