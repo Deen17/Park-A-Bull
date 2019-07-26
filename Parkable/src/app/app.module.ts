@@ -18,6 +18,9 @@ import { LotDetailsComponent } from './admin/lot-details/lot-details.component';
 import { ReportListComponent } from './admin/report-list/report-list.component';
 import { UserListComponent } from './admin/user-list/user-list.component';
 import { UserDetailsComponent } from './admin/user-details/user-details.component';
+import { AdminBuildingDetailsComponent } from './admin/admin-building-details/admin-building-details.component';
+import { AdminBuildingListComponent } from './admin/admin-building-list/admin-building-list.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -36,11 +39,14 @@ import { UserDetailsComponent } from './admin/user-details/user-details.componen
     LotDetailsComponent,
     ReportListComponent,
     UserListComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    AdminBuildingDetailsComponent,
+    AdminBuildingListComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
