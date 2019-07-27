@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {ReactiveFormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,7 +22,12 @@ import { UserDetailsComponent } from './admin/user-details/user-details.componen
 import { AdminBuildingDetailsComponent } from './admin/admin-building-details/admin-building-details.component';
 import { AdminBuildingListComponent } from './admin/admin-building-list/admin-building-list.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
-
+import {MAT_LABEL_GLOBAL_OPTIONS} from '@angular/material'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatInputModule} from '@angular/material/input'
+import {MatCardModule} from '@angular/material/card'
+import {MatTabsModule} from '@angular/material/tabs'
+import {MatSidenavModule} from '@angular/material/sidenav'
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,8 +53,17 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
     NgbModule,
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatTabsModule,
+    MatSidenavModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

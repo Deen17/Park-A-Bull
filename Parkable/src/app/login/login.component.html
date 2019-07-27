@@ -1,1 +1,11 @@
-<p>login works!</p>
+<mat-card class="login-card">
+    <form class="example-container" [formGroup]="form" (ngSubmit)="this.onSubmit()">
+        <mat-form-field>
+            <input matInput formControlName="username" placeholder="username" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="password" formControlName="password" required>
+        </mat-form-field>
+    </form>
+    
+</mat-card>
