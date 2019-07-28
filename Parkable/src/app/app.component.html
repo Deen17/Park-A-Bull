@@ -1,20 +1,46 @@
 <header>
 </header>
-<mat-sidenav-container class="example-container">
-  <mat-sidenav opened mode="side">Start content</mat-sidenav>
-  <mat-sidenav-content>
-  <!-- Implicit main content -->
-  <article>
-    <div style="text-align:center">
-      <h1>
-        Welcome to {{ title }}!
-      </h1>
-      <img height="300" width="250" alt="Angular Logo" src="assets/logo.png">
-      <router-outlet></router-outlet>
-    </div>
-  </article>
-  <aside>
-    aside
-  </aside>
-</mat-sidenav-content>
+<mat-sidenav-container height="100%" class="example-container">
+    <mat-sidenav #sidenav opened mode="side">
+        <div class="nav" *ngIf="isUser">
+            <ul>
+                <li>
+                    <a routerLink="/userhome">Home</a>
+                </li>
+                <li>
+                    <a routerLink="/userbuildinglist">Buildings</a>
+                </li>
+                <li>
+                    <a routerLink="/userprofile">Profile</a>
+                </li>
+                <li>
+                    <a routerLink="/report">Make a Report</a>
+                </li>
+                <li>
+                    <a routerLink="/vehicles">Vehicles</a>
+                </li>
+                <li>
+                    <a>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <nav>
+            <button (click)="sidenav.toggle()" mat-raised-button>SideNav</button>
+        </nav>
+        <article class="article-content">
+
+            <div *ngIf="!isLoggedIn">
+                <h1>
+                    Welcome to {{ title }}!
+                </h1>
+                <img height="300" width="250" alt="Angular Logo" src="assets/logo.png">
+            </div>
+            <router-outlet></router-outlet>
+        </article>
+        <aside class="aside-content">
+            aside
+        </aside>
+    </mat-sidenav-content>
 </mat-sidenav-container>

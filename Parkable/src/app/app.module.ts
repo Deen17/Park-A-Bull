@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import {ReactiveFormsModule} from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,13 +21,17 @@ import { UserListComponent } from './admin/user-list/user-list.component';
 import { UserDetailsComponent } from './admin/user-details/user-details.component';
 import { AdminBuildingDetailsComponent } from './admin/admin-building-details/admin-building-details.component';
 import { AdminBuildingListComponent } from './admin/admin-building-list/admin-building-list.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
-import {MAT_LABEL_GLOBAL_OPTIONS} from '@angular/material'
-import {MatFormFieldModule} from '@angular/material/form-field'
-import {MatInputModule} from '@angular/material/input'
-import {MatCardModule} from '@angular/material/card'
-import {MatTabsModule} from '@angular/material/tabs'
-import {MatSidenavModule} from '@angular/material/sidenav'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { HomeComponent } from './user/home/home.component';
+import { AdminHomeComponent } from './admin/home/home.component';
+import { HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,11 +51,14 @@ import {MatSidenavModule} from '@angular/material/sidenav'
     UserListComponent,
     UserDetailsComponent,
     AdminBuildingDetailsComponent,
-    AdminBuildingListComponent
+    AdminBuildingListComponent,
+    HomeComponent,
+    AdminHomeComponent
   ],
   imports: [
     NgbModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
@@ -59,10 +66,11 @@ import {MatSidenavModule} from '@angular/material/sidenav'
     MatInputModule,
     MatCardModule,
     MatTabsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatButtonModule
   ],
   providers: [
-    {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}}
+    { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: { float: 'always' } }
   ],
   bootstrap: [AppComponent]
 })
