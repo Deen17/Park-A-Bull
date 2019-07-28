@@ -18,7 +18,7 @@ export class LoginComponent implements OnDestroy, OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-   }
+  }
   ngOnDestroy(): void {
     // Called once, before the instance is destroyed.
     // Add 'implements OnDestroy' to the class.
@@ -34,14 +34,16 @@ export class LoginComponent implements OnDestroy, OnInit {
     ).subscribe(() => {
       this.failureMessage = null;
       console.log(this.failureMessage);
-    } );
+    });
   }
-  onSubmit() {
-    console.log(this.form.status);
-    if (this.form.status === 'VALID') {
-    console.log(this.form.value);
-    } else {
-      this.displayErrorMessage('Invalid Username/Password Combination. Please Fill in all entries.');
+  onSubmit(event: any) {
+    if (event == null || event.key == "Enter") {
+      console.log(this.form.status);
+      if (this.form.status === 'VALID') {
+        console.log(this.form.value);
+      } else {
+        this.displayErrorMessage('Invalid Username/Password Combination. Please Fill in all entries.');
+      }
     }
   }
   public displayErrorMessage(msg: string) {
