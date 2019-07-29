@@ -1,6 +1,6 @@
 .article-content {
     text-align: center;
-    background-color: lightcoral;
+    /* background-color: lightcoral; */
     min-height: 100vh;
 }
 
@@ -9,7 +9,7 @@
 }
 
 .aside-content {
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
 }
 
 @media (max-width: 600px) {

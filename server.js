@@ -1,4 +1,4 @@
-//imports
+// imports
 var mysql = require('mysql');
 var config = require('./config')
 let http = require('http')
@@ -6,7 +6,7 @@ let https = require('https')
 var express = require('express')
 const bodyParser = require('body-parser')
 const fs = require('fs')
-
+var cors = require('cors');
 
 //following exit code isnt tested.
 process.on("beforeExit", (code) => {
@@ -29,6 +29,7 @@ connection.connect((err) => {
 
 //EXPRESS
 var app = express()
+app.use(cors())
 app.use(function(req, res, next) {
     let today = new Date();
     console.log(today.getMonth() + '/' +
@@ -218,6 +219,7 @@ app.post('/updatereport', function(req, res) {
 
 app.post('/login', function(req, res) {
     console.log('POST /login')
+    console.log(req.body)
     connection.query(
         config.queries.login, [
             req.body.username,
@@ -241,7 +243,14 @@ app.post('/login', function(req, res) {
                     lastName: rows[0].last_name
                 })
             } else {
-                res.send({ login: false })
+                res.send({
+                    login: false,
+                    userType: null,
+                    username: null,
+                    email: null,
+                    firstName: null,
+                    lastName: null
+                })
             }
         })
 })
@@ -489,4 +498,4 @@ const server = app.listen(config.appServer.port, () => {
     const host = server.address().address;
     const port = server.address().port;
     console.log(`ParkABull app listening at http://${host}:${port}`)
-})
+});
