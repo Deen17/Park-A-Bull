@@ -1,6 +1,11 @@
 # Park-A-Bull
 This readme walks you through setting up this project.
 
+
+
+## NOTE
+The SQL server is currently down.
+
 ## Installation
 Follow [this link](https://docs.nativescript.org/angular/start/introduction) thoroughly.
 
