@@ -81,7 +81,7 @@ export class RegisterComponent implements OnInit {
     console.log('after validate')
     let newpass: string = md5(this.password);
     request({
-      url: localUrl + "adminregister", //http://10.100.0.232:8000/login
+      url: localUrl + "adminregister",
       method: "POST",
       headers: { "Content-Type": "application/json" },
       content: JSON.stringify({

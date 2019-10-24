@@ -57,7 +57,7 @@ export class AddBuildingComponent implements OnInit {
 
   onDone(args: EventData){
     request({
-      url: localUrl + "addbuilding", //http://10.100.0.232:8000/login
+      url: localUrl + "addbuilding",
       method: "POST",
       headers: { "Content-Type": "application/json" },
       content: JSON.stringify({

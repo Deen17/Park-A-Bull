@@ -1,2 +1,0 @@
-$env:GOOGLE_APPLICATION_CREDENTIALS= join-path $psscriptroot "parkingwizardusf-b5d5957f5d85.json"
-.\cloud_sql_proxy_x64.exe -instances=parkingwizardusf:us-east1:db=tcp:3306 \ credential_file= join-path $psscriptroot "parkingwizardusf-b5d5957f5d85.json"
