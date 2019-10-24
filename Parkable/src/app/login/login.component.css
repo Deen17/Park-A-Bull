@@ -1,0 +1,33 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.example-container>* {
+    width: 100%;
+}
+
+.example-container form {
+    margin-bottom: 20px;
+}
+
+.example-container form>* {
+    margin: 5px 0;
+}
+
+.example-container .mat-radio-button {
+    margin: 0 12px;
+}
+
+.login-card {
+    width: 50%;
+    height: 225px;
+    align-content: center;
+    margin: auto;
+}
+
+button {
+    background-color: #006747;
+    color: white;
+}

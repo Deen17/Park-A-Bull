@@ -1,0 +1,60 @@
+.article-content {
+    text-align: center;
+    /* background-color: lightcoral; */
+    min-height: 100vh;
+}
+
+.mat-sidenav-content {
+    background-color: white;
+}
+
+.aside-content {
+    /* background-color: lightgreen; */
+}
+
+@media (max-width: 600px) {
+    article,
+    aside {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (min-width: 225px) {
+    article,
+    nav {
+        height: 100%;
+        width: auto;
+    }
+}
+
+article {
+    float: left;
+    padding: 20px;
+    width: 75%;
+    /* background-color: white; */
+    height: 100%;
+    /* only for demonstration, should be removed */
+}
+
+aside {
+    float: left;
+    padding: 20px;
+    height: 25%;
+    width: 25%;
+    /* background-color: white; */
+}
+
+.nav a {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+}
+
+.nav ul {
+    list-style-type: none;
+}

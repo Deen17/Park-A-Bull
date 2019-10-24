@@ -3,12 +3,12 @@ module.exports = {
     mysql: {
         host: "localhost",
         user: "root",
-        password: "mEgN0KpPehgDtmxg",
+        password: "",
         database: "db",
         multipleStatements: true,
     },
     appServer: {
-        ip: "10.226.56.51", //put your own ip address here. run Get-NetIpAddress and look for the right ip (check for wifi/ethernet, then for preferred) or put localhost
+        ip: "127.0.0.1", //put your own ip address here. run Get-NetIpAddress and look for the right ip (check for wifi/ethernet, then for preferred) or put localhost
         port: 8000,
 
     },

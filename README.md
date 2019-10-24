@@ -1,5 +1,5 @@
 # Park-A-Bull
-This readme walks you through setting up this project.
+This readme walks you through setting up this project. The below instructions applied to how we deployed our project. Obviously, it would be sub-optimal to allow people to use our private servers or GCP accounts. Thus, we deleted files like connect.ps1 or our GCP service account JSON files.
 
 
 
@@ -24,7 +24,7 @@ or figure out how you'll server your server.js
 
 ## Setup
 
-This setup assumes you use a proxy to connect to GCP Cloud SQL. if you connect to MySQL differently, you don'y need connect.ps1, and you should connect your way to MySQL.
+This setup assumes you use a proxy to connect to GCP Cloud SQL. if you connect to MySQL differently, you don't need connect.ps1, and you should connect your way to MySQL.
 
 
 Open 4 command lines.

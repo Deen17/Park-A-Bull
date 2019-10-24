@@ -9,7 +9,7 @@
     <StackLayout class="home-panel" height=100%>
         <StackLayout *ngIf="this.showTimer" height=100%>
             <Label class="big" text="{{this.lotName}} {{this.spotName}}" textWrap="true"></Label>
-            <Progress value="{{this.seconds}}" class="progress" maxValue="{{this.timer}}" color="{{this.color}}"></Progress>
+            <Progress value="{{this.seconds}}" class="progress" maxValue="{{this.total}}" color="{{this.color}}"></Progress>
             <Label class="progresstext" text="{{this.seconds}} seconds until your reservation expires!" textWrap="true"></Label>
             <Button class="btn btn-primary btn-active" text="Cancel Reservation" (tap)="onCancel()"></Button>
 
